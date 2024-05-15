@@ -17,11 +17,11 @@ export async function getTouriste(id){
 }
 
 
-export async function createTouriste(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
+export async function createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite){
     const [result]= await pool.query(`
-            INSERT INTO touriste(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite)
-            VALUES(?,?,?,?,?,?,?)
-    `,[id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite])
+            INSERT INTO touriste(Nom,Prenom,adresse,telephone,localisation,villeVisite)
+            VALUES(?,?,?,?,?,?)
+    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite])
     return result.insertId
 }
 

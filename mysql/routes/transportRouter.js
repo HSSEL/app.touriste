@@ -1,26 +1,32 @@
 import express from 'express'
 
-import {getTranports,getTranportVille,getTranport,createVille} from '../databases.js'
+import {getTranports,getTranportVille,getTranport,createTransport} from '../controllers/transportController'
 
-const villeRouter=express.Router()
+const transportRouter=express.Router()
 
 
-villeRouter.get("/ville",async (req,res)=>{
-    const villes=await getVilles()
-    res.send(villes)
+transportRouter.get("/transports",async (req,res)=>{
+    const transports=await getTransports()
+    res.send(transports)
 })
 
-villeRouter.get("/ville:id",async (req,res)=>{
+transportRouter.get("/transportVille:id",async (req,res)=>{
     const id= req.params.id
-    const ville=await getVille(id)
-    res.send(ville)
+    const transportville=await getTranportVille(id)
+    res.send(transportville)
+})
+
+transportRouter.get("/transport:id",async (req,res)=>{
+    const id= req.params.id
+    const transport=await getTranport(id)
+    res.send(transport)
 })
 
 
-villeRouter.post("/ville:",async (req,res)=>{
-    const {Nom,Description,Quartiers} =req.body
-    const ville=await createVille(Nom,Description,Quartiers)
-    res.status(201).send(ville)
+transportRouter.post("/transport:",async (req,res)=>{
+    const {ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif} =req.body
+    const transport=await createTransport(ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif)
+    res.status(201).send(transport)
 })
 
-export {villeRouter}
+export {transportRouter}

@@ -26,7 +26,7 @@ export async function getSante(id){
 
 export async function createSante(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
     const [result]= await pool.query(`
-            INSERT INTO sante(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite)
+            INSERT INTO sante(id_ville,Nom,Prenom,adresse,telephone,localisation,villeVisite)
             VALUES(?,?,?,?,?,?,?)
     `,[id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite])
     return result.insertId

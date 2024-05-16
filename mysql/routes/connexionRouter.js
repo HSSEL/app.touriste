@@ -17,7 +17,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
 
         if (utilisateur) {
             if (utilisateur.type === 'touriste') {
-                res.sendFile(path.join(__dirname, '../chemin/vers/interface_touriste.html'));
+                res.sendFile(path.join(__dirname, '../chemin/vers/Home.jsx'));
             } else if (utilisateur.type === 'etablissement') {
                 res.sendFile(path.join(__dirname, '../chemin/vers/interface_etablissement.html'));
             }

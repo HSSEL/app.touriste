@@ -33,5 +33,19 @@ export async function createVille(Nom,Description,Quartiers){
     return result.insertId
 }
 
-const result =await createVille("test","test","test")
-//console.log(result)
+export async function updateVille(id_ville,Nom,Description,Quartiers){
+    const [result]= await pool.query(`
+        UPDATE ville
+        SET Nom=? ,Description=? ,Quartiers=?
+        WHERE id_ville = ?
+    `,[id_ville,Nom,Description,Quartiers])
+    return result.insertId
+}
+
+export async function deleteVille(id_ville){
+    const [result]= await pool.query(`
+        DELETE ville
+        WHERE id_ville = ?
+    `,[id_ville])
+    return result.insertId
+}

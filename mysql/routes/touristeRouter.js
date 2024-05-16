@@ -10,7 +10,7 @@ touristeRouter.get("/touristes",async (req,res)=>{
     res.send(touristes)
 })
 
-touristeRouter.get("/ville:id",async (req,res)=>{
+touristeRouter.get("/touriste:id",async (req,res)=>{
     const id= req.params.id
     const touriste=await getTouriste(id)
     res.send(touriste)

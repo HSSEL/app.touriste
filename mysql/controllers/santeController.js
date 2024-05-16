@@ -5,11 +5,11 @@ export async function getSantes(){
     return row
 }
 
-export async function getTranportVille(id){
+export async function getSanteVille(id){
     const [row]=await pool.query(`
     SELECT * 
-    FROM tranport 
-    WHERE ID_Ville = ?
+    FROM sante 
+    WHERE id_ville = ?
     `,[id])
     return row[0]
 }
@@ -26,9 +26,9 @@ export async function getSante(id){
 
 export async function createSante(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
     const [result]= await pool.query(`
-            INSERT INTO sante(id_ville,Nom,Prenom,adresse,telephone,localisation,villeVisite)
-            VALUES(?,?,?,?,?,?,?)
-    `,[id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite])
+            INSERT INTO sante(id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email )
+            VALUES(?,?,?,?,?,?,?,?,?)
+    `,[id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email])
     return result.insertId
 }
 

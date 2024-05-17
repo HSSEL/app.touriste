@@ -33,9 +33,9 @@ paysageRouter.put("/Paysage/:id", async (req, res) => {
     const { ville_id,nom,description,localisation,horarire_ouverture} = req.body;
     const updated = await updatePaysage(id, ville_id,nom,description,localisation,horarire_ouverture);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -45,7 +45,7 @@ paysageRouter.delete("/Paysage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deletePaysage(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }

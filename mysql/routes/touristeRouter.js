@@ -28,9 +28,9 @@ villeRouter.put("/touriste/:id", async (req, res) => {
     const { Nom,Prenom,adresse,telephone,localisation,villeVisite } = req.body;
     const updated = await updateTransport(id, Nom,Prenom,adresse,telephone,localisation,villeVisite);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -40,7 +40,7 @@ villeRouter.delete("/touriste/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTouriste(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }

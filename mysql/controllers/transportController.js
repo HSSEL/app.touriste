@@ -39,7 +39,7 @@ export async function updateTransport(ID_Transport,ID_Ville,Type,Nom,Description
         UPDATE transport
         SET ID_Ville=?,Type=?,Nom=?,Description=?,zoneCouverte=?,Horaires=?,Tarif=?
         WHERE ID_Transport = ?
-    `,[ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif])
+    `,[ID_Transport,ID_Ville, Type,Nom,Description,zoneCouverte,Horaires,Tarif])
     return result.insertId
 }
 

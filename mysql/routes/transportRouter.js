@@ -34,9 +34,9 @@ villeRouter.put("/transport/:id", async (req, res) => {
     const { ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif } = req.body;
     const updated = await updateTransport(id, ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -46,7 +46,7 @@ villeRouter.delete("/transport/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTranport(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }

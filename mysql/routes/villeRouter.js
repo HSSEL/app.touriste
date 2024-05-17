@@ -31,9 +31,9 @@ villeRouter.put("/ville/:id", async (req, res) => {
     const { Nom, Description, Quartiers } = req.body;
     const updated = await updateVille(id, Nom, Description, Quartiers);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -43,7 +43,7 @@ villeRouter.delete("/ville/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteVille(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }

@@ -33,9 +33,9 @@ santeRouter.put("/Sante/:id", async (req, res) => {
     const { id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email } = req.body;
     const updated = await updateSante(id, id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -45,7 +45,7 @@ santeRouter.delete("/Sante/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteSante(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }

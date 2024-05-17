@@ -28,9 +28,9 @@ publicationRouter.put("/Publication/:id", async (req, res) => {
     const { objet,text,image,type,date} = req.body;
     const updated = await updatePublication(id, objet,text,image,type,date);
     if (updated) {
-        res.send('Updated succefully');
+        res.send('Updated successfully');
     } else {
-        res.send('Unsucceful update');
+        res.send('Unsuccessful update');
     }
 });
 
@@ -43,7 +43,7 @@ publicationRouter.delete("/Publication/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deletePublication(id);
     if (deleted) {
-        res.send('Deleted succefully');
+        res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
     }
@@ -51,5 +51,5 @@ publicationRouter.delete("/Publication/:id", async (req, res) => {
 
 export {publicationRouter}
 
-export {publicationRouter}
+
 

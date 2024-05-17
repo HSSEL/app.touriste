@@ -44,18 +44,12 @@ export async function createUtilisateur(email,password,type ){
 export async function updateUtilisateur(email,password,type){
     const [result]= await pool.query(`
         UPDATE 
-        SET email=?,password=?,type=?
+        SET password=?
         WHERE id_utilisateur = ?
     `,[email,password,type])
     return result.insertId
 }
 
-export async function deleteEtablissement(id_utilisateur){
-    const [result]= await pool.query(`
-        DELETE utilisateur
-        WHERE id_utilisateur = ?
-    `,[id_utilisateur])
-    return result.insertId
-}
+
 
 export {connexionController}

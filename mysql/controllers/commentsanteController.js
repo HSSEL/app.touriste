@@ -18,18 +18,18 @@ export async function getCommentSante(id){
 
 export async function createCommentSante(id_commentaire, sante_id,id_touriste, Texte, Date ){
     const [result]= await pool.query(`
-            INSERT INTO commentsante(id_commentaire, sante_id,id_touriste, Texte, Date)
+            INSERT INTO commentsante(id_commentaire, sante_id, id_touriste, Texte, Date)
             VALUES(?,?,?,?,?,?,?,?,?,?,?)
-    `,[id_commentaire, sante_id,id_touriste, Texte, Date])
+    `,[id_commentaire, sante_id, id_touriste, Texte, Date])
     return result.insertId
 }
 
-export async function updateCommentSante(id_commentaire, sante_id,id_touriste, Texte, Date){
+export async function updateCommentSante(id_commentaire, sante_id, id_touriste, Texte, Date){
     const [result]= await pool.query(`
         UPDATE
         SET Texte=?
         WHERE id_commentaire = ?
-    `,[id_commentaire, sante_id,id_touriste, Texte, Date])
+    `,[id_commentaire, sante_id, id_touriste, Texte, Date])
     return result.insertId
 }
 

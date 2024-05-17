@@ -28,4 +28,27 @@ santeRouter.post("/Sante:",async (req,res)=>{
     res.status(201).send(sante)
 })
 
+santeRouter.put("/Sante/:id", async (req, res) => {
+    const id = req.params.id;
+    const { id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email } = req.body;
+    const updated = await updateSante(id, id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email);
+    if (updated) {
+        res.send('Updated succefully');
+    } else {
+        res.send('Unsucceful update');
+    }
+});
+
+
+
+santeRouter.delete("/Sante/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteSante(id);
+    if (deleted) {
+        res.send('Deleted succefully');
+    } else {
+        res.send('Unsuccessful delete');
+    }
+});
+
 export {santeRouter}

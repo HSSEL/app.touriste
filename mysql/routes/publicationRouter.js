@@ -17,9 +17,39 @@ publicationRouter.get("/Publication:id",async (req,res)=>{
 })
 
 publicationRouter.post("/Publication:",async (req,res)=>{
-    const {id_publication,objet,text,image,type,date} =req.body
+    const {objet,text,image,type,date} =req.body
     const sante=await createPublication(id_publication,objet,text,image,type,date)
     res.status(201).send(publication)
 })
 
+
+publicationRouter.put("/Publication/:id", async (req, res) => {
+    const id = req.params.id;
+    const { objet,text,image,type,date} = req.body;
+    const updated = await updatePublication(id, objet,text,image,type,date);
+    if (updated) {
+        res.send('Updated succefully');
+    } else {
+        res.send('Unsucceful update');
+    }
+});
+
+
+
+
+
+
+publicationRouter.delete("/Publication/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deletePublication(id);
+    if (deleted) {
+        res.send('Deleted succefully');
+    } else {
+        res.send('Unsuccessful delete');
+    }
+});
+
 export {publicationRouter}
+
+export {publicationRouter}
+

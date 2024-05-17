@@ -1,6 +1,6 @@
 import express from 'express'
 
-import {getTranports,getTranportVille,getTranport,createTransport} from '../controllers/transportController'
+import {getTranports,getTranportVille,getTranport,createTransport, updateTransport} from '../controllers/transportController'
 
 const transportRouter=express.Router()
 
@@ -28,5 +28,28 @@ transportRouter.post("/transport:",async (req,res)=>{
     const transport=await createTransport(ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif)
     res.status(201).send(transport)
 })
+
+villeRouter.put("/transport/:id", async (req, res) => {
+    const id = req.params.id;
+    const { ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif } = req.body;
+    const updated = await updateTransport(id, ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif);
+    if (updated) {
+        res.send('Updated succefully');
+    } else {
+        res.send('Unsucceful update');
+    }
+});
+
+
+
+villeRouter.delete("/transport/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteTranport(id);
+    if (deleted) {
+        res.send('Deleted succefully');
+    } else {
+        res.send('Unsuccessful delete');
+    }
+});
 
 export {transportRouter}

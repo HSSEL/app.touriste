@@ -29,4 +29,11 @@ utilisateurRouter.post('/auth', async (req, res) => {
     }
 })
 
+utilisateurRouter.put("/Password/:id", async (req, res) => {
+    const id = req.params.id;
+
+    getUtilisateurMdp
+})
+
+
 export { utilisateurRouter }

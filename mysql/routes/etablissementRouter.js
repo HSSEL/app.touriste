@@ -28,4 +28,29 @@ etablissementRouter.post("/Etablissement:",async (req,res)=>{
     res.status(201).send(etablissement)
 })
 
+etablissementRouter.put("/Etablissement/:id", async (req, res) => {
+    const id = req.params.id;
+    const { id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux} = req.body;
+    const updated = await updateEtablissement(id, id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux);
+    if (updated) {
+        res.send('Updated succefully');
+    } else {
+        res.send('Unsucceful update');
+    }
+});
+
+
+
+etablissementRouter.delete("/Etablissement/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteEtablissement(id);
+    if (deleted) {
+        res.send('Deleted succefully');
+    } else {
+        res.send('Unsuccessful delete');
+    }
+});
+
+
+
 export {etablissementRouter}

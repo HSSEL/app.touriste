@@ -22,6 +22,7 @@ publicationRouter.post("/Publication:",async (req,res)=>{
     res.status(201).send(publication)
 })
 
+
 publicationRouter.put("/Publication/:id", async (req, res) => {
     const id = req.params.id;
     const { objet,text,image,type,date} = req.body;
@@ -32,6 +33,9 @@ publicationRouter.put("/Publication/:id", async (req, res) => {
         res.send('Unsucceful update');
     }
 });
+
+
+
 
 
 
@@ -46,3 +50,6 @@ publicationRouter.delete("/Publication/:id", async (req, res) => {
 });
 
 export {publicationRouter}
+
+export {publicationRouter}
+

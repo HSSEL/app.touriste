@@ -30,3 +30,20 @@ export async function createCommentEtablissement(id_commentaire, etablissement_i
     `,[id_commentaire, etablissement_id, id_touriste, Texte, Date])
     return result.insertId
 }
+
+export async function updateCommentEtablissement(id_commentaire, etablissement_id,id_touriste, Texte, Date){
+    const [result]= await pool.query(`
+        UPDATE 
+        SET id_commentaire=?,etablissement_id=?,id_touriste=?, Texte=?, Date=?
+        WHERE id_commentaire = ?
+    `,[id_commentaire, etablissement_id,id_touriste, Texte, Date])
+    return result.insertId
+}
+
+export async function deleteCommentEtablissement(id_commentaire){
+    const [result]= await pool.query(`
+        DELETE commentetablissement
+        WHERE id_commentaire = ?
+    `,[id_commentaire])
+    return result.insertId
+}

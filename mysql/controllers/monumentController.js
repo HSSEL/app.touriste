@@ -36,8 +36,8 @@ export async function createMonument(id_ville,Nom ,description,date_construction
 
 export async function updateMonument(monument_id ,id_ville,Nom ,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation){
     const [result]= await pool.query(`
-        UPDATE paysage
-        SET ville_id=?,nom=?,description=?,localisation=?,horarire_ouverture=?
+        UPDATE monument
+        SET monument_id=?,id_ville=?,nom=?,description=?,date_construction=?, style=?, hauteur=?, 
         WHERE paysage_id = ?
     `,[paysage_id ,ville_id,nom,description,localisation,horarire_ouverture])
     return result.insertId

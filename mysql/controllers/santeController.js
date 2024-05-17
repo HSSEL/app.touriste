@@ -24,7 +24,7 @@ export async function getSante(id){
 }
 
 
-export async function createSante(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
+export async function createSante(id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email){
     const [result]= await pool.query(`
             INSERT INTO sante(id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email )
             VALUES(?,?,?,?,?,?,?,?,?)
@@ -32,3 +32,19 @@ export async function createSante(id_touriste,Nom,Prenom,adresse,telephone,local
     return result.insertId
 }
 
+export async function updateSante(sante_id,id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email){
+    const [result]= await pool.query(`
+        UPDATE touriste
+        SET id_ville=?,Type=?,Nom=? ,Adresse=?,Téléphone=? ,Horaires_ouverture=?,Activites=?,site_Web=? ,Email=?
+        WHERE sante_id = ?
+    `,[sante_id,id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email])
+    return result.insertId
+}
+
+export async function deleteSante(sante_id){
+    const [result]= await pool.query(`
+        DELETE sante
+        WHERE sante_id = ?
+    `,[sante_id])
+    return result.insertId
+}

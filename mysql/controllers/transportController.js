@@ -34,3 +34,19 @@ export async function createTranport(ID_Ville,Type,Nom,Description,zoneCouverte,
     return result.insertId
 }
 
+export async function updateTransport(ID_Transport,ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif){
+    const [result]= await pool.query(`
+        UPDATE transport
+        SET ID_Ville=?,Type=?,Nom=?,Description=?,zoneCouverte=?,Horaires=?,Tarif=?
+        WHERE ID_Transport = ?
+    `,[ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif])
+    return result.insertId
+}
+
+export async function deleteTransport(ID_Transport){
+    const [result]= await pool.query(`
+        DELETE transport
+        WHERE ID_Transport = ?
+    `,[ID_Transport])
+    return result.insertId
+}

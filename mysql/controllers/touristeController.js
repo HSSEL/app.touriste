@@ -25,5 +25,20 @@ export async function createTouriste(Nom,Prenom,adresse,telephone,localisation,v
     return result.insertId
 }
 
+export async function updateTouriste(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
+    const [result]= await pool.query(`
+        UPDATE touriste
+        SET Nom=?,Prenom=?,adresse=?,telephone=?,localisation=?,villeVisite=?
+        WHERE id_touriste = ?
+    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite])
+    return result.insertId
+}
 
+export async function deleteTouriste(id_touriste){
+    const [result]= await pool.query(`
+        DELETE touriste
+        WHERE id_touriste = ?
+    `,[id_touriste])
+    return result.insertId
+}
 

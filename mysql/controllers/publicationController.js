@@ -16,11 +16,27 @@ export async function getPublication(id){
 
 
 
-export async function createPublication(id_publication,objet,text,image,type,date){
+export async function createPublication(objet,text,image,type,date){
     const [result]= await pool.query(`
-            INSERT INTO publication(id_publication,objet,text,image,type,date)
-            VALUES(?,?,?,?,?,?,?,?,?)
-    `,[id_publication,objet,text,image,type,date])
+            INSERT INTO publication(objet,text,image,type,date)
+            VALUES(?,?,?,?,?)
+    `,[objet,text,image,type,date])
     return result.insertId
 }
 
+export async function updatePublication(id_publication ,objet,text,image,type,date){
+    const [result]= await pool.query(`
+        UPDATE touriste
+        SET objet=?,text=? ,image=? ,type=? ,date=?
+        WHERE id_publication = ?
+    `,[id_publication ,objet,text,image,type,date])
+    return result.insertId
+}
+
+export async function deletePublication(id_publication){
+    const [result]= await pool.query(`
+        DELETE publication
+        WHERE id_publication = ?
+    `,[id_publication])
+    return result.insertId
+}

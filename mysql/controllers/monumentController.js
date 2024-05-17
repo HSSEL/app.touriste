@@ -39,7 +39,7 @@ export async function updateMonument(monument_id ,id_ville,Nom ,description,date
         UPDATE monument
         SET monument_id=?,id_ville=?,nom=?,description=?,date_construction=?, style=?, hauteur=?, 
         WHERE paysage_id = ?
-    `,[paysage_id ,ville_id,nom,description,localisation,horarire_ouverture])
+    `,[monument_id ,id_ville,Nom,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation])
     return result.insertId
 }
 

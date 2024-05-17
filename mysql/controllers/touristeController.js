@@ -25,3 +25,5 @@ export async function createTouriste(Nom,Prenom,adresse,telephone,localisation,v
     return result.insertId
 }
 
+
+

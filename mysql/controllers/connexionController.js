@@ -52,4 +52,3 @@ export async function updateUtilisateur(email,password,type){
 
 
 
-export {connexionController}

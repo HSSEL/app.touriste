@@ -27,16 +27,16 @@ export async function createCommentSante(id_commentaire, sante_id,id_touriste, T
 export async function updateCommentSante(id_commentaire, sante_id,id_touriste, Texte, Date){
     const [result]= await pool.query(`
         UPDATE 
-        SET email=?,password=?,type=?
-        WHERE id_utilisateur = ?
-    `,[email,password,type])
+        SET id_commentaire=?,sante_id=?,id_touriste=?, Texte=?, Date=?
+        WHERE id_commentaire = ?
+    `,[id_commentaire, sante_id,id_touriste, Texte, Date])
     return result.insertId
 }
 
-export async function deleteEtablissement(id_utilisateur){
+export async function deleteCommentSante(id_commentaire){
     const [result]= await pool.query(`
-        DELETE utilisateur
-        WHERE id_utilisateur = ?
-    `,[id_utilisateur])
+        DELETE commentsante
+        WHERE id_commentaire = ?
+    `,[id_commentaire])
     return result.insertId
 }

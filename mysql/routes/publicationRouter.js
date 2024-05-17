@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getPublications, getPublication, createPublication} from '../controllers/publicationController'
+import { getPublications, getPublication, createPublication, updatePublication, deletePublication} from '../controllers/publicationController'
 
 const publicationRouter=express.Router()
 

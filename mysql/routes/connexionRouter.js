@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUtilisateurs, getLogin } from '../controllers/connexionRouter'
+import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail,  } from '../controllers/connexionRouter'
 
 const utilisateurRouter = express.Router()
 
@@ -29,11 +29,43 @@ utilisateurRouter.post('/auth', async (req, res) => {
     }
 })
 
-utilisateurRouter.put("/Password/:id", async (req, res) => {
+utilisateurRouter.get('/Password/:id', async (req, req) => {
     const id = req.params.id;
 
-    getUtilisateurMdp
-})
+    try {
+        const userPassword = await getUtilisateurMdp(id);
+        if (userPassword) {
+            res.status(200).json(userPassword);
+        } else {
+            res.status(404).send('User not found');
+        }
+    } catch(error) {
+        console.error('Error retrieving password:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+utilisateurRouter.put("/Password/:id", async (req, res) => {
+    const {newPassword} = req.body.password;
+
+    if (!newPassword) {
+        return res.status(400).send('New password is requires');
+
+    }
+
+    try {
+        const updated = await updateUtilisateur(utilisateur_id, newPassword)
+        if (updated) {
+            res.status(200).send('Password updated successfully');
+
+        } else {
+            res.status(404).send('User not found');
+        }
+    } catch (error) {
+        console.error('Error updating password:', error);
+        res.status(500).send('Internal server error');
+    }
+});
 
 
 export { utilisateurRouter }

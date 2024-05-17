@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getPaysages,getPaysageVille,getPaysage,createPaysage } from '../controllers/paysageController'
+import { getPaysages,getPaysageVille,getPaysage,createPaysage, updatePaysage, deletePaysage } from '../controllers/paysageController'
 
 const paysageRouter=express.Router()
 

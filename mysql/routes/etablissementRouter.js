@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getEtablissements,getEtablissementVille,getEtablissement, createEtablissement} from '../controllers/etablissementController'
+import { getEtablissements,getEtablissementVille,getEtablissement, createEtablissement, updateEtablissement, deleteEtablissement} from '../controllers/etablissementController'
 
 const etablissementRouter=express.Router()
 

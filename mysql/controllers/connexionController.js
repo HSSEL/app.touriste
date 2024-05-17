@@ -11,7 +11,7 @@ export async function getLogin(email,password){
     SELECT * 
     FROM utilisateur 
     WHERE email = ? AND password-?
-    `,[emai,pasword])
+    `,[email,password])
     return row[0]
 }
 export async function getUtilisateurEmail(id){

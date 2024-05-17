@@ -16,10 +16,27 @@ export async function getCommentSante(id){
 }
 
 
-export async function createCommentSante(sante_id, id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, Site_web, Email){
+export async function createCommentSante(id_commentaire, sante_id,id_touriste, Texte, Date ){
     const [result]= await pool.query(`
-            INSERT INTO commentsante(sante_id, id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, Site_web, Email)
+            INSERT INTO commentsante(id_commentaire, sante_id,id_touriste, Texte, Date)
             VALUES(?,?,?,?,?,?,?,?,?,?,?)
-    `,[sante_id, id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, Site_web, Email])
+    `,[id_commentaire, sante_id,id_touriste, Texte, Date])
+    return result.insertId
+}
+
+export async function updateCommentSante(id_commentaire, sante_id,id_touriste, Texte, Date){
+    const [result]= await pool.query(`
+        UPDATE 
+        SET email=?,password=?,type=?
+        WHERE id_utilisateur = ?
+    `,[email,password,type])
+    return result.insertId
+}
+
+export async function deleteEtablissement(id_utilisateur){
+    const [result]= await pool.query(`
+        DELETE utilisateur
+        WHERE id_utilisateur = ?
+    `,[id_utilisateur])
     return result.insertId
 }

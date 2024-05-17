@@ -5,7 +5,7 @@ import { getPublications, getPublication, createPublication, updatePublication, 
 const publicationRouter=express.Router()
 
 
-publicationRouter.get("/Publications",async (req,res)=>{
+publicationRouter.get("/Publications",async (_req,res)=>{
     const publications=await getPublications()
     res.send(publications)
 })

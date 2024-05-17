@@ -5,7 +5,7 @@ import { getMonuments,getMonumentVille,getMonument,createMonument, updateMonumen
 const monumentRouter=express.Router()
 
 
-monumentRouter.get("/Monuments",async (req,res)=>{
+monumentRouter.get("/Monuments",async (_req,res)=>{
     const monuments=await getMonuments()
     res.send(monuments)
 })

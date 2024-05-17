@@ -7,7 +7,7 @@ import { getVille,getVilles,createVille } from '../controllers/villeController'
 const villeRouter=express.Router()
 
 
-villeRouter.get("/villes",async (req,res)=>{
+villeRouter.get("/villes",async (_req,res)=>{
     const villes=await getVilles()
     res.send(villes)
 })

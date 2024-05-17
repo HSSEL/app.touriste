@@ -5,7 +5,7 @@ import { getEtablissements,getEtablissementVille,getEtablissement, createEtablis
 const etablissementRouter=express.Router()
 
 
-etablissementRouter.get("/Etablissements",async (req,res)=>{
+etablissementRouter.get("/Etablissements",async (_req,res)=>{
     const etablissements=await getEtablissements()
     res.send(etablissements)
 })

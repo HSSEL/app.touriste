@@ -5,9 +5,15 @@ import { getCommentsEtablissement, getCommentEtablissement,createCommentEtabliss
 const commentetablissementRouter=express.Router()
 
 
-commentetablissementRouter.get("/CommentsEtablissement",async (req,res)=>{
-    const CommentsEtablissement=await getCommentsEtablissement()
-    res.send(CommentsEtablissement)
+commentetablissementRouter.get("/CommentsEtablissement",async (_req,res)=>{
+    try {
+        const CommentsEtablissement=await getCommentsEtablissement()
+        res.status(200).send(CommentsEtablissement)
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        res.status(500).send('Internal server error');
+    }
+    
 })
 
 commentetablissementRouter.get("/CommentEtablissement:id",async (req,res)=>{
@@ -17,7 +23,7 @@ commentetablissementRouter.get("/CommentEtablissement:id",async (req,res)=>{
 })
  
 commentetablissementRouter.post("/CommentEtablissement/:id", async (req, res) => {
-    const id = req.params.id;
+    const id_commentaire = req.params.id;
     
 
     if (!Texte || !etablissement_id || !id_touriste || !Date) {

@@ -5,7 +5,7 @@ import { getPaysages,getPaysageVille,getPaysage,createPaysage, updatePaysage, de
 const paysageRouter=express.Router()
 
 
-paysageRouter.get("/Paysages",async (req,res)=>{
+paysageRouter.get("/Paysages",async (_req,res)=>{
     const paysages=await getPaysages()
     res.send(paysages)
 })

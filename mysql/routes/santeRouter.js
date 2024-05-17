@@ -5,7 +5,7 @@ import { getSantes,getSanteVille,getSante,createSante } from '../controllers/san
 const santeRouter=express.Router()
 
 
-santeRouter.get("/Santes",async (req,res)=>{
+santeRouter.get("/Santes",async (_req,res)=>{
     const santes=await getSantes()
     res.send(santes)
 })

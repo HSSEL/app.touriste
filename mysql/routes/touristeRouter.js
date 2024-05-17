@@ -5,7 +5,7 @@ import { getTouristes,getTouriste,createController } from '../controllers/touris
 const touristeRouter=express.Router()
 
 
-touristeRouter.get("/touristes",async (req,res)=>{
+touristeRouter.get("/touristes",async (_req,res)=>{
     const touristes=await getTouristes()
     res.send(touristes)
 })

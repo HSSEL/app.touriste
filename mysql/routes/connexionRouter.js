@@ -3,7 +3,7 @@ import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUti
 
 const utilisateurRouter = express.Router()
 
-utilisateurRouter.get("/Utilisateurs", async (req, res) => {
+utilisateurRouter.get("/Utilisateurs", async (_req, res) => {
     const utilisateurs = await getUtilisateurs()
     res.send(utilisateurs)
 })

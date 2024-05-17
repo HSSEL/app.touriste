@@ -5,7 +5,7 @@ import {getTranports,getTranportVille,getTranport,createTransport, updateTranspo
 const transportRouter=express.Router()
 
 
-transportRouter.get("/transports",async (req,res)=>{
+transportRouter.get("/transports",async (_req,res)=>{
     const transports=await getTransports()
     res.send(transports)
 })

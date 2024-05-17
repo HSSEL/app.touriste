@@ -5,9 +5,14 @@ import { getCommentsSante, getCommentSante, createCommentSante, updateCommentSan
 const commentsanteRouter=express.Router()
 
 
-commentsanteRouter.get("/CommentsSantes",async (req,res)=>{
-    const CommentsSantes=await getCommentsSante()
-    res.send(CommentsSantes)
+commentsanteRouter.get("/CommentsSantes",async (_req,res)=>{
+    try {
+        const CommentsSantes=await getCommentsSante()
+        res.status(200).send(CommentsSantes)
+    } catch (error) {
+        console.error('Error fetching comments:', error);
+        res.status(500).send('Internal server error');
+    }
 })
 
 commentsanteRouter.get("/CommentSante:id",async (req,res)=>{
@@ -17,7 +22,7 @@ commentsanteRouter.get("/CommentSante:id",async (req,res)=>{
 })
 
 commentsanteRouter.post("/CommentSante/:id", async (req, res) => {
-    const id = req.params.id;
+    const id_commentaire = req.params.id;
     
 
     if (!Texte || !sante_id || !id_touriste || !Date) {

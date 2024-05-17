@@ -34,7 +34,7 @@ export async function createSante(id_ville,Type,Nom ,Adresse,Téléphone ,Horair
 
 export async function updateSante(sante_id,id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email){
     const [result]= await pool.query(`
-        UPDATE touriste
+        UPDATE sante
         SET id_ville=?,Type=?,Nom=? ,Adresse=?,Téléphone=? ,Horaires_ouverture=?,Activites=?,site_Web=? ,Email=?
         WHERE sante_id = ?
     `,[sante_id,id_ville,Type,Nom ,Adresse,Téléphone ,Horaires_ouverture,Activites,site_Web ,Email])

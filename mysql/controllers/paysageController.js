@@ -32,3 +32,19 @@ export async function createPaysage(ville_id,nom,description,localisation,horari
     return result.insertId
 }
 
+export async function updatePaysage(paysage_id ,ville_id,nom,description,localisation,horarire_ouverture){
+    const [result]= await pool.query(`
+        UPDATE paysage
+        SET ville_id=?,nom=?,description=?,localisation=?,horarire_ouverture=?
+        WHERE paysage_id = ?
+    `,[paysage_id ,ville_id,nom,description,localisation,horarire_ouverture])
+    return result.insertId
+}
+
+export async function deletePaysage(paysage_id){
+    const [result]= await pool.query(`
+        DELETE paysage
+        WHERE paysage_id = ?
+    `,[paysage_id])
+    return result.insertId
+}

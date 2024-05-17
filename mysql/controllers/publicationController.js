@@ -26,7 +26,7 @@ export async function createPublication(objet,text,image,type,date){
 
 export async function updatePublication(id_publication ,objet,text,image,type,date){
     const [result]= await pool.query(`
-        UPDATE touriste
+        UPDATE publication
         SET objet=?,text=? ,image=? ,type=? ,date=?
         WHERE id_publication = ?
     `,[id_publication ,objet,text,image,type,date])

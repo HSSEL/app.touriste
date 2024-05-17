@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail,  } from '../controllers/connexionRouter'
+import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail } from '../controllers/connexionRouter'
 
 const utilisateurRouter = express.Router()
 
@@ -44,6 +44,23 @@ utilisateurRouter.get('/Password/:id', async (req, req) => {
         res.status(500).send('Internal server error');
     }
 });
+
+utilisateurRouter.get('/Email/:id', async (req, req) => {
+    const id = req.params.id;
+
+    try {
+        const userEmail = await getUtilisateurEmail(id);
+        if (userEmail) {
+            res.status(200).json(userEmail);
+        } else {
+            res.status(404).send('User not found');
+        }
+    } catch(error) {
+        console.error('Error retrieving email:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
 
 utilisateurRouter.put("/Password/:id", async (req, res) => {
     const {newPassword} = req.body.password;

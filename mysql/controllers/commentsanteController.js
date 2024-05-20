@@ -9,7 +9,7 @@ export async function getCommentsSante(){
 export async function getCommentSante(id){
     const [row]=await pool.query(`
     SELECT * 
-    FROM commentetsante 
+    FROM commentsante 
     WHERE sante_id = ?
     `,[id])
     return row[0]

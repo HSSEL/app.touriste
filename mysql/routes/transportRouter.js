@@ -1,6 +1,6 @@
 import express from 'express'
 
-import {getTranports,getTranportVille,getTranport,createTransport, updateTransport} from '../controllers/transportController'
+import {getTranports,getTranportVille,getTranport,createTransport, updateTransport,deleteTranport} from '../controllers/transportController'
 
 const transportRouter=express.Router()
 

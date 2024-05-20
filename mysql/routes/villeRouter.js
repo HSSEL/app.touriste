@@ -2,7 +2,7 @@
 
 import express from 'express'
 
-import { getVille,getVilles,createVille } from '../controllers/villeController'
+import { getVille,getVilles,createVille,updateVille, deleteVille} from '../controllers/villeController'
 
 const villeRouter=express.Router()
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail } from '../controllers/connexionRouter'
+import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail,updateUtilisateur } from '../controllers/connexionRouter'
 
 const utilisateurRouter = express.Router()
 

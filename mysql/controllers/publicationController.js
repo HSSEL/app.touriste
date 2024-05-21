@@ -16,6 +16,7 @@ export async function getPublication(id){
 
 
 
+
 export async function createPublication(objet,text,image,type,date){
     const [result]= await pool.query(`
             INSERT INTO publication(objet,text,image,type,date)

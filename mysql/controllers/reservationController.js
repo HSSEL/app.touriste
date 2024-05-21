@@ -1,0 +1,43 @@
+import { pool } from "../databases"
+
+export async function getReservations(){
+    const [row]=await pool.query("SELECT * FROM reservation")
+    return row
+}
+
+export async function getReservation(id){
+    const [row]=await pool.query(`
+    SELECT * 
+    FROM reservation 
+    WHERE id_reservation = ?
+    `,[id])
+    return row[0]
+}
+
+
+
+
+export async function makeReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le){
+    const [result]= await pool.query(`
+            INSERT INTO reservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
+            VALUES(?,?,?,?,?)
+    `,[id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le])
+    return result.insertId
+}
+
+export async function updateReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le){
+    const [result]= await pool.query(`
+        UPDATE reservation
+        SET etablissement_id=?,dateReservation=? ,debut_temp=? ,fin_temp=? ,nombrePersonne=?, status=? ,creee_le=? ,modifie_le=?
+        WHERE id_reservation = ?
+    `,[id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le])
+    return result.insertId
+}
+
+export async function deleteReservation(id_reservation){
+    const [result]= await pool.query(`
+        DELETE reservation
+        WHERE id_reservation = ?
+    `,[id_reservation])
+    return result.insertId
+}

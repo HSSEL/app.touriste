@@ -5,9 +5,9 @@ import { getReservations, getReservation, makeReservation, updateReservation, de
 const reservationRouter=express.Router()
 
 
-publicationRouter.get("/Publications",async (_req,res)=>{
-    const publications=await getPublications()
-    res.send(publications)
+reservationRouter.get("/Reservations",async (_req,res)=>{
+    const reservations=await getReservations()
+    res.send(reservations)
 })
 
 publicationRouter.get("/Publication:id",async (req,res)=>{
@@ -16,17 +16,17 @@ publicationRouter.get("/Publication:id",async (req,res)=>{
     res.send(publication)
 })
 
-publicationRouter.post("/Publication:",async (req,res)=>{
-    const {objet,text,image,type,date} =req.body
-    const sante=await createPublication(id_publication,objet,text,image,type,date)
-    res.status(201).send(publication)
+reservationRouter.post("/Reservation:",async (req,res)=>{
+    const {id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le} =req.body
+    const reservation=await createPublication(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
+    res.status(201).send(reservation)
 })
 
 
-publicationRouter.put("/Publication/:id", async (req, res) => {
-    const id = req.params.id;
-    const { objet,text,image,type,date} = req.body;
-    const updated = await updatePublication(id, objet,text,image,type,date);
+reservationRouter.put("/Reservation/:id", async (req, res) => {
+    const id_reservation = req.params.id;
+    const {id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le} = req.body;
+    const updated = await updateReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le);
     if (updated) {
         res.send('Updated successfully');
     } else {
@@ -39,9 +39,9 @@ publicationRouter.put("/Publication/:id", async (req, res) => {
 
 
 
-publicationRouter.delete("/Publication/:id", async (req, res) => {
-    const id = req.params.id;
-    const deleted = await deletePublication(id);
+reservationRouter.delete("/Reservation/:id", async (req, res) => {
+    const id_reservation = req.params.id;
+    const deleted = await deleteReservation(id_reservation);
     if (deleted) {
         res.send('Deleted successfully');
     } else {

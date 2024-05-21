@@ -14,6 +14,7 @@ export async function getEtablissementVille(id){
     return row[0]
 }
 
+
 export async function getEtablissement(id){
     const [row]=await pool.query(`
     SELECT * 
@@ -23,6 +24,14 @@ export async function getEtablissement(id){
     return row[0]
 }
 
+export async function getEtablissementType(type){
+    const [row]=await pool.query(`
+    SELECT * 
+    FROM etablissement 
+    WHERE type = ?
+    `,[type])
+    return row[0]
+}
 
 export async function createEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ){
     const [result]= await pool.query(`

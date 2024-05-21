@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getEtablissements,getEtablissementVille,getEtablissement, createEtablissement, updateEtablissement, deleteEtablissement} from '../controllers/etablissementController'
+import { getEtablissements,getEtablissementVille,getEtablissement,getEtablissementType, createEtablissement, updateEtablissement, deleteEtablissement} from '../controllers/etablissementController'
 
 const etablissementRouter=express.Router()
 
@@ -20,6 +20,12 @@ etablissementRouter.get("/etablissementVille:id",async (req,res)=>{
     const id= req.params.id
     const etablissementville=await getEtablissementVille(id)
     res.send(etablissementville)
+})
+
+etablissementRouter.get("/etablissement:type",async (req,res)=>{
+    const type= req.params.type
+    const etablissementtype=await getEtablissementType(type)
+    res.send(etablissementtype)
 })
 
 etablissementRouter.post("/Etablissement:",async (req,res)=>{

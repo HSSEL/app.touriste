@@ -12,6 +12,14 @@ import {connexionRouter} from './routes/connexionRouter'
 import {commentsanteRouter} from './routes/commentsanteRouter'
 import { commentetablissementRouter } from './routes/commentetablissementRouter'
 const app=express()
+const sequelize = require('./database');
+const user = require('./models/user');
+
+sequelize.sync().then(() => {
+    console.log("Database synchronized");
+  }).catch(err => {
+    console.error("Error synchronizing database:", err);
+  });
 
 app.use(express.json())
 

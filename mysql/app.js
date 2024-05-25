@@ -8,9 +8,10 @@ import { publicationRouter } from './routes/publicationRouter'
 import { paysageRouter } from './routes/paysageRouter'
 import { monumentRouter } from './routes/monumentRouter'
 import { etablissementRouter } from './routes/etablissementRouter'
-import {connexionRouter} from './routes/connexionRouter'
+import { utilisateurRouter} from './routes/connexionRouter'
 import {commentsanteRouter} from './routes/commentsanteRouter'
 import { commentetablissementRouter } from './routes/commentetablissementRouter'
+
 const app=express()
 
 app.use(express.json())
@@ -23,7 +24,7 @@ app.use('/aut',publicationRouter)
 app.use('/pay',paysageRouter)
 app.use('/mon',monumentRouter)
 app.use('/eta',etablissementRouter)
-app.use('/aut',connexionRouter)
+app.use('/aut',utilisateurRouter)
 app.use('/cosante',commentsanteRouter)
 app.use('/coeta',commentetablissementRouter)
 

@@ -1,5 +1,3 @@
-
-
 import { pool } from "../databases"
 
 export async function getVilles(){

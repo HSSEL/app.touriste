@@ -6,7 +6,7 @@ const transportRouter=express.Router()
 
 
 transportRouter.get("/transports",async (_req,res)=>{
-    const transports=await getTransports()
+    const transports=await getTranports()
     res.send(transports)
 })
 
@@ -29,7 +29,7 @@ transportRouter.post("/transport:",async (req,res)=>{
     res.status(201).send(transport)
 })
 
-villeRouter.put("/transport/:id", async (req, res) => {
+transportRouter.put("/transport/:id", async (req, res) => {
     const id = req.params.id;
     const { ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif } = req.body;
     const updated = await updateTransport(id, ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif);
@@ -42,7 +42,7 @@ villeRouter.put("/transport/:id", async (req, res) => {
 
 
 
-villeRouter.delete("/transport/:id", async (req, res) => {
+transportRouter.delete("/transport/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTranport(id);
     if (deleted) {

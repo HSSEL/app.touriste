@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getTouristes,getTouriste,createController,updateTransport,deleteTouriste } from '../controllers/touristeController'
+import { getTouristes,getTouriste,createTouriste,updateTransport,deleteTouriste } from '../controllers/touristeController'
 
 const touristeRouter=express.Router()
 
@@ -19,11 +19,11 @@ touristeRouter.get("/touriste:id",async (req,res)=>{
 
 touristeRouter.post("/touriste:",async (req,res)=>{
     const {Nom,Prenom,adresse,telephone,localisation,villeVisite} =req.body
-    const touriste=await createVille(Nom,Prenom,adresse,telephone,localisation,villeVisite)
+    const touriste=await createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite)
     res.status(201).send(touriste)
 })
 
-villeRouter.put("/touriste/:id", async (req, res) => {
+touristeRouter.put("/touriste/:id", async (req, res) => {
     const id = req.params.id;
     const { Nom,Prenom,adresse,telephone,localisation,villeVisite } = req.body;
     const updated = await updateTransport(id, Nom,Prenom,adresse,telephone,localisation,villeVisite);
@@ -36,7 +36,7 @@ villeRouter.put("/touriste/:id", async (req, res) => {
 
 
 
-villeRouter.delete("/touriste/:id", async (req, res) => {
+touristeRouter.delete("/touriste/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTouriste(id);
     if (deleted) {

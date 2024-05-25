@@ -85,4 +85,4 @@ utilisateurRouter.put("/Password/:id", async (req, res) => {
 });
 
 
-export { connexionRouter }
+export { utilisateurRouter }

@@ -10,15 +10,15 @@ reservationRouter.get("/Reservations",async (_req,res)=>{
     res.send(reservations)
 })
 
-publicationRouter.get("/Publication:id",async (req,res)=>{
+reservationRouter.get("/Publication:id",async (req,res)=>{
     const id= req.params.id
-    const publication=await getPublication(id)
+    const publication=await getReservation(id)
     res.send(publication)
 })
 
 reservationRouter.post("/Reservation:",async (req,res)=>{
     const {id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le} =req.body
-    const reservation=await createPublication(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
+    const reservation=await makeReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
     res.status(201).send(reservation)
 })
 

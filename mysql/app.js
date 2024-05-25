@@ -8,19 +8,10 @@ import { publicationRouter } from './routes/publicationRouter'
 import { paysageRouter } from './routes/paysageRouter'
 import { monumentRouter } from './routes/monumentRouter'
 import { etablissementRouter } from './routes/etablissementRouter'
-import { utilisateurRouter} from './routes/connexionRouter'
+import {connexionRouter} from './routes/connexionRouter'
 import {commentsanteRouter} from './routes/commentsanteRouter'
 import { commentetablissementRouter } from './routes/commentetablissementRouter'
-
 const app=express()
-const sequelize = require('./database');
-const user = require('./models/user');
-
-sequelize.sync().then(() => {
-    console.log("Database synchronized");
-  }).catch(err => {
-    console.error("Error synchronizing database:", err);
-  });
 
 app.use(express.json())
 
@@ -32,7 +23,7 @@ app.use('/aut',publicationRouter)
 app.use('/pay',paysageRouter)
 app.use('/mon',monumentRouter)
 app.use('/eta',etablissementRouter)
-app.use('/aut',utilisateurRouter)
+app.use('/aut',connexionRouter)
 app.use('/cosante',commentsanteRouter)
 app.use('/coeta',commentetablissementRouter)
 
@@ -45,6 +36,3 @@ app.use((err, req, res, next) => {
 app.listen(8080,()=>{
     console.log("Server is running on port 8080")
 })
-
-
-export {app}

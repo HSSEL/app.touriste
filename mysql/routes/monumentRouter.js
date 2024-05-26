@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getMonuments,getMonumentVille,getMonument,createMonument, updateMonument, deleteMonument } from '../controllers/monumentController'
+import { getMonuments,getMonumentVille,getMonument,createMonument, updateMonument, deleteMonument } from '../controllers/monumentController.js'
 
 const monumentRouter=express.Router()
 

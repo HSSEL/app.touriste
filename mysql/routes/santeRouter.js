@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getSantes,getSanteVille,getSante,createSante ,updateSante,deleteSante} from '../controllers/santeController'
+import { getSantes,getSanteVille,getSante,createSante ,updateSante,deleteSante} from '../controllers/santeController.js'
 
 const santeRouter=express.Router()
 

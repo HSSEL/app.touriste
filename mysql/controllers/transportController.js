@@ -1,5 +1,5 @@
 
-import { pool } from "../databases"
+import { pool } from "../databases.js"
 
 export async function getTranports(){
     const [row]=await pool.query("SELECT * FROM tranport")

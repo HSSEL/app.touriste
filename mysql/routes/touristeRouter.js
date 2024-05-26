@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getTouristes,getTouriste,createTouriste,updateTransport,deleteTouriste } from '../controllers/touristeController'
+import { getTouristes,getTouriste,createTouriste,updateTransport,deleteTouriste } from '../controllers/touristeController.js'
 
 const touristeRouter=express.Router()
 

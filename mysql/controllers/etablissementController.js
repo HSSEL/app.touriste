@@ -1,4 +1,4 @@
-import { pool } from "../databases"
+import { pool } from "../databases.js"
 
 export async function getEtablissements(){
     const [row]=await pool.query("SELECT * FROM etablissement")

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getCommentsSante, getCommentSante, createCommentSante, updateCommentSante, deleteCommentSante} from '../controllers/commentsanteController'
+import { getCommentsSante, getCommentSante, createCommentSante, updateCommentSante, deleteCommentSante} from '../controllers/commentsanteController.js'
 
 const commentsanteRouter=express.Router()
 

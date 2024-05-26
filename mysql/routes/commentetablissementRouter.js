@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getCommentsEtablissement, getCommentEtablissement,createCommentEtablissement, updateCommentEtablissement, deleteCommentEtablissement} from '../controllers/commentetablissementController';
+import { getCommentsEtablissement, getCommentEtablissement,createCommentEtablissement, updateCommentEtablissement, deleteCommentEtablissement} from '../controllers/commentetablissementController.js';
 
 const commentetablissementRouter=express.Router()
 

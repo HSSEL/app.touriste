@@ -1,4 +1,4 @@
-import { pool } from "../databases"
+import { pool } from "../databases.js"
 
 export async function getCommentsSante(){
     const [row]=await pool.query("SELECT * FROM commentsante")

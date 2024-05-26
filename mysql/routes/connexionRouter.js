@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail,updateUtilisateur } from '../controllers/connexionRouter.js'
+import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail } from '../controllers/connexionController.js'
 
 const utilisateurRouter = express.Router()
 
@@ -29,7 +29,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
     }
 })
 
-utilisateurRouter.get('/Password/:id', async (req, req) => {
+utilisateurRouter.get('/Password/:id', async (req, res) => {
     const id = req.params.id;
 
     try {
@@ -45,7 +45,7 @@ utilisateurRouter.get('/Password/:id', async (req, req) => {
     }
 });
 
-utilisateurRouter.get('/Email/:id', async (req, req) => {
+utilisateurRouter.get('/Email/:id', async (req, res) => {
     const id = req.params.id;
 
     try {

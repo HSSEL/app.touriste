@@ -16,7 +16,7 @@ paysageRouter.get("/Paysage:id",async (req,res)=>{
     res.send(paysage)
 })
 
-transportRouter.get("/paysageVille:id",async (req,res)=>{
+paysageRouter.get("/paysageVille:id",async (req,res)=>{
     const id= req.params.id
     const paysageville=await getPaysageVille(id)
     res.send(paysageville)

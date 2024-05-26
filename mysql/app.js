@@ -1,16 +1,16 @@
 import express from 'express'
 
-import { villeRouter } from './routes/villeRouter'
-import { transportRouter } from './routes/transportRouter'
-import { touristeRouter } from './routes/touristeRouter'
-import { santeRouter } from './routes/santeRouter'
-import { publicationRouter } from './routes/publicationRouter'
-import { paysageRouter } from './routes/paysageRouter'
-import { monumentRouter } from './routes/monumentRouter'
-import { etablissementRouter } from './routes/etablissementRouter'
-import { utilisateurRouter} from './routes/connexionRouter'
-import {commentsanteRouter} from './routes/commentsanteRouter'
-import { commentetablissementRouter } from './routes/commentetablissementRouter'
+import { villeRouter } from './routes/villeRouter.js'
+import { transportRouter } from './routes/transportRouter.js'
+import { touristeRouter } from './routes/touristeRouter.js'
+import { santeRouter } from './routes/santeRouter.js'
+import { publicationRouter } from './routes/publicationRouter.js'
+import { paysageRouter } from './routes/paysageRouter.js'
+import { monumentRouter } from './routes/monumentRouter.js'
+import { etablissementRouter } from './routes/etablissementRouter.js'
+import { utilisateurRouter} from './routes/connexionRouter.js'
+import {commentsanteRouter} from './routes/commentsanteRouter.js'
+import { commentetablissementRouter } from './routes/commentetablissementRouter.js'
 const app=express()
 
 app.use(express.json())

@@ -1,6 +1,6 @@
 import express from 'express'
 
-import {getTranports,getTranportVille,getTranport,createTransport, updateTransport,deleteTranport} from '../controllers/transportController.js'
+import {getTranports,getTranportVille,getTranport,createTranport, updateTransport,deleteTransport} from '../controllers/transportController.js'
 
 const transportRouter=express.Router()
 
@@ -25,7 +25,7 @@ transportRouter.get("/transport:id",async (req,res)=>{
 
 transportRouter.post("/transport:",async (req,res)=>{
     const {ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif} =req.body
-    const transport=await createTransport(ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif)
+    const transport=await createTranport(ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif)
     res.status(201).send(transport)
 })
 
@@ -44,7 +44,7 @@ transportRouter.put("/transport/:id", async (req, res) => {
 
 transportRouter.delete("/transport/:id", async (req, res) => {
     const id = req.params.id;
-    const deleted = await deleteTranport(id);
+    const deleted = await deleteTransport(id);
     if (deleted) {
         res.send('Deleted successfully');
     } else {

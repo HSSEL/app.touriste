@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getTouristes,getTouriste,createTouriste,updateTransport,deleteTouriste } from '../controllers/touristeController.js'
+import { getTouristes,getTouriste,createTouriste,updateTouriste,deleteTouriste } from '../controllers/touristeController.js'
 
 const touristeRouter=express.Router()
 
@@ -26,7 +26,7 @@ touristeRouter.post("/touriste:",async (req,res)=>{
 touristeRouter.put("/touriste/:id", async (req, res) => {
     const id = req.params.id;
     const { Nom,Prenom,adresse,telephone,localisation,villeVisite } = req.body;
-    const updated = await updateTransport(id, Nom,Prenom,adresse,telephone,localisation,villeVisite);
+    const updated = await updateTouriste(id, Nom,Prenom,adresse,telephone,localisation,villeVisite);
     if (updated) {
         res.send('Updated successfully');
     } else {

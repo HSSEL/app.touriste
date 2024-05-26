@@ -10,13 +10,13 @@ transportRouter.get("/transports",async (_req,res)=>{
     res.send(transports)
 })
 
-transportRouter.get("/transportVille:id",async (req,res)=>{
+transportRouter.get("/transportVille/:id",async (req,res)=>{
     const id= req.params.id
     const transportville=await getTranportVille(id)
     res.send(transportville)
 })
 
-transportRouter.get("/transport:id",async (req,res)=>{
+transportRouter.get("/transport/:id",async (req,res)=>{
     const id= req.params.id
     const transport=await getTranport(id)
     res.send(transport)

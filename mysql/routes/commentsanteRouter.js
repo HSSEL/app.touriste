@@ -15,7 +15,7 @@ commentsanteRouter.get("/CommentsSantes",async (_req,res)=>{
     }
 })
 
-commentsanteRouter.get("/CommentSante:id",async (req,res)=>{
+commentsanteRouter.get("/CommentSante/:id",async (req,res)=>{
     const id= req.params.id
     const CommentSante=await getCommentSante(id)
     res.send(CommentSante)

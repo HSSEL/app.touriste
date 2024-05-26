@@ -12,7 +12,7 @@ villeRouter.get("/villes",async (_req,res)=>{
     res.send(villes)
 })
 
-villeRouter.get("/ville:id",async (req,res)=>{
+villeRouter.get("/ville/:id",async (req,res)=>{
     const id= req.params.id
     const ville=await getVille(id)
     res.send(ville)

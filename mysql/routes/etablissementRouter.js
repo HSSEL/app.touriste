@@ -10,19 +10,19 @@ etablissementRouter.get("/Etablissements",async (_req,res)=>{
     res.send(etablissements)
 })
 
-etablissementRouter.get("/Etablissement:id",async (req,res)=>{
+etablissementRouter.get("/Etablissement/:id",async (req,res)=>{
     const id= req.params.id
     const etablissement=await getEtablissement(id)
     res.send(etablissement)
 })
 
-etablissementRouter.get("/etablissementVille:id",async (req,res)=>{
+etablissementRouter.get("/etablissementVille/:id",async (req,res)=>{
     const id= req.params.id
     const etablissementville=await getEtablissementVille(id)
     res.send(etablissementville)
 })
 
-etablissementRouter.get("/etablissement:type",async (req,res)=>{
+etablissementRouter.get("/etablissement/:type",async (req,res)=>{
     const type= req.params.type
     const etablissementtype=await getEtablissementType(type)
     res.send(etablissementtype)

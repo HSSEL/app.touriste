@@ -10,13 +10,13 @@ santeRouter.get("/Santes",async (_req,res)=>{
     res.send(santes)
 })
 
-santeRouter.get("/Sante:id",async (req,res)=>{
+santeRouter.get("/Sante/:id",async (req,res)=>{
     const id= req.params.id
     const sante=await getSante(id)
     res.send(sante)
 })
 
-santeRouter.get("/santeVille:id",async (req,res)=>{
+santeRouter.get("/santeVille/:id",async (req,res)=>{
     const id= req.params.id
     const santeville=await getSanteVille(id)
     res.send(santeville)

@@ -10,7 +10,7 @@ reservationRouter.get("/Reservations",async (_req,res)=>{
     res.send(reservations)
 })
 
-reservationRouter.get("/Publication:id",async (req,res)=>{
+reservationRouter.get("/Reservation/:id",async (req,res)=>{
     const id= req.params.id
     const publication=await getReservation(id)
     res.send(publication)

@@ -10,7 +10,7 @@ paysageRouter.get("/Paysages",async (_req,res)=>{
     res.send(paysages)
 })
 
-paysageRouter.get("/Paysage:id",async (req,res)=>{
+paysageRouter.get("/Paysage/:id",async (req,res)=>{
     const id= req.params.id
     const paysage=await getPaysage(id)
     res.send(paysage)

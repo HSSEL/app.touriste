@@ -10,13 +10,13 @@ monumentRouter.get("/Monuments",async (_req,res)=>{
     res.send(monuments)
 })
 
-monumentRouter.get("/Monument:id",async (req,res)=>{
+monumentRouter.get("/Monument/:id",async (req,res)=>{
     const id= req.params.id
     const monument=await getMonument(id)
     res.send(monument)
 })
 
-monumentRouter.get("/monumentVille:id",async (req,res)=>{
+monumentRouter.get("/monumentVille/:id",async (req,res)=>{
     const id= req.params.id
     const monumentville=await getMonumentVille(id)
     res.send(monumentville)

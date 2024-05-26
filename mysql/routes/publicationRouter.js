@@ -10,7 +10,7 @@ publicationRouter.get("/Publications",async (_req,res)=>{
     res.send(publications)
 })
 
-publicationRouter.get("/Publication:id",async (req,res)=>{
+publicationRouter.get("/Publication/:id",async (req,res)=>{
     const id= req.params.id
     const publication=await getPublication(id)
     res.send(publication)

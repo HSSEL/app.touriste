@@ -5,7 +5,8 @@
   "type": "module",
   "main": "databases.js",
   "scripts": {
-    "dev": "npx nodemon app.js"
+    "dev": "npx nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "mysql2": "^3.9.7"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.1.0"
   }
 }

@@ -17,7 +17,6 @@ const App = () => {
                 setLoading(false);
             }
         };
-        
 
         fetchPublications();
     }, []);
@@ -37,6 +36,7 @@ const App = () => {
                 {publications.map((publication) => (
                     <li key={publication.id_publication}>
                         {publication.objet} - {publication.text}
+                        <img src={`http://localhost:8080/pub/publicationImage/${publication.id_publication}`} alt={publication.objet} />
                     </li>
                 ))}
             </ul>
@@ -45,3 +45,4 @@ const App = () => {
 };
 
 export default App;
+

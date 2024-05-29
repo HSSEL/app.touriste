@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getPublications, getPublication, createPublication, updatePublication, deletePublication} from '../controllers/publicationController.js'
+import { getPublications, getPublication, createPublication, updatePublication, deletePublication,getImage} from '../controllers/publicationController.js'
 
 const publicationRouter=express.Router()
 
@@ -16,14 +16,14 @@ publicationRouter.get("/Publication/:id",async (req,res)=>{
     res.send(publication)
 })
 
-publicationRouter.post("/Publication:",async (req,res)=>{
+publicationRouter.post("/publicationCreate:",async (req,res)=>{
     const {objet,text,image,type,date} =req.body
     const sante=await createPublication(id_publication,objet,text,image,type,date)
     res.status(201).send(publication)
 })
 
 
-publicationRouter.put("/Publication/:id", async (req, res) => {
+publicationRouter.put("/publicationUpdate/:id", async (req, res) => {
     const id = req.params.id;
     const { objet,text,image,type,date} = req.body;
     const updated = await updatePublication(id, objet,text,image,type,date);
@@ -39,7 +39,7 @@ publicationRouter.put("/Publication/:id", async (req, res) => {
 
 
 
-publicationRouter.delete("/Publication/:id", async (req, res) => {
+publicationRouter.delete("/publicationDelete/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deletePublication(id);
     if (deleted) {
@@ -49,6 +49,16 @@ publicationRouter.delete("/Publication/:id", async (req, res) => {
     }
 });
 
+publicationRouter.get("/publicationImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
 export {publicationRouter}
 
 

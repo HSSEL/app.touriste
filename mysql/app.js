@@ -1,5 +1,5 @@
 import express from 'express'
-
+import cors from 'cors'
 import { villeRouter } from './routes/villeRouter.js'
 import { transportRouter } from './routes/transportRouter.js'
 import { touristeRouter } from './routes/touristeRouter.js'
@@ -14,6 +14,7 @@ import { commentetablissementRouter } from './routes/commentetablissementRouter.
 const app=express()
 
 app.use(express.json())
+app.use(cors());
 
 app.use('/vi',villeRouter)
 app.use('/tro',transportRouter)

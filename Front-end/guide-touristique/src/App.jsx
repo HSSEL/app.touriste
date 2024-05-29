@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { getPublications } from '../../../mysql/controllers/publicationController';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -9,7 +8,8 @@ const App = () => {
     useEffect(() => {
         const fetchPublications = async () => {
             try {
-                const data = await getPublications();
+                const response = await fetch('http://localhost:8080/pub/Publications');
+                const data = await response.json();
                 setPublications(data);
             } catch (error) {
                 setError(error);
@@ -17,6 +17,7 @@ const App = () => {
                 setLoading(false);
             }
         };
+        
 
         fetchPublications();
     }, []);
@@ -34,8 +35,8 @@ const App = () => {
             <h1>Publications</h1>
             <ul>
                 {publications.map((publication) => (
-                    <li key={publication.id}>
-                        {publication.title} - {publication.author}
+                    <li key={publication.id_publication}>
+                        {publication.objet} - {publication.text}
                     </li>
                 ))}
             </ul>

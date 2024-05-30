@@ -21,21 +21,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.LC{
+.etab img{
+    padding: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.etabimg {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+    border-radius: 45px;
+    box-shadow: 15px;
 }
 
-.LCM{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    width: 500px;
-}
-
-.etab img{
-    width: 90px;
+.etab h5 {
+    margin: 10px;
 }
 
 .etabs{
@@ -90,6 +93,3 @@ input[type="text"]{
     margin-left: 10px;
 }
 
-.etab img{
-    width: 90px;
-}

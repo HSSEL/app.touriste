@@ -1,5 +1,5 @@
 import './Container1.css'
-/* import etabData from '../../../data/etabData'*/
+import types_etab_data from '../../../data/types_etab_data.js'
 
 import search from '../../../assets/search.svg'
 import { useState } from 'react';
@@ -21,16 +21,18 @@ const Container1 = () => {
 
                 </div>
 
-                {/* <div className='etabs'>
-                    {etabData.filter((data) => {
+                <div className='etabs'>
+                    {types_etab_data.filter((data) => {
                     return Search.toLowerCase() === '' ? data : data.nom.toLowerCase().includes(Search);
                     }).map((data, index) => (
                     <div key={index} className='etab'>
-                        <img src={data.img} alt=''/>
+                        <div className='etabimg'>
+                            <img src={data.img} alt=''/>
+                        </div>
                         <h5>{data.nom}</h5>
                     </div>
                     ))}
-                </div> */}
+                </div>
             </div>
         </div>
     );

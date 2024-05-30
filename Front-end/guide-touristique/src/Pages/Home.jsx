@@ -1,5 +1,6 @@
 import BG from "../Components/BG/BG";
 import NavBar from "../Components/NavBar/NavBar";
+import Options from "../Components/Options/Options";
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <BG/>
       <NavBar/>
+      <Options/>
     </div>
   );
 };

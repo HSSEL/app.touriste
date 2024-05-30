@@ -1,0 +1,21 @@
+
+.option{
+    position: fixed;
+    left: 40px;
+    top: 520px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.option img{
+    width: 25px;
+    padding: 10px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}

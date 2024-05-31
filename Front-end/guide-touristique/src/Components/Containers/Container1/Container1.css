@@ -1,15 +1,16 @@
 .container {
-    position: fixed;
-    top: 61px;
     border: 2px solid #ccc;
-    border-left: 0;
-    height: calc(100vh - 64px);
+    height: calc(100vh - 62px);
     width: 400px;
     font-family: inter;
     color: #FFFFFF;
+    border-bottom: 0;
 }
   
 .container#container1 {
+    border-left: 0;
+    position: fixed;
+    top: 61px;
     display: flex;
     flex-direction: column;
     align-items: center;

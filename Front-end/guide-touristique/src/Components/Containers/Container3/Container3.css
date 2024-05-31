@@ -1,0 +1,63 @@
+.container#container3 {
+    background: linear-gradient(210deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    margin-top: 50PX;
+    border-top: 0;
+    border-right: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*MATNSAYCH 2px dyal lborder 2px + 2px = 4px (60 dyal navbar + 50 dyal lmargin) */
+    height: calc(100vh - 112px);
+    position: fixed;
+    right: 0;
+    top: 61px;
+    
+}
+
+.hot-deals {
+    font-size: 30px;
+    text-align: center;
+}
+
+.scrolling-images img{
+    width: 250px;
+}
+
+.image-overlay{
+    display: inline-block;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #ccc;
+    background: linear-gradient(210deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3));
+    border-radius: 30px;
+    width: 130px;
+    text-align: center;
+}
+
+.image-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.scrolling-images{
+    width: 270px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-evenly;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); 
+}
+
+.image-container img{
+    border: 2px solid white;
+    border-radius: 20px;
+}

@@ -13,7 +13,7 @@ const Container2 = ({ filterEtab }) => {
     navigate('/etabmoreinfo', { state: { nom, filterEtab: nom } });
   };*/}
 
-  const [postData, setPostData] = useState(postData1);
+  const [postData, setPostData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +46,7 @@ const Container2 = ({ filterEtab }) => {
 
                 <div className='postdes'>
                   <h5>
-                      {data.desc}
+                      {data.text}
                   </h5>
                 </div>
 

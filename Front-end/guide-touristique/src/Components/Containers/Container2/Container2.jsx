@@ -1,7 +1,10 @@
 import './Container2.css';
-import postData from '../../../data/postData';
+import postData1 from '../../../data/postData';
 import like from '../../../assets/Options/like.svg';
 import comment from '../../../assets/Options/comment.svg';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 const Container2 = ({ filterEtab }) => {
   {/*const navigate = useNavigate();
@@ -9,6 +12,22 @@ const Container2 = ({ filterEtab }) => {
   const handleIconClicketab = (nom) => {
     navigate('/etabmoreinfo', { state: { nom, filterEtab: nom } });
   };*/}
+
+  const [postData, setPostData] = useState(postData1);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/pub/Publications'); 
+        setPostData(response.data);
+      } catch (error) {
+        console.error("Error fetching publications:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+ 
 
   return (
     <div>

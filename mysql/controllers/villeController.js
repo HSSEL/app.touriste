@@ -47,3 +47,12 @@ export async function deleteVille(id_ville){
     `,[id_ville])
     return result.insertId
 }
+
+export async function getImage(id) {
+    const [row] = await pool.query("SELECT image FROM ville WHERE id_ville = ?", [id]);
+    if (row.length > 0) {
+        return row[0].image; // Assume que image est le nom de la colonne LONGBLOB
+    } else {
+        throw new Error("Image not found");
+    }
+}

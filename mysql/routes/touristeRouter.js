@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getTouristes,getTouriste,createTouriste,updateTouriste,deleteTouriste } from '../controllers/touristeController.js'
+import { getTouristes,getTouriste,createTouriste,updateTouriste,deleteTouriste,getImage } from '../controllers/touristeController.js'
 
 const touristeRouter=express.Router()
 
@@ -43,6 +43,18 @@ touristeRouter.delete("/touriste/:id", async (req, res) => {
         res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
+    }
+});
+
+
+touristeRouter.get("/touristeImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
     }
 });
 

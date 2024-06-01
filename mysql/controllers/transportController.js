@@ -50,3 +50,12 @@ export async function deleteTransport(ID_Transport){
     `,[ID_Transport])
     return result.insertId
 }
+
+export async function getImage(id) {
+    const [row] = await pool.query("SELECT image FROM transport WHERE ID_transport = ?", [id]);
+    if (row.length > 0) {
+        return row[0].image; // Assume que image est le nom de la colonne LONGBLOB
+    } else {
+        throw new Error("Image not found");
+    }
+}

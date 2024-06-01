@@ -56,7 +56,10 @@ const Container2 = ({ filterEtab }) => {
                     <>
                       <div className='postname'>
                         <img className='pdp' src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt={`${etab.nom} profile`} />
-                        <h2>{etab.nom}</h2>
+                        <div className='postname01'>
+                            <h2>{etab.nom}</h2>
+                            <h6>{data.date}</h6>
+                        </div>
                       </div>
                       <div className='postdes'>
                         <h5>{data.text}</h5>

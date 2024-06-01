@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './Pages/Home';
+import Comment from './Pages/Comment'
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -31,6 +34,7 @@ const App = () => {
 
     return (
         <div>
+            {/*
             <h1>Publications</h1>
             <ul>
                 {publications.map((publication) => (
@@ -40,6 +44,14 @@ const App = () => {
                     </li>
                 ))}
             </ul>
+            */}
+            <BrowserRouter>
+            <Routes>
+            <Route index element={<Home/>} />
+            <Route path="/home" element={<Home/>} />
+            <Route path="/comment" element={<Comment/>} />
+            </Routes> 
+            </BrowserRouter>
         </div>
     );
 };

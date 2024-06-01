@@ -1,17 +1,12 @@
-import './Container2.css';
+import '../Container2/Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';
-import like from '../../../assets/Options/like.svg';
-import comment from '../../../assets/Options/comment.svg';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Container2 = ({ filterEtab }) => {
-  const navigate = useNavigate();
-
-  const handleCommentClick = (publication) => {
-    navigate('/comment', { state: { id_publication: publication.id_publication} });
-  };
+  const location = useLocation();
+  const { id_publication } = location.state;
 
   const [postData, setPostData] = useState(staticPostData);
   const [etabData, setEtabData] = useState([]);
@@ -44,16 +39,13 @@ const Container2 = ({ filterEtab }) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-
+ 
   return (
     <div>
       <div className="container" id="container2">
         <div className='posts'>
           {postData
-            .filter(data => {
-              const etab = etabData.find(etab => etab.etablissement_id === data.etablissement_id);
-              return !filterEtab || (etab && etab.nom === filterEtab);
-            })
+            .filter(data => data.id_publication === id_publication) // Filter to include only the publication with the matching id_publication
             .map((data, index) => {
               const etab = etabData.find(etab => etab.etablissement_id === data.etablissement_id);
               return (
@@ -63,8 +55,8 @@ const Container2 = ({ filterEtab }) => {
                       <div className='postname'>
                         <img className='pdp' src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt={`${etab.nom} profile`} />
                         <div className='postname01'>
-                          <h2>{etab.nom}</h2>
-                          <h6>{formatDate(data.date)}</h6>
+                            <h2>{etab.nom}</h2>
+                            <h6>{formatDate(data.date)}</h6>
                         </div>
                       </div>
                       <div className='postdes'>
@@ -73,15 +65,7 @@ const Container2 = ({ filterEtab }) => {
                       <div className='postimg'>
                         <img src={`http://localhost:8080/pub/publicationImage/${data.id_publication}`} alt='Post image' />
                       </div>
-                      <div className='LCM'>
-                        <div className='LC'>
-                          <img src={like} alt='Like icon' />
-                          <img src={comment} alt='Comment icon' onClick={() => handleCommentClick(data)} />
-                        </div>
-                        <div className='moreinfo'>
-                          <h5>More info</h5>
-                        </div>
-                      </div>
+                      
                     </>
                   )}
                 </div>

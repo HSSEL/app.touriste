@@ -33,7 +33,7 @@ export async function createCommentEtablissement(id_commentaire, etablissement_i
 
 export async function updateCommentEtablissement(id_commentaire, etablissement_id,id_touriste, Texte, Date){
     const [result]= await pool.query(`
-        UPDATE 
+        UPDATE commentetablissement
         SET Texte=?
         WHERE id_commentaire = ?
     `,[id_commentaire, etablissement_id,id_touriste, Texte, Date])

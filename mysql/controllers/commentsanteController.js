@@ -26,7 +26,7 @@ export async function createCommentSante(id_commentaire, sante_id,id_touriste, T
 
 export async function updateCommentSante(id_commentaire, sante_id, id_touriste, Texte, Date){
     const [result]= await pool.query(`
-        UPDATE
+        UPDATE commentsante
         SET Texte=?
         WHERE id_commentaire = ?
     `,[id_commentaire, sante_id, id_touriste, Texte, Date])

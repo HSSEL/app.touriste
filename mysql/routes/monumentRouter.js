@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getMonuments,getMonumentVille,getMonument,createMonument, updateMonument, deleteMonument } from '../controllers/monumentController.js'
+import { getMonuments,getMonumentVille,getMonument,createMonument, updateMonument, deleteMonument,getImage } from '../controllers/monumentController.js'
 
 const monumentRouter=express.Router()
 
@@ -48,6 +48,18 @@ monumentRouter.delete("/Monument/:id", async (req, res) => {
         res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
+    }
+});
+
+
+monumentRouter.get("/monumentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
     }
 });
 

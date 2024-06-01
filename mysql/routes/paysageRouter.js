@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getPaysages,getPaysageVille,getPaysage,createPaysage, updatePaysage, deletePaysage } from '../controllers/paysageController.js'
+import { getPaysages,getPaysageVille,getPaysage,createPaysage, updatePaysage, deletePaysage,getImage } from '../controllers/paysageController.js'
 
 const paysageRouter=express.Router()
 
@@ -50,5 +50,17 @@ paysageRouter.delete("/Paysage/:id", async (req, res) => {
         res.send('Unsuccessful delete');
     }
 });
+
+paysageRouter.get("/paysageImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
+
 
 export {paysageRouter}

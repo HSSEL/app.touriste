@@ -43,10 +43,19 @@ export async function updateMonument(monument_id ,id_ville,Nom ,description,date
     return result.insertId
 }
 
-export async function deleteMonument(paysage_id){
+export async function deleteMonument(monument_id){
     const [result]= await pool.query(`
-        DELETE paysage
-        WHERE paysage_id = ?
-    `,[paysage_id])
+        DELETE monument
+        WHERE monument_id = ?
+    `,[monument_id])
     return result.insertId
+}
+
+export async function getImage(id) {
+    const [row] = await pool.query("SELECT image FROM monument WHERE monument_id = ?", [id]);
+    if (row.length > 0) {
+        return row[0].image; // Assume que image est le nom de la colonne LONGBLOB
+    } else {
+        throw new Error("Image not found");
+    }
 }

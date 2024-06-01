@@ -38,6 +38,11 @@ const Container2 = ({ filterEtab }) => {
 
     getEtabData();
   }, []);
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
  
   return (
     <div>
@@ -58,7 +63,7 @@ const Container2 = ({ filterEtab }) => {
                         <img className='pdp' src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt={`${etab.nom} profile`} />
                         <div className='postname01'>
                             <h2>{etab.nom}</h2>
-                            <h6>{data.date}</h6>
+                            <h6>{formatDate(data.date)}</h6>
                         </div>
                       </div>
                       <div className='postdes'>

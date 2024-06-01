@@ -81,7 +81,7 @@
 }
 
 .postimg img{
-    width: 500px;
+    width: 550px;
     height: auto;
     border: 2px solid white;
     border-radius: 10px;
@@ -101,4 +101,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.postname01 h2{
+    margin-bottom: 0;
+}
+.postname01 h6{
+    margin-top: 0;
+    color: rgb(160, 209, 255);
 }

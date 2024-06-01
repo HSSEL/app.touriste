@@ -2,7 +2,7 @@
 
 import express from 'express'
 
-import { getVille,getVilles,createVille,updateVille, deleteVille} from '../controllers/villeController.js'
+import { getVille,getVilles,createVille,updateVille, deleteVille,getImage} from '../controllers/villeController.js'
 
 const villeRouter=express.Router()
 
@@ -49,5 +49,16 @@ villeRouter.delete("/ville/:id", async (req, res) => {
     }
 });
 
+
+villeRouter.get("/villeImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
 
 export {villeRouter}

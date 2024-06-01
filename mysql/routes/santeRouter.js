@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getSantes,getSanteVille,getSante,createSante ,updateSante,deleteSante} from '../controllers/santeController.js'
+import { getSantes,getSanteVille,getSante,createSante ,updateSante,deleteSante,getImage} from '../controllers/santeController.js'
 
 const santeRouter=express.Router()
 
@@ -50,5 +50,19 @@ santeRouter.delete("/Sante/:id", async (req, res) => {
         res.send('Unsuccessful delete');
     }
 });
+
+
+
+santeRouter.get("/santeImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
+
 
 export {santeRouter}

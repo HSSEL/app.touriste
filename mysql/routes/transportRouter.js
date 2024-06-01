@@ -1,6 +1,6 @@
 import express from 'express'
 
-import {getTranports,getTranportVille,getTranport,createTranport, updateTransport,deleteTransport} from '../controllers/transportController.js'
+import {getTranports,getTranportVille,getTranport,createTranport, updateTransport,deleteTransport,getImage} from '../controllers/transportController.js'
 
 const transportRouter=express.Router()
 
@@ -49,6 +49,17 @@ transportRouter.delete("/transport/:id", async (req, res) => {
         res.send('Deleted successfully');
     } else {
         res.send('Unsuccessful delete');
+    }
+});
+
+transportRouter.get("/transportImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
     }
 });
 

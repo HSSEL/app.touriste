@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Pages/Home';
 import Comment from './Pages/Comment'
+import Etabs from './Pages/Etabs'
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -50,6 +51,7 @@ const App = () => {
             <Route index element={<Home/>} />
             <Route path="/home" element={<Home/>} />
             <Route path="/comment" element={<Comment/>} />
+            <Route path="/etabs" element={<Etabs/>} />
             </Routes> 
             </BrowserRouter>
         </div>

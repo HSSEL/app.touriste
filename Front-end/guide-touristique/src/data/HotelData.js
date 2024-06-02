@@ -1,12 +1,12 @@
 import { fetchetabData } from './EtabData'; 
 
-export const fetchHotelData = async () => {
+export const fetchHotelData = async (type) => {
     try {
         const etabData = await fetchetabData();
-        const hotelData = etabData.filter(etab => etab.type === 'hotel');
-        return hotelData;
+        const filteredData = etabData.filter(etab => etab.type === type);
+        return filteredData;
     } catch (error) {
-        console.error("Error fetching hotel data:", error);
+        console.error("Error fetching data:", error);
         return [];
     }
 };

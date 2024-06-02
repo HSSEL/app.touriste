@@ -15,7 +15,6 @@ const Etabs = () => {
             <NavBar/>
             <Container1/>
             <Hotels/>
-            <h2>{nom}</h2>
             <Options/>
         </div>
     );

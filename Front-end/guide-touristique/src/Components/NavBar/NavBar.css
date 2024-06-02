@@ -27,5 +27,6 @@
     list-style: none;
     font-size: 20px;
     gap: 72px;
+    cursor: pointer;
 }
 

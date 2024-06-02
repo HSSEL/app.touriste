@@ -2,10 +2,15 @@ import './Container5.css'
 import React, { useEffect, useState } from 'react';
 import { fetchcomData } from '../../../data/CommentsData';
 import { fetchtouristebData } from '../../../data/TouristeData';
+import { useLocation } from 'react-router-dom';
 
 const Container5 = () => {
   const [comData, setComData] = useState([]);
   const [touristeData, setTouristeData] = useState([]);
+
+  
+  const location = useLocation();
+  const { id_publication } = location.state;
 
     
   const formatDate = (dateString) => {
@@ -17,6 +22,7 @@ const Container5 = () => {
     const getComData = async () => {
       const data = await fetchcomData();
       console.log('Fetched comment data:', data);
+      //const filteredData = data.filter(comment => comment.id_publication === id_publication);
       if (data.length > 0) {
         setComData(data);
       }
@@ -29,6 +35,7 @@ const Container5 = () => {
     const getTouristeData = async () => {
       const data = await fetchtouristebData();
       console.log('Fetched tourist data:', data);
+
       if (data.length > 0) {
         setTouristeData(data);
       }

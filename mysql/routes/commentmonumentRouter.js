@@ -7,10 +7,10 @@ import {
     deleteCommentMonument
 } from '../controllers/commentmonumentController.js';
 
-const router = express.Router();
+const commentmonumentRouter = express.Router();
 
 // Route pour obtenir tous les commentaires des monuments
-router.get('/commentsmonument', async (req, res) => {
+commentmonumentRouter.get('/commentsmonument', async (req, res) => {
     try {
         const comments = await getCommentsMonument();
         res.status(200).json(comments);
@@ -20,7 +20,7 @@ router.get('/commentsmonument', async (req, res) => {
 });
 
 // Route pour obtenir un commentaire d'un monument par ID de monument
-router.get('/commentsmonument/:id', async (req, res) => {
+commentmonumentRouter.get('/commentsmonument/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const comment = await getCommentMonument(id);
@@ -35,7 +35,7 @@ router.get('/commentsmonument/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau commentaire pour un monument
-router.post('/commentsmonument', async (req, res) => {
+commentmonumentRouter.post('/commentsmonument', async (req, res) => {
     const { id_commentaire, monument_id, id_touriste, Texte, Date } = req.body;
     try {
         const insertId = await createCommentMonument(id_commentaire, monument_id, id_touriste, Texte, Date);
@@ -46,7 +46,7 @@ router.post('/commentsmonument', async (req, res) => {
 });
 
 // Route pour mettre à jour un commentaire d'un monument
-router.put('/commentsmonument/:id', async (req, res) => {
+commentmonumentRouter.put('/commentsmonument/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte, Date } = req.body;
     try {
@@ -58,7 +58,7 @@ router.put('/commentsmonument/:id', async (req, res) => {
 });
 
 // Route pour supprimer un commentaire d'un monument
-router.delete('/commentsmonument/:id', async (req, res) => {
+commentmonumentRouter.delete('/commentsmonument/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletedId = await deleteCommentMonument(id);

@@ -7,10 +7,10 @@ import {
     deleteCommentPublication
 } from '../controllers/commentpublicationController.js';
 
-const router = express.Router();
+const commentpublicationRouter = express.Router();
 
 // Route pour obtenir tous les commentaires des publications
-router.get('/commentspublication', async (req, res) => {
+commentpublicationRouter.get('/commentspublication', async (req, res) => {
     try {
         const comments = await getCommentsPublication();
         res.status(200).json(comments);
@@ -20,7 +20,7 @@ router.get('/commentspublication', async (req, res) => {
 });
 
 // Route pour obtenir un commentaire d'une publication par ID de publication
-router.get('/commentspublication/:id', async (req, res) => {
+commentpublicationRouter.get('/commentspublication/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const comment = await getCommentPublication(id);
@@ -35,7 +35,7 @@ router.get('/commentspublication/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau commentaire pour une publication
-router.post('/commentspublication', async (req, res) => {
+commentpublicationRouter.post('/commentspublication', async (req, res) => {
     const { id_commentaire, id_publication, id_touriste, Texte, Date } = req.body;
     try {
         const insertId = await createCommentPublication(id_commentaire, id_publication, id_touriste, Texte, Date);
@@ -46,7 +46,7 @@ router.post('/commentspublication', async (req, res) => {
 });
 
 // Route pour mettre à jour un commentaire d'une publication
-router.put('/commentspublication/:id', async (req, res) => {
+commentpublicationRouter.put('/commentspublication/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
     try {
@@ -62,7 +62,7 @@ router.put('/commentspublication/:id', async (req, res) => {
 });
 
 // Route pour supprimer un commentaire d'une publication
-router.delete('/commentspublication/:id', async (req, res) => {
+commentpublicationRouter.delete('/commentspublication/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletedRows = await deleteCommentPublication(id);

@@ -1,10 +1,10 @@
 import express from 'express';
 import { getOffres, getOffre } from '../controllers/offreController.js';
 
-const router = express.Router();
+const offreRouter = express.Router();
 
 // Route pour obtenir toutes les offres
-router.get('/offres', async (req, res) => {
+offreRouter.get('/offres', async (req, res) => {
     try {
         const offres = await getOffres();
         res.status(200).json(offres);
@@ -14,7 +14,7 @@ router.get('/offres', async (req, res) => {
 });
 
 // Route pour obtenir une offre par ID
-router.get('/offres/:id', async (req, res) => {
+offreRouter.get('/offres/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const offre = await getOffre(id);

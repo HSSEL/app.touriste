@@ -7,10 +7,10 @@ import {
     deleteCommentTransport
 } from '../controllers/commenttransportController.js';
 
-const router = express.Router();
+const commenttransportRouter = express.Router();
 
 // Route pour obtenir tous les commentaires des transports
-router.get('/commentstransport', async (req, res) => {
+commenttransportRouter.get('/commentstransport', async (req, res) => {
     try {
         const comments = await getCommentsTransport();
         res.status(200).json(comments);
@@ -20,7 +20,7 @@ router.get('/commentstransport', async (req, res) => {
 });
 
 // Route pour obtenir un commentaire d'un transport par ID de transport
-router.get('/commentstransport/:id', async (req, res) => {
+commenttransportRouter.get('/commentstransport/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const comment = await getCommentTransport(id);
@@ -35,7 +35,7 @@ router.get('/commentstransport/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau commentaire pour un transport
-router.post('/commentstransport', async (req, res) => {
+commenttransportRouter.post('/commentstransport', async (req, res) => {
     const { id_commentaire, transport_id, id_touriste, Texte, Date } = req.body;
     try {
         const insertId = await createCommentTransport(id_commentaire, transport_id, id_touriste, Texte, Date);
@@ -46,7 +46,7 @@ router.post('/commentstransport', async (req, res) => {
 });
 
 // Route pour mettre à jour un commentaire d'un transport
-router.put('/commentstransport/:id', async (req, res) => {
+commenttransportRouter.put('/commentstransport/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
     try {
@@ -62,7 +62,7 @@ router.put('/commentstransport/:id', async (req, res) => {
 });
 
 // Route pour supprimer un commentaire d'un transport
-router.delete('/commentstransport/:id', async (req, res) => {
+commenttransportRouter.delete('/commentstransport/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletedRows = await deleteCommentTransport(id);

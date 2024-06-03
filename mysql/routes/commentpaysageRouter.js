@@ -7,10 +7,10 @@ import {
     deleteCommentPaysage
 } from '../controllers/commentpaysageController.js';
 
-const router = express.Router();
+const commentpaysageRouter = express.Router();
 
 // Route pour obtenir tous les commentaires des paysages
-router.get('/commentspaysage', async (req, res) => {
+commentpaysageRouter.get('/commentspaysage', async (req, res) => {
     try {
         const comments = await getCommentsPaysage();
         res.status(200).json(comments);
@@ -20,7 +20,7 @@ router.get('/commentspaysage', async (req, res) => {
 });
 
 // Route pour obtenir un commentaire d'un paysage par ID de paysage
-router.get('/commentspaysage/:id', async (req, res) => {
+commentpaysageRouter.get('/commentspaysage/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const comment = await getCommentPaysage(id);
@@ -35,7 +35,7 @@ router.get('/commentspaysage/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau commentaire pour un paysage
-router.post('/commentspaysage', async (req, res) => {
+commentpaysageRouter.post('/commentspaysage', async (req, res) => {
     const { id_commentaire, paysage_id, id_touriste, Texte, Date } = req.body;
     try {
         const insertId = await createCommentPaysage(id_commentaire, paysage_id, id_touriste, Texte, Date);
@@ -46,7 +46,7 @@ router.post('/commentspaysage', async (req, res) => {
 });
 
 // Route pour mettre à jour un commentaire d'un paysage
-router.put('/commentspaysage/:id', async (req, res) => {
+commentpaysageRouter.put('/commentspaysage/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
     try {
@@ -62,7 +62,7 @@ router.put('/commentspaysage/:id', async (req, res) => {
 });
 
 // Route pour supprimer un commentaire d'un paysage
-router.delete('/commentspaysage/:id', async (req, res) => {
+commentpaysageRouter.delete('/commentspaysage/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletedRows = await deleteCommentPaysage(id);

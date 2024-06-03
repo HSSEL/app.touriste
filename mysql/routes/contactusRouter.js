@@ -1,10 +1,10 @@
 import express from 'express';
 import { getContactusAll, getContactus, createContactus } from '../controllers/contactusController.js';
 
-const router = express.Router();
+const contactusRouter = express.Router();
 
 // Route pour obtenir tous les messages de contact
-router.get('/contactus', async (req, res) => {
+contactusRouter.get('/contactus', async (req, res) => {
     try {
         const contacts = await getContactusAll();
         res.status(200).json(contacts);
@@ -14,7 +14,7 @@ router.get('/contactus', async (req, res) => {
 });
 
 // Route pour obtenir un message de contact par ID
-router.get('/contactus/:id', async (req, res) => {
+contactusRouter.get('/contactus/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const contact = await getContactus(id);
@@ -29,7 +29,7 @@ router.get('/contactus/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau message de contact
-router.post('/contactus', async (req, res) => {
+contactusRouter.post('/contactus', async (req, res) => {
     const { nom, email, text } = req.body;
     try {
         const insertId = await createContactus(nom, email, text);

@@ -7,10 +7,10 @@ import {
     deleteCommentVille
 } from '../controllers/commentvilleController.js';
 
-const router = express.Router();
+const commentvilleRouter = express.Router();
 
 // Route pour obtenir tous les commentaires des villes
-router.get('/commentsville', async (req, res) => {
+commentvilleRouter.get('/commentsville', async (req, res) => {
     try {
         const comments = await getCommentsVille();
         res.status(200).json(comments);
@@ -20,7 +20,7 @@ router.get('/commentsville', async (req, res) => {
 });
 
 // Route pour obtenir un commentaire d'une ville par ID de ville
-router.get('/commentsville/:id', async (req, res) => {
+commentvilleRouter.get('/commentsville/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const comment = await getCommentVille(id);
@@ -35,7 +35,7 @@ router.get('/commentsville/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau commentaire pour une ville
-router.post('/commentsville', async (req, res) => {
+commentvilleRouter.post('/commentsville', async (req, res) => {
     const { id_commentaire, id_ville, id_touriste, Texte, Date } = req.body;
     try {
         const insertId = await createCommentVille(id_commentaire, id_ville, id_touriste, Texte, Date);
@@ -46,7 +46,7 @@ router.post('/commentsville', async (req, res) => {
 });
 
 // Route pour mettre à jour un commentaire d'une ville
-router.put('/commentsville/:id', async (req, res) => {
+commentvilleRouter.put('/commentsville/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
     try {
@@ -62,7 +62,7 @@ router.put('/commentsville/:id', async (req, res) => {
 });
 
 // Route pour supprimer un commentaire d'une ville
-router.delete('/commentsville/:id', async (req, res) => {
+commentvilleRouter.delete('/commentsville/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const deletedId = await deleteCommentVille(id);

@@ -20,7 +20,7 @@ const NavBar = () => {
         <ul className='nav-menu'>
           <li onClick={handleClick1} className='home'>HOME</li>
           <li onClick={handleClick2} className='services'>SERVICES</li>
-          <li>ABOUT US</li>
+          <li>À PROPOS DE NOUS</li>
           <li className='nav-contact'>CONTACT</li>
         </ul>
       </div>

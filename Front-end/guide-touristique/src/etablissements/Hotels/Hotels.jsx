@@ -43,7 +43,7 @@ const Hotels = () => {
                                 <img key={i} src={Star2} alt="Empty Star" />
                             ))}
                         </div>
-                        <div className="reserver" onClick={handleIconClick}>Reserver</div>
+                        <div className="reserver" onClick={handleIconClick}>Explorez ceci</div>
                     </div>
                 ))}
             </div>

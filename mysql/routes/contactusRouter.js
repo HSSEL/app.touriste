@@ -1,5 +1,5 @@
 import express from 'express';
-import { getContactusAll, getContactus, createContactus } from '../controllers/contactusController';
+import { getContactusAll, getContactus, createContactus } from '../controllers/contactusController.js';
 
 const router = express.Router();
 

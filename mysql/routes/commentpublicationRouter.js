@@ -5,7 +5,7 @@ import {
     createCommentPublication,
     updateCommentPublication,
     deleteCommentPublication
-} from '../controllers/commentpublicationController';
+} from '../controllers/commentpublicationController.js';
 
 const router = express.Router();
 

@@ -5,7 +5,7 @@ import {
     createCommentTransport,
     updateCommentTransport,
     deleteCommentTransport
-} from '../controllers/commenttransportController';
+} from '../controllers/commenttransportController.js';
 
 const router = express.Router();
 

@@ -5,7 +5,7 @@ import {
     createCommentMonument,
     updateCommentMonument,
     deleteCommentMonument
-} from '../controllers/commentmonumentController';
+} from '../controllers/commentmonumentController.js';
 
 const router = express.Router();
 

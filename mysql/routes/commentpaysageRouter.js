@@ -5,7 +5,7 @@ import {
     createCommentPaysage,
     updateCommentPaysage,
     deleteCommentPaysage
-} from '../controllers/commentpaysageController';
+} from '../controllers/commentpaysageController.js';
 
 const router = express.Router();
 

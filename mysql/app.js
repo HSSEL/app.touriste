@@ -13,7 +13,6 @@ import {connexionRouter} from './routes/connexionRouter.js'
 import {commentvilleRouter} from './routes/commentvilleRouter.js'
 import {commenttransportRouter} from './routes/commenttransportRouter.js'
 import {commentpaysageRouter} from './routes/commentpaysageRouter.js'
-import {commentreservationRouter} from './routes/commentreservationRouter.js'
 import {commentpublicationRouter} from './routes/commentpublicationRouter.js'
 import { monumentRouter } from './routes/monumentRouter.js'
 import { etablissementRouter } from './routes/etablissementRouter.js'
@@ -43,7 +42,6 @@ app.use('/connex',connexionRouter)
 app.use('/comvi',commentvilleRouter)
 app.use('/comtr',commenttransportRouter)
 app.use('/compa',commentpaysageRouter)
-app.use('/comre',commentreservationRouter)
 app.use('/compu',commentpublicationRouter)
 
 

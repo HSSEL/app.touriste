@@ -9,7 +9,6 @@ import { publicationRouter } from './routes/publicationRouter.js'
 import { paysageRouter } from './routes/paysageRouter.js'
 import {offreRouter} from './routes/offreRouter.js'
 import {contactusRouter} from './routes/contactusRouter.js'
-import {connexionRouter} from './routes/connexionRouter.js'
 import {commentvilleRouter} from './routes/commentvilleRouter.js'
 import {commenttransportRouter} from './routes/commenttransportRouter.js'
 import {commentpaysageRouter} from './routes/commentpaysageRouter.js'
@@ -38,7 +37,6 @@ app.use('/coeta',commentetablissementRouter)
 app.use('/res',reservationRouter)
 app.use('/off',offreRouter)
 app.use('/con',contactusRouter)
-app.use('/connex',connexionRouter)
 app.use('/comvi',commentvilleRouter)
 app.use('/comtr',commenttransportRouter)
 app.use('/compa',commentpaysageRouter)

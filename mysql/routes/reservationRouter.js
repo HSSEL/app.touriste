@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getReservations, getReservation, makeReservation, updateReservation, deleteReservation,getImage1,getImage2,getImage3} from '../controllers/publicationController.js'
+import { getReservations, getReservation, makeReservation, updateReservation, deleteReservation,getImage1,getImage2,getImage3} from '../controllers/reservationController.js'
 
 const reservationRouter=express.Router()
 

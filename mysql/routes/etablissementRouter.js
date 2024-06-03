@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getEtablissements,getEtablissementVille,getEtablissement,getEtablissementType, createEtablissement, updateEtablissement, deleteEtablissement,getImage} from '../controllers/etablissementController.js'
+import { getEtablissements,getEtablissementVille,getEtablissement,getEtablissementType, createEtablissement, updateEtablissement, deleteEtablissement,getImage1,getImage2,getImage3} from '../controllers/etablissementController.js'
 
 const etablissementRouter=express.Router()
 
@@ -60,7 +60,7 @@ etablissementRouter.delete("/Etablissement/:id", async (req, res) => {
 etablissementRouter.get("/etablissementImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
-        const image = await getImage(id);
+        const image = await getImage1(id);
         res.writeHead(200, {'Content-Type': 'image/png'}); 
         res.end(image, 'binary');
     } catch (error) {
@@ -69,4 +69,25 @@ etablissementRouter.get("/etablissementImage/:id", async (req, res) => {
 });
 
 
+etablissementRouter.get("/etablissementImage2/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage2(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
+
+etablissementRouter.get("/etablissementImage3/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage3(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
 export {etablissementRouter}

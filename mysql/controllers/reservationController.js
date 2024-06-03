@@ -43,7 +43,7 @@ export async function deleteReservation(id_reservation){
 }
 
 export async function getImage(id) {
-    const [row] = await pool.query("SELECT image1 FROM reservation WHERE id_reservation = ?", [id]);
+    const [row] = await pool.query("SELECT image FROM reservation WHERE id_reservation = ?", [id]);
     if (row.length > 0) {
         return row[0].image1; // Assume que image est le nom de la colonne LONGBLOB
     } else {

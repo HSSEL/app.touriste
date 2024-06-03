@@ -13,17 +13,17 @@ import pharmacy from '../assets/type_etab/pharmacy.png'
 
 const etabData = [
     {img: restaurant, nom: "Restaurant"},
-    {img: museum, nom: "Museum"},
-    {img: garden, nom: "Garden"},
+    {img: museum, nom: "Musee"},
+    {img: garden, nom: "Jardin"},
     {img: cinema, nom: "Cinema"},
     {img: mall, nom: "Mall"},
-    {img: bank, nom: "Bank"},
-    {img: library, nom: "Library"},
-    {img: mosque, nom: "Mosque"},
+    {img: bank, nom: "Banque"},
+    {img: library, nom: "Bibliotheque"},
+    {img: mosque, nom: "Mosquee"},
     {img: hotel, nom: "Hotel"},
-    {img: beach, nom: "Beach"},
-    {img: hospital, nom: "Hospital"},
-    {img: pharmacy, nom: "Pharmacy"}
+    {img: beach, nom: "Plage"},
+    {img: hospital, nom: "Hopital"},
+    {img: pharmacy, nom: "Pharmacie"}
 ]
 
 export default etabData

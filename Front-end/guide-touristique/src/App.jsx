@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './Pages/Home';
 import Comment from './Pages/Comment'
 import Etabs from './Pages/Etabs'
+import Services from './Pages/Services'
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/home" element={<Home/>} />
             <Route path="/comment" element={<Comment/>} />
             <Route path="/etabs" element={<Etabs/>} />
+            <Route path="/services" element={<Services/>} />
             </Routes> 
             </BrowserRouter>
         </div>

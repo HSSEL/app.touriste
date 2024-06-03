@@ -4,8 +4,17 @@ import { villeRouter } from './routes/villeRouter.js'
 import { transportRouter } from './routes/transportRouter.js'
 import { touristeRouter } from './routes/touristeRouter.js'
 import { santeRouter } from './routes/santeRouter.js'
+import {reservationRouter} from './routes/reservationRouter.js'
 import { publicationRouter } from './routes/publicationRouter.js'
 import { paysageRouter } from './routes/paysageRouter.js'
+import {offreRouter} from './routes/offreRouter.js'
+import {contactusRouter} from './routes/contactusRouter.js'
+import {connexionRouter} from './routes/connexionRouter.js'
+import {commentvilleRouter} from './routes/commentvilleRouter.js'
+import {commenttransportRouter} from './routes/commenttransportRouter.js'
+import {commentpaysageRouter} from './routes/commentpaysageRouter.js'
+import {commentreservationRouter} from './routes/commentreservationRouter.js'
+import {commentpublicationRouter} from './routes/commentpublicationRouter.js'
 import { monumentRouter } from './routes/monumentRouter.js'
 import { etablissementRouter } from './routes/etablissementRouter.js'
 import { utilisateurRouter} from './routes/connexionRouter.js'
@@ -27,6 +36,16 @@ app.use('/eta',etablissementRouter)
 app.use('/aut',utilisateurRouter)
 app.use('/cosante',commentsanteRouter)
 app.use('/coeta',commentetablissementRouter)
+app.use('/res',reservationRouter)
+app.use('/off',offreRouter)
+app.use('/con',contactusRouter)
+app.use('/connex',connexionRouter)
+app.use('/comvi',commentvilleRouter)
+app.use('/comtr',commenttransportRouter)
+app.use('/compa',commentpaysageRouter)
+app.use('/comre',commentreservationRouter)
+app.use('/compu',commentpublicationRouter)
+
 
 
 app.use((err, req, res, next) => {

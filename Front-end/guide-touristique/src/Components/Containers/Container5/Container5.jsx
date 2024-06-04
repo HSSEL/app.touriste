@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchcomData } from '../../../data/CommentsData';
 import { fetchtouristebData } from '../../../data/TouristeData';
 import { useLocation } from 'react-router-dom';
+import Mycomment from './MyComment';
 
 const Container5 = () => {
   const [comData, setComData] = useState([]);
@@ -64,14 +65,15 @@ const Container5 = () => {
             </div>
           );
         })}</div>
-        <div className='mycomment'>
+            <Mycomment/>
+            {/*
         <input
                         type="text"
                         name="mycomment0"
                         placeholder="Ajouter un commentaire..."
                     />
-        <button>Ajouter</button>
-        </div>
+        <button>Ajouter</button>*/}
+    
     </div>
   );
 };

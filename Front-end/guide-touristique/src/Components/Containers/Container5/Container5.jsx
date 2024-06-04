@@ -22,9 +22,9 @@ const Container5 = () => {
     const getComData = async () => {
       const data = await fetchcomData();
       console.log('Fetched comment data:', data);
-      //const filteredData = data.filter(comment => comment.id_publication === id_publication);
-      if (data.length > 0) {
-        setComData(data);
+      const filteredData = data.filter(comment => comment.id_publication === id_publication);
+      if (filteredData.length > 0) {
+        setComData(filteredData);
       }
     };
 

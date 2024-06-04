@@ -1,9 +1,16 @@
 import './All.css'
 import React, { useEffect, useState } from 'react';
 import { fetchetabData } from '../../data/EtabData';
+import { useNavigate } from 'react-router-dom';
 
 const All = () => {
   const [etabData, setEtabData] = useState([]);
+
+  const navigate = useNavigate();
+  
+  const handleetabClick = (publication) => {
+    navigate('/etab', { state: { etablissement_id: publication.etablissement_id} });
+  };
 
   useEffect(() => {
     const getEtabData = async () => {
@@ -28,7 +35,7 @@ const All = () => {
           <div key={index} className="E1">
             <img src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt=''/>
             <div className="E2">{data.nom}</div>
-            <button>Plus d'informations</button>
+            <button onClick={() => handleetabClick(data)}>Plus d'informations</button>
           </div>
         ))}
       </div>

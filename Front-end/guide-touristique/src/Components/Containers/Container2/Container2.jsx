@@ -12,6 +12,10 @@ const Container2 = ({ filterEtab }) => {
   const handleCommentClick = (publication) => {
     navigate('/comment', { state: { id_publication: publication.id_publication} });
   };
+  
+  const handleetabClick = (publication) => {
+    navigate('/etab', { state: { etablissement_id: publication.etablissement_id} });
+  };
 
   const [postData, setPostData] = useState(staticPostData);
   const [etabData, setEtabData] = useState([]);
@@ -61,9 +65,9 @@ const Container2 = ({ filterEtab }) => {
                   {etab && (
                     <>
                       <div className='postname'>
-                        <img className='pdp' src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt={`${etab.nom} profile`} />
+                        <img onClick={() => handleetabClick(data)} className='pdp' src={`http://localhost:8080/eta/EtablissementImage/${data.etablissement_id}`} alt={`${etab.nom} profile`} />
                         <div className='postname01'>
-                          <h2>{etab.nom}</h2>
+                          <h2 onClick={() => handleetabClick(data)}>{etab.nom}</h2>
                           <h6>{formatDate(data.date)}</h6>
                         </div>
                       </div>
@@ -79,7 +83,7 @@ const Container2 = ({ filterEtab }) => {
                           <img src={comment} alt='Comment icon' onClick={() => handleCommentClick(data)} />
                         </div>
                         <div className='moreinfo'>
-                          <h5>More info</h5>
+                          <h5 onClick={() => handleetabClick(data)} >More info</h5>
                         </div>
                       </div>
                     </>

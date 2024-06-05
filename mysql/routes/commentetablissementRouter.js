@@ -8,7 +8,6 @@ const commentetablissementRouter=express.Router()
 commentetablissementRouter.get("/CommentsEtablissement",async (_req,res)=>{
     try {
         const CommentsEtablissement=await getCommentsEtablissement()
-        console.log('Fetched etab data:', CommentsEtablissement);
         res.status(200).send(CommentsEtablissement)
     } catch (error) {
         console.error('Error fetching comments:', error);

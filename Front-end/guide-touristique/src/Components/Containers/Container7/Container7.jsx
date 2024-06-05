@@ -155,8 +155,12 @@ const Container7 = () => {
             </div>
 
             <div className='etabprof02'>
+              <h1>Nos publications</h1>
+              <div className='etabprof022'>
               {postData.length === 0 ?
-                (<h2>Pas de publications</h2>) : (
+                (<div className='none02'>
+                <h2>Pas de publications</h2>
+                </div>) : (
               
               postData.map((post, index) => (
                       <div className="etabprof021" key={index}>
@@ -165,6 +169,7 @@ const Container7 = () => {
                           <img src={`http://localhost:8080/pub/publicationImage/${post.id_publication}`} alt='' />
                       </div>
                   )))}
+            </div>
             </div>
 
             <div className='etabprof03'>

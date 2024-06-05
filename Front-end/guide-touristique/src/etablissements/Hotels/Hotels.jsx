@@ -13,8 +13,8 @@ const Hotels = () => {
     const lowerCaseNom = nom.toLowerCase();
     
 
-    const handleIconClick = () => {
-        navigate('/Restaurant1');
+    const handleIconClick = ( hotel ) => {
+        navigate('/etab', { state: { etablissement_id: hotel.etablissement_id} });
     };
 
     const { data: hotelData, error } = useFetchDataByType(lowerCaseNom);
@@ -43,7 +43,7 @@ const Hotels = () => {
                                 <img key={i} src={Star2} alt="Empty Star" />
                             ))}
                         </div>
-                        <div className="reserver" onClick={handleIconClick}>Explorez ceci</div>
+                        <div className="reserver" onClick={() => handleIconClick(hotel)}>Explorez ceci</div>
                     </div>
                 ))}
             </div>

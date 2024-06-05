@@ -1,0 +1,107 @@
+.etabprofimg {
+    width: 270px;
+    height: 270px;
+    border-radius: 135px;
+    border: 2px solid white;
+}
+
+.etabprof h2 {
+    margin: 0;
+    font-size: 25px;
+    max-width: 270px;
+    text-align: center;
+}
+.etabprof h4 {
+    margin: 0;
+    font-size: 15px;
+    max-width: 270px;
+    text-align: center;
+}
+
+.etabprof {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.etabprof01 img {
+    width: 20px;
+    margin: 0;
+}
+
+.etabprof01 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.etabprof {
+    padding: 20px;
+    position: fixed;
+    top: 100px;
+}
+
+ /*   ::::::::::::::::::::::::::::: */
+
+ .etabprof021 img {
+    height: 250px;
+    border-radius: 10px;
+    border: 1px solid white;
+    max-width: 250px;
+ }
+
+ .etabprof021 h2{
+    margin: 0;
+    font-size: 20px;
+ }
+
+ .etabprof021 h3{
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    width: 250px;
+ }
+
+ .etabprof02 {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    box-shadow: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    width: 600px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); 
+    position: fixed;
+    top: 110px;
+    left: 350px;
+ }
+
+ .none {
+    text-align: center;
+ }
+
+ .etabprof03 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    top: 110px;
+    right: 20px;
+ } 
+
+ .testingthis {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    text-align: center;
+    width: 400px;
+    backdrop-filter: blur(5px);
+
+ }

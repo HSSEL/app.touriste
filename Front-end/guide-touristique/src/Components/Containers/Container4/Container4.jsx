@@ -45,7 +45,7 @@ const Container2 = ({ filterEtab }) => {
       <div className="container" id="container2">
         <div className='posts'>
           {postData
-            .filter(data => data.id_publication === id_publication) // Filter to include only the publication with the matching id_publication
+            .filter(data => data.id_publication === id_publication) 
             .map((data, index) => {
               const etab = etabData.find(etab => etab.etablissement_id === data.etablissement_id);
               return (

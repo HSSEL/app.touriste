@@ -105,3 +105,37 @@
     backdrop-filter: blur(5px);
 
  }
+
+ /*   ==========================   */
+
+ .oneetabinfo{
+    display: flex;
+    gap: 10px;
+ }
+
+ .oneetabinfo img{
+    width: 20px;
+    margin: 0;
+ }
+
+ .oneetabinfo h5{
+    margin: 0;
+ }
+
+
+
+ .etabprofinfo{
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid white;
+    border-radius: 10px;
+    position: fixed;
+    top: 550px;
+    left: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+ }
+
+

@@ -7,6 +7,10 @@ import { fetchPostData } from '../../../data/postData';
 import location1 from '../../../assets/location.svg';
 import { fetchcometabData } from '../../../data/commentetab';
 import { fetchtouristebData } from '../../../data/TouristeData';
+import adress from '../../../assets/info/adress.svg';
+import phone from '../../../assets/info/phone.svg';
+import mail from '../../../assets/info/mail.svg';
+import website from '../../../assets/info/website.svg';
 
 const Container7 = () => {
   
@@ -113,6 +117,7 @@ const Container7 = () => {
         <div className='container7'>
             <div>
                 {etabData.map((etab, index) => (
+                  <div>
                     <div className="etabprof" key={index}>
                         <img className="etabprofimg" src={`http://localhost:8080/eta/EtablissementImage/${etab.etablissement_id}`} alt='' />
                         <h2>{etab.nom}</h2>
@@ -120,6 +125,31 @@ const Container7 = () => {
                           <img src={location1} alt=''/>
                           <h4>Ville: {ville.Nom}</h4>
                         </div>
+                    </div>
+
+                    <div className='etabprofinfo'>
+                    <div className='oneetabinfo'>
+                      <img src={adress} alt=''/>
+                      <h5>{etab.adresse}</h5>
+                      </div>
+
+                      <div className='oneetabinfo'>
+                      <img src={phone} alt=''/>
+                      <h5>+ {etab.telephone}</h5>
+                      </div>
+
+                      <div className='oneetabinfo'>
+                      <img src={mail} alt=''/>
+                      <h5>{etab.Email}</h5>
+                      </div>
+
+                      <div className='oneetabinfo'>
+                      <img src={website} alt=''/>
+                      <h5>{etab.site_web}</h5>
+                      </div>
+
+
+                    </div>
                     </div>
                 ))}
             </div>

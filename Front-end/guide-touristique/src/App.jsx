@@ -5,7 +5,7 @@ import Comment from './Pages/Comment'
 import Etabs from './Pages/Etabs'
 import Services from './Pages/Services'
 import Etabviewmore from './Pages/Etabviewmore';
-import Map2 from './Pages/Map2';
+import Ville from './Pages/Ville';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -57,7 +57,7 @@ const App = () => {
             <Route path="/etabs" element={<Etabs/>} />
             <Route path="/services" element={<Services/>} />
             <Route path="/etab" element={<Etabviewmore/>} />
-            <Route path="/map" element={<Map2/>} />
+            <Route path="/ville" element={<Ville/>} />
             </Routes> 
             </BrowserRouter>
         </div>

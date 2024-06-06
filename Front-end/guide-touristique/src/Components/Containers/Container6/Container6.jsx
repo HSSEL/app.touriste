@@ -1,6 +1,14 @@
 import './Container6.css'
+import { useNavigate } from 'react-router-dom';
 
 const Container6 = () => {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/ville');
+    };
+  
   
     
     return (
@@ -12,7 +20,7 @@ const Container6 = () => {
                 </div>
                 <div className='oneservice'>
                     <h3>Chercher les villes du Maroc</h3>
-                    <button>Voir</button>
+                    <button onClick={handleClick} >Voir</button>
                 </div>
                 <div className='oneservice'>
                     <h3>Voir le tansport disponible</h3>

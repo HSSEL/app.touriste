@@ -1,0 +1,65 @@
+.onecity img{
+    width: 200px;
+    height: 200px;
+    border-radius: 125px;
+    border: 1px solid white;
+}
+
+.onecity h2 {
+    margin: 0;
+    width: 200px;
+    text-align: center;
+}
+
+.onecity button {
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    padding: 10px 30px;
+    border: 1px solid white;
+    margin: 0 40px;
+    margin-top: 10px;
+}
+
+.onecity{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding: 15px;
+}
+
+.cities{
+    position: fixed;
+    top: 170px;
+    left: 50px;
+    width: 1450px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow-y: auto;
+    height: calc(100vh - 170px);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) ;
+}
+
+/* ============================= */
+
+.search0{
+    position: fixed;
+    top: 100px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    border: 1px solid white;
+    display: flex;
+    left: 35%;
+    right: 40%;
+}
+
+.search0 img {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin: 0;
+}
+

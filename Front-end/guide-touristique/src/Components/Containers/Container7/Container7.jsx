@@ -11,6 +11,8 @@ import adress from '../../../assets/info/adress.svg';
 import phone from '../../../assets/info/phone.svg';
 import mail from '../../../assets/info/mail.svg';
 import website from '../../../assets/info/website.svg';
+import time from '../../../assets/info/time.svg';
+import MapComponent from '../../../Map/Map.jsx';
 
 const Container7 = () => {
   
@@ -148,7 +150,16 @@ const Container7 = () => {
                       <h5>{etab.site_web}</h5>
                       </div>
 
+                      <div className='oneetabinfo'>
+                      <img src={time} alt=''/>
+                      <h5>{etab.horaires_ouverture}</h5>
+                      </div>
 
+
+                    </div>
+
+                    <div className='maptest'>
+                        <MapComponent latitude={etab.latitude} longitude={etab.longitude} />
                     </div>
                     </div>
                 ))}

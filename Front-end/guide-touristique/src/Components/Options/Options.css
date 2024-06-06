@@ -2,7 +2,7 @@
 .option{
     position: fixed;
     left: 40px;
-    top: 520px;
+    bottom: 40px;
     display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.3);

@@ -69,7 +69,10 @@
  .etabprof022{
     display: flex;
     gap: 15px;
-    
+    overflow-x: auto;
+    width: 600px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); 
  }
 
  .etabprof02 h1 {
@@ -82,20 +85,16 @@
 
 
  .etabprof02 {
+    position: fixed;
+    padding: 20px;
+    padding-bottom: 10px;
+    top: 110px;
+    left: 350px;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     box-shadow: 20px;
     border-radius: 10px;
     border: 1px solid white;
-    padding: 20px;
-    padding-bottom: 10px;
-    overflow-x: auto;
-    width: 600px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); 
-    position: fixed;
-    top: 110px;
-    left: 350px;
  }
 
 
@@ -150,11 +149,21 @@
     border: 1px solid white;
     border-radius: 10px;
     position: fixed;
-    top: 550px;
+    bottom: 40px;
     left: 120px;
     display: flex;
     flex-direction: column;
     gap: 5px;
  }
 
+ .maptest{
+    position: fixed;
+    left: 420px;
+    width: 570px;
+    height: 180px;
+    bottom: 40px;
+    border-radius: 10px;
+    border: 1px solid white;
+    overflow: auto;
+ }
 

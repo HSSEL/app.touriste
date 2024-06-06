@@ -12,6 +12,10 @@ const NavBar = () => {
   const handleClick2 = () => {
     navigate('/services'); 
   };
+  
+  const handleClick3 = () => {
+    navigate('/map'); 
+  };
 
   return (
     <div className='NAV'>
@@ -20,7 +24,7 @@ const NavBar = () => {
         <ul className='nav-menu'>
           <li onClick={handleClick1} className='home'>HOME</li>
           <li onClick={handleClick2} className='services'>SERVICES</li>
-          <li>À PROPOS DE NOUS</li>
+          <li onClick={handleClick3} className='aboutus'>À PROPOS DE NOUS</li>
           <li className='nav-contact'>CONTACT</li>
         </ul>
       </div>

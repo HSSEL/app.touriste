@@ -186,7 +186,7 @@ const Container7 = () => {
             <div className='etabprof03'>
                 {commentetab.length === 0 ? (
                   <div className='testingthis'>
-                  <h2>Pas de commantaires</h2>
+                  <h2>Pas de commentaires</h2>
                   </div>
                 ) : (
                   commentetab

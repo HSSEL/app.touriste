@@ -8,6 +8,8 @@ import Etabviewmore from './Pages/Etabviewmore';
 import Villes from './Pages/Villes';
 import Ville from './Pages/ville';
 import Reetab from './Pages/Reetab';
+import Reserver from './Pages/Reserver';
+import Logout from './Pages/Logout';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -62,6 +64,8 @@ const App = () => {
             <Route path="/villes" element={<Villes/>} />
             <Route path="/ville" element={<Ville/>} />
             <Route path="/reetab" element={<Reetab/>} />
+            <Route path="/reserver" element={<Reserver/>} />
+            <Route path="/logout" element={<Logout/>} />
             </Routes> 
             </BrowserRouter>
         </div>

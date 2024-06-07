@@ -15,11 +15,13 @@ import mail from '../../../assets/info/mail.svg';
 import website from '../../../assets/info/website.svg';
 import time from '../../../assets/info/time.svg';
 import MapComponent from '../../../Map/Map.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Container7 = () => {
   
     const location = useLocation();
     const { etablissement_id } = location.state;
+    const navigate = useNavigate();
 
     const [ville, setVille] = useState('');
     const [etabData, setEtabData] = useState([]);
@@ -31,6 +33,10 @@ const Container7 = () => {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Date(dateString).toLocaleDateString(undefined, options);
     };
+
+    const handlereserver = (etab) => {
+      navigate('/reserver', {state: {etablissement_id: etab.etablissement_id}})
+    }
 
 
     useEffect(() => {
@@ -211,6 +217,21 @@ const Container7 = () => {
                 )}
               </div>
 
+              <div className='etabprof004'>
+                  {etabData.map((data, index) => {
+                    if (data.type === "restaurant" || data.type === "hotel") {
+                      return (
+                        <div key={index}>
+                          <button onClick={ () => handlereserver(data.etablissement_id)}>Reserver</button>
+                        </div>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })}
+                </div>
+
+               
         </div>
     );
 };

@@ -32,6 +32,11 @@ const Container6 = () => {
                     <h3>Voir le tansport disponible</h3>
                     <button>Voir</button>
                 </div>
+                
+                <div className='oneservice'>
+                    <h3>Traduire</h3>
+                    <button>Voir</button>
+                </div>
             </div>
         </div>
     );

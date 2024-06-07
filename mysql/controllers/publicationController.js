@@ -14,12 +14,24 @@ export async function getPublication(id) {
     return row[0];
 }
 
+
 export async function createPublication(objet, text, image, type, date, etablissement_id) {
     const [result] = await pool.query(`
         INSERT INTO publication(objet, text, image, type, date, etablissement_id)
         VALUES(?,?,?,?,?,?)
     `, [objet, text, image, type, date, etablissement_id]);
     return result.insertId;
+}
+
+
+
+export async function createPublication(objet,text,image,type,date,etablissement_id){
+    const [result]= await pool.query(`
+            INSERT INTO publication(objet,text,image,type,date,etablissement_id)
+            VALUES(?,?,?,?,?,?)
+    `,[objet,text,image,type,date,etablissement_id])
+    return result.insertId
+
 }
 
 export async function updatePublication(id_publication, objet, text, image, type, date, etablissement_id) {
@@ -48,6 +60,7 @@ export async function getImage(id) {
     }
 }
 
+
 // Function to update an image
 export async function updateImage(id, image) {
     const [result] = await pool.query(`
@@ -66,4 +79,13 @@ export async function deleteImage(id) {
         WHERE id_publication=?
     `, [id]);
     return result.affectedRows;
+}
+export async function updateCoeur(id_publication ,coeur){
+    const [result]= await pool.query(`
+        UPDATE publication
+        SET coeur=?
+        WHERE id_publication = ?
+    `,[id_publication ,coeur])
+    return result.insertId
+
 }

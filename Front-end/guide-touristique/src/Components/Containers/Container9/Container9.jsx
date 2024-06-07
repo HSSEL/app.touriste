@@ -79,8 +79,9 @@ const Container9 = () => {
                 ))}
             </div>
             <div className='mapcon'>
-                {/* <MapComponent latitude={villeData.latitude} longitude={villeData.longitude} /> */} 
-                <MapComponent latitude={10} longitude={15} />   
+            {villeData ? (
+                <MapComponent latitude={villeData.latitude} longitude={villeData.logitude} />) : (<p>Loading</p> )}
+                {/*<MapComponent latitude={10} longitude={15} /> */}   
             </div>
         </div>
     );

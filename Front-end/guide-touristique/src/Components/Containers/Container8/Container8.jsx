@@ -52,7 +52,7 @@ const Container8 = () => {
                     <div key={index} className='onecity'>
                         <h2>{ville0.Nom}</h2>
                         <img 
-                            src={`http://localhost:8080/vi/villeImage/1`}
+                            src={`http://localhost:8080/vi/villeImage/${ville0.id_ville}`}
                             alt={ville0.Nom} 
                             onError={(e) => { e.target.src = '/path/to/placeholder_image.png'; }}
                         />

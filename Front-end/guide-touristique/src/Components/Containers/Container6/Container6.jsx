@@ -10,6 +10,10 @@ const Container6 = () => {
     const handleClick = () => {
         navigate('/villes');
     };
+    
+    const handleClick2 = () => {
+        navigate('/reetab');
+    };
   
   
     
@@ -17,8 +21,8 @@ const Container6 = () => {
         <div className='container6'>
             <div className ='alls'>
                 <div className='oneservice'>
-                    <h3>Chercher les etablissements selon la ville</h3>
-                    <button>Voir</button>
+                    <h3>Chercher les etablissements par nom</h3>
+                    <button onClick={handleClick2}>Voir</button>
                 </div>
                 <div className='oneservice'>
                     <h3>Chercher les villes du Maroc</h3>

@@ -171,3 +171,12 @@
     overflow: auto;
  }
 
+ .etabprof004 button {
+   background-color: rgba(0, 0, 0, 0.3);
+   border-radius: 20px;
+   border: 1px solid white;
+   position: fixed;
+   right: 40px;
+   bottom: 40px;
+ }
+

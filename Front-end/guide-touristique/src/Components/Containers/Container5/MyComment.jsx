@@ -13,6 +13,8 @@ const Mycomment = () => {
         setComment(e.target.value);
     };
 
+    
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -31,7 +33,8 @@ const Mycomment = () => {
 
             if (response.status === 201) {
                 alert('Comment added successfully');
-                setComment(''); // Clear the input field
+                setComment('');
+                navigate('/comment', { state: { id_publication: id_publication} });
             }
         } catch (error) {
             console.error('Error adding comment:', error);

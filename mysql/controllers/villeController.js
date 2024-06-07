@@ -23,20 +23,20 @@ const villepremiere=await getVille(1)
 // we could have written ${id} but its an untrusted statement its called tampled statement and what is written above is called prepared statement
 
 
-export async function createVille(Nom,Description,Quartiers){
+export async function createVille(Nom,Description,Quartiers,image){
     const [result]= await pool.query(`
-            INSERT INTO ville(Nom,Description,Quartiers)
-            VALUES(?,?,?)
-    `,[Nom,Description,Quartiers])
+            INSERT INTO ville(Nom,Description,Quartiers,image)
+            VALUES(?,?,?,?)
+    `,[Nom,Description,Quartiers,image])
     return result.insertId
 }
 
-export async function updateVille(id_ville,Nom,Description,Quartiers){
+export async function updateVille(id_ville,Nom,Description,Quartiers,image){
     const [result]= await pool.query(`
         UPDATE ville
-        SET Nom=? ,Description=? ,Quartiers=?
+        SET Nom=? ,Description=? ,Quartiers=?, image=?
         WHERE id_ville = ?
-    `,[id_ville,Nom,Description,Quartiers])
+    `,[id_ville,Nom,Description,Quartiers,image])
     return result.insertId
 }
 

@@ -17,20 +17,20 @@ export async function getTouriste(id){
 }
 
 
-export async function createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite){
+export async function createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite,image){
     const [result]= await pool.query(`
-            INSERT INTO touriste(Nom,Prenom,adresse,telephone,localisation,villeVisite)
-            VALUES(?,?,?,?,?,?)
-    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite])
+            INSERT INTO touriste(Nom,Prenom,adresse,telephone,localisation,villeVisite,image)
+            VALUES(?,?,?,?,?,?,?)
+    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite,image])
     return result.insertId
 }
 
-export async function updateTouriste(id_touriste,Nom,Prenom,adresse,telephone,localisation,villeVisite){
+export async function updateTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite,image){
     const [result]= await pool.query(`
         UPDATE touriste
-        SET Nom=?,Prenom=?,adresse=?,telephone=?,localisation=?,villeVisite=?
+        SET Nom=?,Prenom=?,adresse=?,telephone=?,localisation=?,villeVisite=?,image=?
         WHERE id_touriste = ?
-    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite])
+    `,[Nom,Prenom,adresse,telephone,localisation,villeVisite,image])
     return result.insertId
 }
 

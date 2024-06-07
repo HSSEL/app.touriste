@@ -15,16 +15,6 @@ export async function getPublication(id) {
 }
 
 
-export async function createPublication(objet, text, image, type, date, etablissement_id) {
-    const [result] = await pool.query(`
-        INSERT INTO publication(objet, text, image, type, date, etablissement_id)
-        VALUES(?,?,?,?,?,?)
-    `, [objet, text, image, type, date, etablissement_id]);
-    return result.insertId;
-}
-
-
-
 export async function createPublication(objet,text,image,type,date,etablissement_id){
     const [result]= await pool.query(`
             INSERT INTO publication(objet,text,image,type,date,etablissement_id)

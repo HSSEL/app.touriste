@@ -34,7 +34,7 @@ export async function createMonument(id_ville, Nom, description, date_constructi
 
 
 
-export async function updateMonument(id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image){
+export async function updateMonument(monument_id, id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image){
     const [result]= await pool.query(`
     UPDATE monument
     SET id_ville = ?,
@@ -54,7 +54,7 @@ export async function updateMonument(id_ville, Nom, description, date_constructi
         Localisation = ?,
         image = ?
     WHERE monument_id = ?
-    `,[id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image])
+    `,[monument_id, id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image])
     return result.insertId
 }
 

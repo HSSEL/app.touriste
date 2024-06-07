@@ -23,15 +23,15 @@ paysageRouter.get("/paysageVille:id",async (req,res)=>{
 })
 
 paysageRouter.post("/Paysage:",async (req,res)=>{
-    const {ville_id,nom,description,localisation,horarire_ouverture} =req.body
-    const paysage=await createPaysage(ville_id,nom,description,localisation,horarire_ouverture)
+    const {ville_id,nom,description,localisation,horarire_ouverture,image} =req.body
+    const paysage=await createPaysage(ville_id,nom,description,localisation,horarire_ouverture,image)
     res.status(201).send(paysage)
 })
 
 paysageRouter.put("/Paysage/:id", async (req, res) => {
     const id = req.params.id;
-    const { ville_id,nom,description,localisation,horarire_ouverture} = req.body;
-    const updated = await updatePaysage(id, ville_id,nom,description,localisation,horarire_ouverture);
+    const { ville_id,nom,description,localisation,horarire_ouverture,image} = req.body;
+    const updated = await updatePaysage(id, ville_id,nom,description,localisation,horarire_ouverture,image);
     if (updated) {
         res.send('Updated successfully');
     } else {

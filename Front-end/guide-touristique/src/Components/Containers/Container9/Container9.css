@@ -1,0 +1,114 @@
+/* profile */
+.con90 img{
+    width: 250px;
+    height: 250px;
+    border: 1px solid white;
+    border-radius: 125px;
+}
+
+.con90 h1 {
+    padding-top: 10px;
+    color: rgb(160, 209, 255, 1);
+    width: 300px;
+    font-size: 40px;
+    text-align: left;
+    margin: 0%;
+}
+
+.con90 h3{
+    width: 500px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.con91{
+    display: flex;
+    flex-direction: column;
+}
+
+.con90 {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+}
+/* ============================= */
+
+.con931 img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.E2 h2{
+    font-weight: 100px;
+    font-size: 15px;
+    margin: 0;
+    width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.E2{
+    width: 180px;
+}
+
+.con931 button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid white;
+    border-radius: 30px;
+    margin: 0;
+    width: 160px;
+    font-size: 13px;
+    margin: 0 10px;
+    margin-bottom: 0;
+}
+
+.con931{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+ }
+
+.con93{
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    position: fixed;
+    left: 120px;
+    bottom: 40px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid white;
+    width: 730px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+
+.con932{
+    font-size: 23px;
+    position: fixed;
+    left: 120px;
+    bottom: 310px;
+    color: rgb(160, 209, 255, 1);
+}
+/* ================================= */
+.mapcon{
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    width: 520px;
+    height: 603px;
+    overflow: auto;
+    border: 1px solid white;
+    border-radius: 15px;
+    scrollbar-width: thin;
+}

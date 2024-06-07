@@ -1,3 +1,5 @@
+// PUB 1 COMMENT
+
 import '../Container2/Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';

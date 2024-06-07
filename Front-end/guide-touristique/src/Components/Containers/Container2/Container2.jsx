@@ -1,3 +1,5 @@
+// HADA DYAL PUBLICATIONS
+
 import './Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';

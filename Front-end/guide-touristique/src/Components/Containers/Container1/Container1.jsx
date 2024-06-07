@@ -1,3 +1,5 @@
+// HADA DYA TYPE ETAB
+
 import './Container1.css';
 import types_etab_data from '../../../data/types_etab_data.js';
 import search from '../../../assets/search.svg';

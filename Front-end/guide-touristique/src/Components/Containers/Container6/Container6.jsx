@@ -6,7 +6,7 @@ const Container6 = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/ville');
+        navigate('/villes');
     };
   
   

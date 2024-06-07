@@ -1,3 +1,5 @@
+/* hada dyal view more etab */
+
 import './Container7.css'
 import React, { useEffect, useState } from 'react';
 import { fetchetabData } from '../../../data/EtabData';

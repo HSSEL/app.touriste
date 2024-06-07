@@ -1,16 +1,18 @@
 import express from 'express';
-const router = express.Router();
+
 
 import AuthService from '../services/authService.js'; 
 
+
+const authRouter = express.Router();
 // Route pour se déconnecter
-router.get('/logout', (req, res) => {
+authRouter.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
 
 // Route pour l'inscription
-router.post('/register', (req, res) => {
+authRouter.post('/register', (req, res) => {
   AuthService.register(req.body, (err, result) => {
     if (err) {
       console.error('Registration error', err);
@@ -21,7 +23,7 @@ router.post('/register', (req, res) => {
 });
 
 // Route pour la connexion
-router.post('/login', (req, res) => {
+authRouter.post('/login', (req, res) => {
   const { email, password } = req.body;
   AuthService.login(email, password, (err, data, message) => {
     if (err) {
@@ -35,4 +37,4 @@ router.post('/login', (req, res) => {
   });
 });
 
-export default router;
+export default authRouter;

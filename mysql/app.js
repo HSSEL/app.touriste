@@ -15,9 +15,10 @@ import {commentpaysageRouter} from './routes/commentpaysageRouter.js'
 import {commentpublicationRouter} from './routes/commentpublicationRouter.js'
 import { monumentRouter } from './routes/monumentRouter.js'
 import { etablissementRouter } from './routes/etablissementRouter.js'
-import { utilisateurRouter} from './routes/connexionRouter.js'
+import { utilisateurRouter} from './routes/userRouter.js'
 import {commentsanteRouter} from './routes/commentsanteRouter.js'
 import { commentetablissementRouter } from './routes/commentetablissementRouter.js'
+import {authRouter} from './routes/authRouter.js'
 const app=express()
 
 app.use(express.json())
@@ -41,6 +42,10 @@ app.use('/comvi',commentvilleRouter)
 app.use('/comtr',commenttransportRouter)
 app.use('/compa',commentpaysageRouter)
 app.use('/compu',commentpublicationRouter)
+
+app.use('/auth',authRouter)
+
+
 
 
 

@@ -33,20 +33,20 @@ export async function getEtablissementType(type){
     return row[0]
 }
 
-export async function createEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ){
+export async function createEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating){
     const [result]= await pool.query(`
-            INSERT INTO etablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux )
-            VALUES(?,?,?,?,?,?,?,?,?,?,?)
-    `,[id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ])
+            INSERT INTO etablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating )
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,? ,?,?,? )
+    `,[id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating])
     return result.insertId
 }
 
-export async function updateEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux){
+export async function updateEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating){
     const [result]= await pool.query(`
         UPDATE 
-        SET id_ville=?,type=?,nom=?,description=?, adresse=?, telephone=?, Email=?, horaires_ouverture=?, site_web=?, services_offerts=?, reseau_sociaux=?
+        SET id_ville=?,type=?,nom=?,description=?, adresse=?, telephone=?, Email=?, horaires_ouverture=?, site_web=?, services_offerts=?, reseau_sociaux=? ,latitude=?,longitude=?,rating=?
         WHERE etablissement_id = ?
-    `,[id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux])
+    `,[id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating])
     return result.insertId
 }
 

@@ -29,15 +29,15 @@ etablissementRouter.get("/etablissement/:type",async (req,res)=>{
 })
 
 etablissementRouter.post("/Etablissement:",async (req,res)=>{
-    const {id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux} =req.body
-    const etablissement=await createEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux)
+    const {id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating} =req.body
+    const etablissement=await createEtablissement(id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating)
     res.status(201).send(etablissement)
 })
 
 etablissementRouter.put("/Etablissement/:id", async (req, res) => {
     const id = req.params.id;
-    const { id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux} = req.body;
-    const updated = await updateEtablissement(id, id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux);
+    const { id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating} = req.body;
+    const updated = await updateEtablissement(id, id_ville,type ,nom ,description ,adresse ,telephone  ,Email ,horaires_ouverture ,site_web ,services_offerts  ,reseau_sociaux ,latitude,longitude,rating);
     if (updated) {
         res.send('Updated successfully');
     } else {

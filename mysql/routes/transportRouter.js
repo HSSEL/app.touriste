@@ -1,38 +1,39 @@
-import express from 'express'
+import express from 'express';
 
-import {getTranports,getTranportVille,getTranport,createTranport, updateTransport,deleteTransport,getImage} from '../controllers/transportController.js'
+import {
+    getTranports, getTranport, getTranportVille, createTranport, updateTransport, deleteTransport,
+    getImage, updateImage, deleteImage
+} from '../controllers/tranportController.js';
 
-const transportRouter=express.Router()
+const tranportRouter = express.Router();
 
+tranportRouter.get("/Tranports", async (_req, res) => {
+    const tranports = await getTranports();
+    res.send(tranports);
+});
 
-transportRouter.get("/transports",async (_req,res)=>{
-    const transports=await getTranports()
-    res.send(transports)
-})
-
-transportRouter.get("/transportVille/:id",async (req,res)=>{
-    const id= req.params.id
-    const transportville=await getTranportVille(id)
-    res.send(transportville)
-})
-
-transportRouter.get("/transport/:id",async (req,res)=>{
-    const id= req.params.id
-    const transport=await getTranport(id)
-    res.send(transport)
-})
-
-
-transportRouter.post("/transport:",async (req,res)=>{
-    const {ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif} =req.body
-    const transport=await createTranport(ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif)
-    res.status(201).send(transport)
-})
-
-transportRouter.put("/transport/:id", async (req, res) => {
+tranportRouter.get("/Tranport/:id", async (req, res) => {
     const id = req.params.id;
-    const { ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif } = req.body;
-    const updated = await updateTransport(id, ID_Ville,Type,Nom,Description,zoneCouverte,Horaires,Tarif);
+    const tranport = await getTranport(id);
+    res.send(tranport);
+});
+
+tranportRouter.get("/TranportVille/:id", async (req, res) => {
+    const id = req.params.id;
+    const tranportVille = await getTranportVille(id);
+    res.send(tranportVille);
+});
+
+tranportRouter.post("/Tranport", async (req, res) => {
+    const { ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif } = req.body;
+    const tranport = await createTranport(ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
+    res.status(201).send(tranport);
+});
+
+tranportRouter.put("/Tranport/:id", async (req, res) => {
+    const id = req.params.id;
+    const { ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif } = req.body;
+    const updated = await updateTransport(id, ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
     if (updated) {
         res.send('Updated successfully');
     } else {
@@ -40,9 +41,7 @@ transportRouter.put("/transport/:id", async (req, res) => {
     }
 });
 
-
-
-transportRouter.delete("/transport/:id", async (req, res) => {
+tranportRouter.delete("/Tranport/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTransport(id);
     if (deleted) {
@@ -52,15 +51,38 @@ transportRouter.delete("/transport/:id", async (req, res) => {
     }
 });
 
-transportRouter.get("/transportImage/:id", async (req, res) => {
+tranportRouter.get("/TranportImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const image = await getImage(id);
-        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.writeHead(200, { 'Content-Type': 'image/png' });
         res.end(image, 'binary');
     } catch (error) {
         res.status(404).send("Image not found");
     }
 });
 
-export {transportRouter}
+// Route to update an image
+tranportRouter.put("/updateImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const { image } = req.body;
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
+    }
+});
+
+// Route to delete an image
+tranportRouter.delete("/deleteImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+export { tranportRouter };

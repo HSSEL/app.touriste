@@ -52,6 +52,16 @@ export async function getImage(id) {
 }
 
 
+
+export async function getCoeur(id){
+    const [row]=await pool.query(`
+    SELECT coeur 
+    FROM publication 
+    WHERE id_publication = ?
+    `,[id])
+    return row[0]
+}
+
 export async function updateCoeur(id_publication ,coeur){
     const [result]= await pool.query(`
         UPDATE publication

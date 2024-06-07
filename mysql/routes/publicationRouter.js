@@ -1,6 +1,6 @@
 import express from 'express'
 
-import { getPublications, getPublication, createPublication, updatePublication, deletePublication,getImage,updateCoeur} from '../controllers/publicationController.js'
+import { getPublications, getPublication, createPublication, updatePublication, deletePublication,getImage,getCoeur,updateCoeur} from '../controllers/publicationController.js'
 
 const publicationRouter=express.Router()
 
@@ -61,7 +61,14 @@ publicationRouter.get("/publicationImage/:id", async (req, res) => {
 });
 
 
-publicationRouter.put('/publication/:id/coeur', async (req, res) => {
+publicationRouter.get("/Coeur/:id",async (req,res)=>{
+    const id= req.params.id
+    const publication=await getCoeur(id)
+    res.send(publication)
+})
+
+
+publicationRouter.put('/Coeur/:id', async (req, res) => {
     const { id } = req.params;
     const { coeur } = req.body;
 

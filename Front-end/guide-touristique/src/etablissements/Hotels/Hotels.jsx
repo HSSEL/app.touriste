@@ -1,6 +1,5 @@
 import './Hotels.css';
 import useFetchDataByType from '../../data/useFetchDataByType';
-import Frame1 from '../../assets/etab/Frame1.png';
 import Star1 from '../../assets/etab/Star1.png';
 import Star2 from '../../assets/etab/Star2.png';
 import { useNavigate } from 'react-router-dom';
@@ -36,10 +35,10 @@ const Hotels = () => {
                             alt={hotel.nom || "Hotel Image"}
                         />
                         <div className="stars">
-                            {[...Array(0)].map((_, i) => (
+                            {[...Array(hotel.rating)].map((_, i) => (
                                 <img key={i} src={Star1} alt="Star" />
                             ))}
-                            {[...Array(5)].map((_, i) => (
+                            {[...Array(5 - hotel.rating)].map((_, i) => (
                                 <img key={i} src={Star2} alt="Empty Star" />
                             ))}
                         </div>

@@ -14,15 +14,15 @@ export async function getPublication(id) {
     return row[0];
 }
 
-/* 
-export async function createPublication(objet, text, image, type, date, etablissement_id) {
+
+export async function createPublication(objet,text,image,type,date,etablissement_id){
     const [result]= await pool.query(`
             INSERT INTO publication(objet,text,image,type,date,etablissement_id)
             VALUES(?,?,?,?,?,?)
     `,[objet,text,image,type,date,etablissement_id])
     return result.insertId
 
-} */
+}
 
 export async function updatePublication(id_publication, objet, text, image, type, date, etablissement_id) {
     const [result] = await pool.query(`

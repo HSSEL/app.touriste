@@ -47,6 +47,7 @@ const Login0 = () => {
                     />
                 </div>
                 <button type="submit">Se connecter</button>
+                <div className='LOGIN001'><h4>Vous n'avez pas un compte?</h4><h4 className='thislogin'>Créer un!</h4> </div>
             </form>
         </div>
     );

@@ -2,9 +2,11 @@
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid white;
     border-radius: 20px;
-    width: 150px;
-    margin: 20px 75px;
-
+    width: 200px;
+    text-align: center;
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .login-form input {
@@ -27,6 +29,10 @@
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -39,5 +45,20 @@
     display: flex;
     width: 100vw;
     align-items: center;
+    justify-content: center;
+}
+
+.LOGIN001 h4 {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.thislogin{
+    color: rgb(160, 209, 255, 1);
+}
+
+.LOGIN001{
+    display: flex;
+    gap: 5px;
     justify-content: center;
 }

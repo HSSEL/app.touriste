@@ -13,7 +13,6 @@ const Mycomment = () => {
         setComment(e.target.value);
     };
 
-    
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();

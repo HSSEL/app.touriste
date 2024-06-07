@@ -3,7 +3,8 @@
 import './Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';
-import {like,like1} from '../../../assets/Options/like.svg';
+import like from '../../../assets/Options/like.svg';
+import like1 from '../../../assets/Options/like1.svg';
 import comment from '../../../assets/Options/comment.svg';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -71,7 +72,7 @@ const Container2 = ({ filterEtab }) => {
       } catch (error) {
           console.error('Failed to update like status:', error);
       }
-  };
+  }; 
 
 
   return (

@@ -1,7 +1,7 @@
 import { pool } from "../databases.js"
 
 export async function getContactusAll(){
-    const [row]=await pool.query("SELECT * FROM contactus")
+    const [row]=await pool.query("SELECT * FROM contact_from_submissions")
     return row
 }
 
@@ -10,16 +10,23 @@ export async function getContactusAll(){
 export async function getContactus(id){
     const [row]=await pool.query(`
     SELECT * 
-    FROM contactus 
+    FROM contact_from_submissions 
     WHERE id_contact = ?
     `,[id])
     return row[0]
 }
 
-export async function createContactus(nom,email,text){
-    const [result]= await pool.query(`
-            INSERT INTO publication(nom,email,text)
-            VALUES(?,?,?)
-    `,[nom,email,text])
-    return result.insertId
-}
+
+export async function createContact(name, email, message) {
+    try {
+      const [result] = await pool.query(`
+        INSERT INTO contact_from_submissions (name, email, message)
+        VALUES (?, ?, ?)
+      `, [name, email, message]);
+  
+      return { message: 'Contact created successfully', id: result.insertId };
+    } catch (error) {
+      console.error('Error creating contact:', error);
+      throw new Error('Internal server error');
+    }
+  }

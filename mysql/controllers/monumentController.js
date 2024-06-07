@@ -24,22 +24,37 @@ export async function getMonument(id){
 }
 
 
-export async function createMonument(id_ville,Nom ,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation){
+export async function createMonument(id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image){
     const [result]= await pool.query(`
-            INSERT INTO monument(id_ville,Nom ,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation)
-            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-    `,[id_ville,Nom ,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation])
+            INSERT INTO monument(id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image)
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+    `,[id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image])
     return result.insertId
 }
 
 
 
-export async function updateMonument(monument_id ,id_ville,Nom ,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation){
+export async function updateMonument(id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image){
     const [result]= await pool.query(`
-        UPDATE monument
-        SET monument_id=?,id_ville=?,nom=?,description=?,date_construction=?, style=?, hauteur=?, 
-        WHERE paysage_id = ?
-    `,[monument_id ,id_ville,Nom,description,date_construction,style,hauteur ,commanditaire,etat_conservation ,fonction_actuelle ,horaires_ouverture ,frais_entree ,accessibilite ,evenements_speciaux,site_web ,Localisation])
+    UPDATE monument
+    SET id_ville = ?,
+        Nom = ?,
+        description = ?,
+        date_construction = ?,
+        style = ?,
+        hauteur = ?,
+        commanditaire = ?,
+        etat_conservation = ?,
+        fonction_actuelle = ?,
+        horaires_ouverture = ?,
+        frais_entree = ?,
+        accessibilite = ?,
+        evenements_speciaux = ?,
+        site_web = ?,
+        Localisation = ?,
+        image = ?
+    WHERE monument_id = ?
+    `,[id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image])
     return result.insertId
 }
 

@@ -1,7 +1,10 @@
+/* hada dyal les villes kulum */
+
 import React, { useState, useEffect } from 'react';
 import './Container8.css';
 import { fetchVilleData } from '../../../data/VilleData';
 import searchIcon from '../../../assets/search.svg';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Container8 = () => {
     const [ville, setVille] = useState([]);
@@ -24,6 +27,11 @@ const Container8 = () => {
     const handleSearchChange = (e) => {
         setSearch(e.target.value.toLowerCase());
     };
+
+    const navigate = useNavigate();
+    const handleClickville = (ville) => {
+        navigate('/ville', { state: { ville_id: ville.ville_id} })
+    }
 
     return (
         <div className='container8'>
@@ -48,7 +56,7 @@ const Container8 = () => {
                             alt={ville0.Nom} 
                             onError={(e) => { e.target.src = '/path/to/placeholder_image.png'; }}
                         />
-                        <button>Visiter</button>
+                        <button onClick={() => handleClickville(ville0)}>Visiter</button>
                     </div>
                 ))}
             </div>

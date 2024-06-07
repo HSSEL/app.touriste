@@ -5,7 +5,8 @@ import Comment from './Pages/Comment'
 import Etabs from './Pages/Etabs'
 import Services from './Pages/Services'
 import Etabviewmore from './Pages/Etabviewmore';
-import Ville from './Pages/Ville';
+import Villes from './Pages/Villes';
+import Ville from './Pages/ville';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -57,6 +58,7 @@ const App = () => {
             <Route path="/etabs" element={<Etabs/>} />
             <Route path="/services" element={<Services/>} />
             <Route path="/etab" element={<Etabviewmore/>} />
+            <Route path="/villes" element={<Villes/>} />
             <Route path="/ville" element={<Ville/>} />
             </Routes> 
             </BrowserRouter>

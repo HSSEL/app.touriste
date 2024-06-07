@@ -1,3 +1,5 @@
+// hada fih les services
+
 import './Container6.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +8,7 @@ const Container6 = () => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/ville');
+        navigate('/villes');
     };
   
   

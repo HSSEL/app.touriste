@@ -1,5 +1,5 @@
 import express from 'express'
-import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail } from '../controllers/connexionController.js'
+import { getUtilisateurs, getLogin, updateUtilisateur, getUtilisateurMdp, getUtilisateurEmail ,register,login} from '../controllers/connexionController.js'
 
 const utilisateurRouter = express.Router()
 
@@ -84,5 +84,8 @@ utilisateurRouter.put("/Password/:id", async (req, res) => {
     }
 });
 
+
+utilisateurRouter.post('/register', register);
+utilisateurRouter.post('/login', login);
 
 export { utilisateurRouter }

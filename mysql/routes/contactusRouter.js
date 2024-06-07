@@ -1,5 +1,5 @@
 import express from 'express';
-import { getContactusAll, getContactus, createContactus } from '../controllers/contactusController.js';
+import { getContactusAll, getContactus, createContact } from '../controllers/contactusController.js';
 
 const contactusRouter = express.Router();
 
@@ -30,9 +30,9 @@ contactusRouter.get('/contactus/:id', async (req, res) => {
 
 // Route pour créer un nouveau message de contact
 contactusRouter.post('/contactus', async (req, res) => {
-    const { nom, email, text } = req.body;
+    const { nom, email, message } = req.body;
     try {
-        const insertId = await createContactus(nom, email, text);
+        const insertId = await createContact(nom, email, message);
         res.status(201).json({ id: insertId });
     } catch (error) {
         res.status(500).json({ error: error.message });

@@ -21,7 +21,7 @@ export async function createPublication(objet,text,image,type,date,etablissement
     const [result]= await pool.query(`
             INSERT INTO publication(objet,text,image,type,date,etablissement_id)
             VALUES(?,?,?,?,?,?)
-    `,[objet,text,image,type,date])
+    `,[objet,text,image,type,date,etablissement_id])
     return result.insertId
 }
 
@@ -49,4 +49,14 @@ export async function getImage(id) {
     } else {
         throw new Error("Image not found");
     }
+}
+
+
+export async function updateCoeur(id_publication ,coeur){
+    const [result]= await pool.query(`
+        UPDATE publication
+        SET coeur=?
+        WHERE id_publication = ?
+    `,[id_publication ,coeur])
+    return result.insertId
 }

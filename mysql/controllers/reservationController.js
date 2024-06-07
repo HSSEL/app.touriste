@@ -17,20 +17,20 @@ export async function getReservation(id){
 
 
 
-export async function makeReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le){
+export async function makeReservation( id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne){
     const [result]= await pool.query(`
-            INSERT INTO reservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
-            VALUES(?,?,?,?,?)
-    `,[id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le])
+            INSERT INTO reservation( id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne)
+            VALUES(?,?,?,?,?,?)
+    `,[id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne])
     return result.insertId
 }
 
-export async function updateReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le){
+export async function updateReservation(id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne){
     const [result]= await pool.query(`
         UPDATE reservation
-        SET etablissement_id=?,dateReservation=? ,debut_temp=? ,fin_temp=? ,nombrePersonne=?, status=? ,creee_le=? ,modifie_le=?
+        SET etablissement_id=?,dateReservation=? ,debut_temp=? ,fin_temp=? ,nombrePersonne=?
         WHERE id_reservation = ?
-    `,[id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le])
+    `,[id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne])
     return result.insertId
 }
 

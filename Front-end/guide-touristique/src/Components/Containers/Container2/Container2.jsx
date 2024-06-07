@@ -8,6 +8,7 @@ import comment from '../../../assets/Options/comment.svg';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const Container2 = ({ filterEtab }) => {
   const navigate = useNavigate();
 
@@ -51,26 +52,26 @@ const Container2 = ({ filterEtab }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-
-  const handleLikeClick = async (publication) => {
-    try {
-        const response = await fetch(`/pub/publication/${publication.id_publication}/coeur`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ coeur: !publication.coeur })
-        });
-        if (response.ok) {
-            setPostData(postData.map(post => post.id_publication === publication.id_publication ? { ...post, coeur: !post.coeur } : post));
-            setLikeImage(!publication.coeur ? like : like1); // Change to like1 if not liked, otherwise change back to like
-        } else {
-            console.error('Failed to update like status');
-        }
-    } catch (error) {
-        console.error('Failed to update like status:', error);
-    }
-};
+  
+    const handleLikeClick = async (publication) => {
+      try {
+          const response = await fetch(`/pub/publication/${publication.id_publication}/coeur`, {
+              method: 'PUT',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ coeur: !publication.coeur })
+          });
+          if (response.ok) {
+              setPostData(postData.map(post => post.id_publication === publication.id_publication ? { ...post, coeur: !post.coeur } : post));
+              setLikeImage(!publication.coeur ? like : like1); 
+          } else {
+              console.error('Failed to update like status');
+          }
+      } catch (error) {
+          console.error('Failed to update like status:', error);
+      }
+  };
 
 
   return (

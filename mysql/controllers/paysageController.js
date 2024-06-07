@@ -24,20 +24,20 @@ export async function getPaysage(id){
 }
 
 
-export async function createPaysage(ville_id,nom,description,localisation,horarire_ouverture){
+export async function createPaysage(ville_id,nom,description,localisation,horarire_ouverture, image){
     const [result]= await pool.query(`
-            INSERT INTO paysage(ville_id,nom,description,localisation,horarire_ouverture)
-            VALUES(?,?,?,?,?,?)
-    `,[ville_id,nom,description,localisation,horarire_ouverture])
+            INSERT INTO paysage(ville_id,nom,description,localisation,horarire_ouverture,image)
+            VALUES(?,?,?,?,?,?,?)
+    `,[ville_id,nom,description,localisation,horarire_ouverture,image])
     return result.insertId
 }
 
-export async function updatePaysage(paysage_id ,ville_id,nom,description,localisation,horarire_ouverture){
+export async function updatePaysage(paysage_id ,ville_id,nom,description,localisation,horarire_ouverture,image){
     const [result]= await pool.query(`
         UPDATE paysage
-        SET ville_id=?,nom=?,description=?,localisation=?,horarire_ouverture=?
+        SET ville_id=?,nom=?,description=?,localisation=?,horarire_ouverture=?, image =?
         WHERE paysage_id = ?
-    `,[paysage_id ,ville_id,nom,description,localisation,horarire_ouverture])
+    `,[paysage_id ,ville_id,nom,description,localisation,horarire_ouverture,image])
     return result.insertId
 }
 

@@ -14,20 +14,20 @@ export async function getCommentPaysage(id) {
     return rows[0];
 }
 
-export async function createCommentPaysage(id_commentaire, paysage_id, id_touriste, Texte, Date) {
+export async function createCommentPaysage(id_touriste,Texte , Date, image, paysage_id) {
     const [result] = await pool.query(`
-        INSERT INTO commentpaysage(id_commentaire, paysage_id, id_touriste, Texte, Date)
+        INSERT INTO commentpaysage(id_touriste,Texte , Date, image, paysage_id)
         VALUES(?, ?, ?, ?, ?)
-    `, [id_commentaire, paysage_id, id_touriste, Texte, Date]);
+    `, [id_touriste,Texte , Date, image, paysage_id]);
     return result.insertId;
 }
 
-export async function updateCommentPaysage(id_commentaire, Texte) {
+export async function updateCommentPaysage(id_commentaire, Texte, image) {
     const [result] = await pool.query(`
         UPDATE commentpaysage
-        SET Texte = ?
+        SET Texte = ? AND image=?
         WHERE id_commentaire = ?
-    `, [Texte, id_commentaire]);
+    `, [ id_commentaire, Texte, image]);
     return result.affectedRows;
 }
 

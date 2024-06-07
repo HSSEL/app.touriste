@@ -22,23 +22,25 @@ commentetablissementRouter.get("/CommentEtablissement:id",async (req,res)=>{
     res.send(CommentEtablissement)
 })
  
-commentetablissementRouter.post("/CommentEtablissement/:id", async (req, res) => {
-    const id_commentaire = req.params.id;
-    
-
-    if (!Texte || !etablissement_id || !id_touriste || !Date) {
-        return res.status(400).send('All fields are required');
-    }
-
+commentetablissementRouter.post('/CommentEtablissement', async (req, res) => {
+    const { etablissement_id, id_touriste,Texte , Date, image } = req.body;
     try {
-        const updated = await updateCommentEtablissement(id_commentaire, etablissement_id, id_touriste, Texte, Date);
-        if (updated) {
-            res.status(200).send('Comment updated successfully');
-        } else {
-            res.status(404).send('Comment not found');        }
+        const insertId = await createCommentEtablissement(etablissement_id, id_touriste,Texte , Date, image);
+        res.status(201).json({ id: insertId });
     } catch (error) {
-        console.error('Error updating comment:', error);
-        res.status(500).send('Internal server error');
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Route pour mettre à jour un commentaire d'un monument
+commentetablissementRouter.put('/CommentEtablissement/:id', async (req, res) => {
+    const { id } = req.params;
+    const { Texte, image } = req.body;
+    try {
+        const updatedId = await updateCommentEtablissement(id, Texte, image);
+        res.status(200).json({ id: updatedId });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -52,10 +54,6 @@ commentetablissementRouter.delete("/CommentEtablissement/:id", async (req, res) 
     }
 });
 
-commentetablissementRouter.post("/CreateCommentEtablissement:",async (req,res)=>{
-    const {id_commentaire, etablissement_id, id_touriste, Texte, Date} =req.body
-    const CreateCommentEtablissement=await createCommentEtablissement(id_commentaire, etablissement_id, id_touriste, Texte, Date)
-    res.status(201).send(CreateCommentEtablissement)
-})
+
 
 export {commentetablissementRouter}

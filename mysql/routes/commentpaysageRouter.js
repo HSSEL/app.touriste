@@ -36,9 +36,9 @@ commentpaysageRouter.get('/commentspaysage/:id', async (req, res) => {
 
 // Route pour créer un nouveau commentaire pour un paysage
 commentpaysageRouter.post('/commentspaysage', async (req, res) => {
-    const { id_commentaire, paysage_id, id_touriste, Texte, Date } = req.body;
+    const { id_touriste,Texte , Date, image, paysage_id  } = req.body;
     try {
-        const insertId = await createCommentPaysage(id_commentaire, paysage_id, id_touriste, Texte, Date);
+        const insertId = await createCommentPaysage(id_touriste,Texte , Date, image, paysage_id );
         res.status(201).json({ id: insertId });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -49,8 +49,9 @@ commentpaysageRouter.post('/commentspaysage', async (req, res) => {
 commentpaysageRouter.put('/commentspaysage/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
+    const { image } = req.body;
     try {
-        const updatedRows = await updateCommentPaysage(id, Texte);
+        const updatedRows = await updateCommentPaysage(id, Texte,image);
         if (updatedRows > 0) {
             res.status(200).json({ message: 'Comment updated successfully' });
         } else {

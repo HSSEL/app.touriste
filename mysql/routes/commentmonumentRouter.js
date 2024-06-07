@@ -36,9 +36,9 @@ commentmonumentRouter.get('/commentsmonument/:id', async (req, res) => {
 
 // Route pour créer un nouveau commentaire pour un monument
 commentmonumentRouter.post('/commentsmonument', async (req, res) => {
-    const { id_commentaire, monument_id, id_touriste, Texte, Date } = req.body;
+    const { id_touriste,Texte , Date, image, monument_id } = req.body;
     try {
-        const insertId = await createCommentMonument(id_commentaire, monument_id, id_touriste, Texte, Date);
+        const insertId = await createCommentMonument(id_touriste,Texte , Date, image, monument_id);
         res.status(201).json({ id: insertId });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -48,9 +48,9 @@ commentmonumentRouter.post('/commentsmonument', async (req, res) => {
 // Route pour mettre à jour un commentaire d'un monument
 commentmonumentRouter.put('/commentsmonument/:id', async (req, res) => {
     const { id } = req.params;
-    const { Texte, Date } = req.body;
+    const { Texte, image } = req.body;
     try {
-        const updatedId = await updateCommentMonument(id, Texte, Date);
+        const updatedId = await updateCommentMonument(id, Texte, image);
         res.status(200).json({ id: updatedId });
     } catch (error) {
         res.status(500).json({ error: error.message });

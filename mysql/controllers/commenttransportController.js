@@ -14,20 +14,20 @@ export async function getCommentTransport(id) {
     return row[0];
 }
 
-export async function createCommentTransport(id_commentaire, transport_id, id_touriste, Texte, Date) {
+export async function createCommentTransport( transport_id, id_touriste, Texte, Date,image) {
     const [result] = await pool.query(`
-        INSERT INTO commenttransport(id_commentaire, transport_id, id_touriste, Texte, Date)
+        INSERT INTO commenttransport(transport_id, id_touriste, Texte, Date,image)
         VALUES(?, ?, ?, ?, ?)
-    `, [id_commentaire, transport_id, id_touriste, Texte, Date]);
+    `, [transport_id, id_touriste, Texte, Date,image]);
     return result.insertId;
 }
 
-export async function updateCommentTransport(id_commentaire, Texte) {
+export async function updateCommentTransport(id_commentaire, Texte, image) {
     const [result] = await pool.query(`
         UPDATE commenttransport
-        SET Texte = ?
+        SET Texte = ? AND image=?
         WHERE id_commentaire = ?
-    `, [Texte, id_commentaire]);
+    `, [id_commentaire, Texte, image]);
     return result.affectedRows;
 }
 

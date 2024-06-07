@@ -17,16 +17,16 @@ reservationRouter.get("/Reservation/:id",async (req,res)=>{
 })
 
 reservationRouter.post("/Reservation:",async (req,res)=>{
-    const {id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le} =req.body
-    const reservation=await makeReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le)
+    const {id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne} =req.body
+    const reservation=await makeReservation(id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne)
     res.status(201).send(reservation)
 })
 
 
 reservationRouter.put("/Reservation/:id", async (req, res) => {
     const id_reservation = req.params.id;
-    const {id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le} = req.body;
-    const updated = await updateReservation(id_reservation, id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne, status, creee_le, modifie_le);
+    const {id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne} = req.body;
+    const updated = await updateReservation(id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne);
     if (updated) {
         res.send('Updated successfully');
     } else {

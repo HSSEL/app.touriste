@@ -1,80 +1,80 @@
 import express from 'express';
 import {
-    getCommentsPublication,
-    getCommentPublication,
-    createCommentPublication,
-    updateCommentPublication,
-    deleteCommentPublication
+    getCommentsPublication, getCommentPublication,
+    createCommentPublication, updateCommentPublication, deleteCommentPublication,
+    getImage, deleteImage, updateImage
 } from '../controllers/commentpublicationController.js';
 
-const commentpublicationRouter = express.Router();
+const commentPublicationRouter = express.Router();
 
-// Route pour obtenir tous les commentaires des publications
-commentpublicationRouter.get('/commentspublication', async (req, res) => {
-    try {
-        const comments = await getCommentsPublication();
-        res.status(200).json(comments);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+commentPublicationRouter.get("/comments", async (_req, res) => {
+    const comments = await getCommentsPublication();
+    res.send(comments);
+});
+
+commentPublicationRouter.get("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const comment = await getCommentPublication(id);
+    res.send(comment);
+});
+
+commentPublicationRouter.post("/comment", async (req, res) => {
+    const { id_touriste, Texte, Date, image, id_publication } = req.body;
+    const comment = await createCommentPublication(id_touriste, Texte, Date, image, id_publication);
+    res.status(201).send({ id: comment });
+});
+
+commentPublicationRouter.put("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const { Texte, image } = req.body;
+    const updated = await updateCommentPublication(id, Texte, image);
+    if (updated) {
+        res.send('Updated successfully');
+    } else {
+        res.send('Unsuccessful update');
     }
 });
 
-// Route pour obtenir un commentaire d'une publication par ID de publication
-commentpublicationRouter.get('/commentspublication/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const comment = await getCommentPublication(id);
-        if (comment) {
-            res.status(200).json(comment);
-        } else {
-            res.status(404).json({ message: 'Comment not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+commentPublicationRouter.delete("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteCommentPublication(id);
+    if (deleted) {
+        res.send('Deleted successfully');
+    } else {
+        res.send('Unsuccessful delete');
     }
 });
 
-// Route pour créer un nouveau commentaire pour une publication
-commentpublicationRouter.post('/commentspublication', async (req, res) => {
-    const { id_touriste,Texte , Date, image, id_publication } = req.body;
+commentPublicationRouter.get("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
     try {
-        const insertId = await createCommentPublication(id_touriste,Texte , Date, image, id_publication);
-        res.status(201).json({ id: insertId });
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(404).send("Image not found");
     }
 });
 
-// Route pour mettre à jour un commentaire d'une publication
-commentpublicationRouter.put('/commentspublication/:id', async (req, res) => {
-    const { id } = req.params;
-    const { Texte } = req.body;
+commentPublicationRouter.delete("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+commentPublicationRouter.put("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
     const { image } = req.body;
-    try {
-        const updatedRows = await updateCommentPublication(id, Texte,image);
-        if (updatedRows > 0) {
-            res.status(200).json({ message: 'Comment updated successfully' });
-        } else {
-            res.status(404).json({ message: 'Comment not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
     }
 });
 
-// Route pour supprimer un commentaire d'une publication
-commentpublicationRouter.delete('/commentspublication/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const deletedRows = await deleteCommentPublication(id);
-        if (deletedRows > 0) {
-            res.status(200).json({ message: 'Comment deleted successfully' });
-        } else {
-            res.status(404).json ({error: error.message});
-            }
-            } catch (error) {
-                res.status(500).json({ error: error.message });
-                }
-                });
-
-export {commentpublicationRouter}
+export { commentPublicationRouter };

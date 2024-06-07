@@ -30,7 +30,7 @@ const Container8 = () => {
 
     const navigate = useNavigate();
     const handleClickville = (ville) => {
-        navigate('/ville', { state: { ville_id: ville.ville_id} })
+        navigate('/ville', { state: { ville_id: ville.id_ville } });
     }
 
     return (

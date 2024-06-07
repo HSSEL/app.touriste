@@ -3,7 +3,7 @@ import express from 'express';
 import {
     getTranports, getTranport, getTranportVille, createTranport, updateTransport, deleteTransport,
     getImage, updateImage, deleteImage
-} from '../controllers/tranportController.js';
+} from '../controllers/transportController.js';
 
 const tranportRouter = express.Router();
 

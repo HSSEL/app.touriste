@@ -17,20 +17,20 @@ export async function getPublication(id){
 
 
 
-export async function createPublication(objet,text,image,type,date){
+export async function createPublication(objet,text,image,type,date,etablissement_id){
     const [result]= await pool.query(`
-            INSERT INTO publication(objet,text,image,type,date)
-            VALUES(?,?,?,?,?)
+            INSERT INTO publication(objet,text,image,type,date,etablissement_id)
+            VALUES(?,?,?,?,?,?)
     `,[objet,text,image,type,date])
     return result.insertId
 }
 
-export async function updatePublication(id_publication ,objet,text,image,type,date){
+export async function updatePublication(id_publication ,objet,text,image,type,date,etablissement_id){
     const [result]= await pool.query(`
         UPDATE publication
-        SET objet=?,text=? ,image=? ,type=? ,date=?
+        SET objet=?,text=? ,image=? ,type=? ,date=?, etablissement_id=?
         WHERE id_publication = ?
-    `,[id_publication ,objet,text,image,type,date])
+    `,[id_publication ,objet,text,image,type,date,etablissement_id])
     return result.insertId
 }
 

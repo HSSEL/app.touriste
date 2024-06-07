@@ -18,15 +18,15 @@ touristeRouter.get("/touriste/:id",async (req,res)=>{
 
 
 touristeRouter.post("/touriste:",async (req,res)=>{
-    const {Nom,Prenom,adresse,telephone,localisation,villeVisite} =req.body
-    const touriste=await createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite)
+    const {Nom,Prenom,adresse,telephone,localisation,villeVisite,image} =req.body
+    const touriste=await createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite,image)
     res.status(201).send(touriste)
 })
 
 touristeRouter.put("/touriste/:id", async (req, res) => {
     const id = req.params.id;
-    const { Nom,Prenom,adresse,telephone,localisation,villeVisite } = req.body;
-    const updated = await updateTouriste(id, Nom,Prenom,adresse,telephone,localisation,villeVisite);
+    const { Nom,Prenom,adresse,telephone,localisation,villeVisite,image} = req.body;
+    const updated = await updateTouriste(id, Nom,Prenom,adresse,telephone,localisation,villeVisite,image);
     if (updated) {
         res.send('Updated successfully');
     } else {

@@ -36,9 +36,9 @@ commentpublicationRouter.get('/commentspublication/:id', async (req, res) => {
 
 // Route pour créer un nouveau commentaire pour une publication
 commentpublicationRouter.post('/commentspublication', async (req, res) => {
-    const { id_commentaire, id_publication, id_touriste, Texte, Date } = req.body;
+    const { id_touriste,Texte , Date, image, id_publication } = req.body;
     try {
-        const insertId = await createCommentPublication(id_commentaire, id_publication, id_touriste, Texte, Date);
+        const insertId = await createCommentPublication(id_touriste,Texte , Date, image, id_publication);
         res.status(201).json({ id: insertId });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -49,8 +49,9 @@ commentpublicationRouter.post('/commentspublication', async (req, res) => {
 commentpublicationRouter.put('/commentspublication/:id', async (req, res) => {
     const { id } = req.params;
     const { Texte } = req.body;
+    const { image } = req.body;
     try {
-        const updatedRows = await updateCommentPublication(id, Texte);
+        const updatedRows = await updateCommentPublication(id, Texte,image);
         if (updatedRows > 0) {
             res.status(200).json({ message: 'Comment updated successfully' });
         } else {

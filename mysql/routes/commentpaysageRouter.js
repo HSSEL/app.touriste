@@ -1,79 +1,80 @@
 import express from 'express';
 import {
-    getCommentsPaysage,
-    getCommentPaysage,
-    createCommentPaysage,
-    updateCommentPaysage,
-    deleteCommentPaysage
+    getCommentsPaysage, getCommentPaysage,
+    createCommentPaysage, updateCommentPaysage, deleteCommentPaysage,
+    getImage, deleteImage, updateImage
 } from '../controllers/commentpaysageController.js';
 
-const commentpaysageRouter = express.Router();
+const commentPaysageRouter = express.Router();
 
-// Route pour obtenir tous les commentaires des paysages
-commentpaysageRouter.get('/commentspaysage', async (req, res) => {
-    try {
-        const comments = await getCommentsPaysage();
-        res.status(200).json(comments);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+commentPaysageRouter.get("/comments", async (_req, res) => {
+    const comments = await getCommentsPaysage();
+    res.send(comments);
+});
+
+commentPaysageRouter.get("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const comment = await getCommentPaysage(id);
+    res.send(comment);
+});
+
+commentPaysageRouter.post("/comment", async (req, res) => {
+    const { id_touriste, Texte, Date, image, paysage_id } = req.body;
+    const comment = await createCommentPaysage(id_touriste, Texte, Date, image, paysage_id);
+    res.status(201).send({ id: comment });
+});
+
+commentPaysageRouter.put("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const { Texte, image } = req.body;
+    const updated = await updateCommentPaysage(id, Texte, image);
+    if (updated) {
+        res.send('Updated successfully');
+    } else {
+        res.send('Unsuccessful update');
     }
 });
 
-// Route pour obtenir un commentaire d'un paysage par ID de paysage
-commentpaysageRouter.get('/commentspaysage/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const comment = await getCommentPaysage(id);
-        if (comment) {
-            res.status(200).json(comment);
-        } else {
-            res.status(404).json({ message: 'Comment not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+commentPaysageRouter.delete("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteCommentPaysage(id);
+    if (deleted) {
+        res.send('Deleted successfully');
+    } else {
+        res.send('Unsuccessful delete');
     }
 });
 
-// Route pour créer un nouveau commentaire pour un paysage
-commentpaysageRouter.post('/commentspaysage', async (req, res) => {
-    const { id_touriste,Texte , Date, image, paysage_id  } = req.body;
+commentPaysageRouter.get("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
     try {
-        const insertId = await createCommentPaysage(id_touriste,Texte , Date, image, paysage_id );
-        res.status(201).json({ id: insertId });
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(404).send("Image not found");
     }
 });
 
-// Route pour mettre à jour un commentaire d'un paysage
-commentpaysageRouter.put('/commentspaysage/:id', async (req, res) => {
-    const { id } = req.params;
-    const { Texte } = req.body;
+commentPaysageRouter.delete("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+commentPaysageRouter.put("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
     const { image } = req.body;
-    try {
-        const updatedRows = await updateCommentPaysage(id, Texte,image);
-        if (updatedRows > 0) {
-            res.status(200).json({ message: 'Comment updated successfully' });
-        } else {
-            res.status(404).json({ message: 'Comment not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
     }
 });
 
-// Route pour supprimer un commentaire d'un paysage
-commentpaysageRouter.delete('/commentspaysage/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const deletedRows = await deleteCommentPaysage(id);
-        if (deletedRows > 0) {
-            res.status(200).json({ message: 'Comment deleted successfully' });
-        } else {
-            res.status(404).json ({error: error.message});
-            }
-            } catch (error) {
-                res.status(500).json({ error: error.message });
-                }
-                });
-export {commentpaysageRouter}
+export { commentPaysageRouter };

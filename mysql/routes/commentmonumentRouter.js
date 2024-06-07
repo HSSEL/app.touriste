@@ -1,71 +1,80 @@
 import express from 'express';
 import {
-    getCommentsMonument,
-    getCommentMonument,
-    createCommentMonument,
-    updateCommentMonument,
-    deleteCommentMonument
+    getCommentsMonument, getCommentMonument,
+    createCommentMonument, updateCommentMonument, deleteCommentMonument,
+    getImage, deleteImage, updateImage
 } from '../controllers/commentmonumentController.js';
 
-const commentmonumentRouter = express.Router();
+const commentMonumentRouter = express.Router();
 
-// Route pour obtenir tous les commentaires des monuments
-commentmonumentRouter.get('/commentsmonument', async (req, res) => {
-    try {
-        const comments = await getCommentsMonument();
-        res.status(200).json(comments);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+commentMonumentRouter.get("/comments", async (_req, res) => {
+    const comments = await getCommentsMonument();
+    res.send(comments);
 });
 
-// Route pour obtenir un commentaire d'un monument par ID de monument
-commentmonumentRouter.get('/commentsmonument/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const comment = await getCommentMonument(id);
-        if (comment) {
-            res.status(200).json(comment);
-        } else {
-            res.status(404).json({ message: 'Comment not found' });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+commentMonumentRouter.get("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const comment = await getCommentMonument(id);
+    res.send(comment);
 });
 
-// Route pour créer un nouveau commentaire pour un monument
-commentmonumentRouter.post('/commentsmonument', async (req, res) => {
-    const { id_touriste,Texte , Date, image, monument_id } = req.body;
-    try {
-        const insertId = await createCommentMonument(id_touriste,Texte , Date, image, monument_id);
-        res.status(201).json({ id: insertId });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+commentMonumentRouter.post("/comment", async (req, res) => {
+    const { id_touriste, Texte, Date, image, monument_id } = req.body;
+    const comment = await createCommentMonument(id_touriste, Texte, Date, image, monument_id);
+    res.status(201).send({ id: comment });
 });
 
-// Route pour mettre à jour un commentaire d'un monument
-commentmonumentRouter.put('/commentsmonument/:id', async (req, res) => {
-    const { id } = req.params;
+commentMonumentRouter.put("/comment/:id", async (req, res) => {
+    const id = req.params.id;
     const { Texte, image } = req.body;
-    try {
-        const updatedId = await updateCommentMonument(id, Texte, image);
-        res.status(200).json({ id: updatedId });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    const updated = await updateCommentMonument(id, Texte, image);
+    if (updated) {
+        res.send('Updated successfully');
+    } else {
+        res.send('Unsuccessful update');
     }
 });
 
-// Route pour supprimer un commentaire d'un monument
-commentmonumentRouter.delete('/commentsmonument/:id', async (req, res) => {
-    const { id } = req.params;
-    try {
-        const deletedId = await deleteCommentMonument(id);
-        res.status(200).json({ id: deletedId });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+commentMonumentRouter.delete("/comment/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteCommentMonument(id);
+    if (deleted) {
+        res.send('Deleted successfully');
+    } else {
+        res.send('Unsuccessful delete');
     }
 });
 
-export {commentmonumentRouter}
+commentMonumentRouter.get("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
+
+commentMonumentRouter.delete("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+commentMonumentRouter.put("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const { image } = req.body;
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
+    }
+});
+
+export { commentMonumentRouter };

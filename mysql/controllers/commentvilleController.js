@@ -38,3 +38,33 @@ export async function deleteCommentVille(id_commentaire) {
     `, [id_commentaire]);
     return result.affectedRows;
 }
+
+// Get the image of a comment for ville by ID
+export async function getImage(id) {
+    const [rows] = await pool.query("SELECT image FROM commentville WHERE id_commentaire = ?", [id]);
+    if (rows.length > 0) {
+        return rows[0].image; // Assuming 'image' is the name of the column LONGBLOB
+    } else {
+        throw new Error("Image not found");
+    }
+}
+
+// Delete the image of a comment for ville by ID
+export async function deleteImage(id_commentaire) {
+    const [result] = await pool.query(`
+        UPDATE commentville
+        SET image = NULL
+        WHERE id_commentaire = ?
+    `, [id_commentaire]);
+    return result.affectedRows;
+}
+
+// Update the image of a comment for ville
+export async function updateImage(id_commentaire, image) {
+    const [result] = await pool.query(`
+        UPDATE commentville
+        SET image = ?
+        WHERE id_commentaire = ?
+    `, [image, id_commentaire]);
+    return result.affectedRows;
+}

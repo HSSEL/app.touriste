@@ -87,3 +87,59 @@ export async function getImage3(id) {
         throw new Error("Image not found");
     }
 }
+
+// Function to update an image
+export async function updateImage1(id, image) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image = ?
+        WHERE etablissement_id = ?
+    `, [image, id]);
+    return result.affectedRows;
+}
+
+export async function updateImage2(id, image2) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image2 = ?
+        WHERE etablissement_id = ?
+    `, [image2, id]);
+    return result.affectedRows;
+}
+
+export async function updateImage3(id, image3) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image3 = ?
+        WHERE etablissement_id = ?
+    `, [image3, id]);
+    return result.affectedRows;
+}
+
+// Function to delete an image
+export async function deleteImage1(id) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image = NULL
+        WHERE etablissement_id = ?
+    `, [id]);
+    return result.affectedRows;
+}
+
+export async function deleteImage2(id) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image2 = NULL
+        WHERE etablissement_id = ?
+    `, [id]);
+    return result.affectedRows;
+}
+
+export async function deleteImage3(id) {
+    const [result] = await pool.query(`
+        UPDATE etablissement
+        SET image3 = NULL
+        WHERE etablissement_id = ?
+    `, [id]);
+    return result.affectedRows;
+}

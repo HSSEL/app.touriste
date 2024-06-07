@@ -17,16 +17,16 @@ publicationRouter.get("/Publication/:id",async (req,res)=>{
 })
 
 publicationRouter.post("/publicationCreate:",async (req,res)=>{
-    const {objet,text,image,type,date} =req.body
-    const sante=await createPublication(id_publication,objet,text,image,type,date)
+    const {objet,text,image,type,date,etablissement_id} =req.body
+    const sante=await createPublication(id_publication,objet,text,image,type,date,etablissement_id)
     res.status(201).send(publication)
 })
 
 
 publicationRouter.put("/publicationUpdate/:id", async (req, res) => {
     const id = req.params.id;
-    const { objet,text,image,type,date} = req.body;
-    const updated = await updatePublication(id, objet,text,image,type,date);
+    const { objet,text,image,type,date,etablissement_id} = req.body;
+    const updated = await updatePublication(id, objet,text,image,type,date,etablissement_id);
     if (updated) {
         res.send('Updated successfully');
     } else {

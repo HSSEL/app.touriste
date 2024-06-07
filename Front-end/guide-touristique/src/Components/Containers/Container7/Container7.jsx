@@ -222,7 +222,7 @@ const Container7 = () => {
                     if (data.type === "restaurant" || data.type === "hotel") {
                       return (
                         <div key={index}>
-                          <button onClick={ () => handlereserver(data.etablissement_id)}>Reserver</button>
+                          <button onClick={ () => handlereserver(data)}>Reserver</button>
                         </div>
                       );
                     } else {

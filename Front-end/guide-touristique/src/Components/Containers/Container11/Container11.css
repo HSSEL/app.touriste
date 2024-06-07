@@ -1,0 +1,79 @@
+.con11_1 {
+    width: 260px;
+    height: 260px;
+    border-radius: 140px;
+    border: 1px solid white;
+    position: fixed;
+    top: 120px;
+    left: 40px;
+}
+.con11_2 {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid white;
+    position: fixed;
+    bottom: 40px;
+    left: 120px;
+}
+.con11_3 {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid white;
+    position: fixed;
+    bottom: 40px;
+    left: 430px;
+}
+
+.con11_01 h1{
+    position: fixed;
+    top: 120px;
+    left: 320px;
+    margin: 0;
+    font-size: 30px;
+    color: rgb(160, 209, 255, 1);
+}
+.con11_01 p {
+    font-size: 20px;
+    position: fixed;
+    left: 320px;
+    top: 150px;
+}
+
+.c11form {
+    position: fixed;
+    right: 100px;
+    top: 130px;
+}
+
+.login1 input {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 350px;
+    border: 1px solid white;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.login1 h5{
+    margin: 0;
+    margin-bottom: 5px;
+}
+.login1 h1{
+    margin: 0;
+    margin-bottom: 30px;
+    width: 350px;
+    text-align: center;
+}
+
+.login1 button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    border: 1px solid white;
+    width: 150px;
+    text-align: center;
+    margin: 0 100px;
+    margin-top: 20px;
+}

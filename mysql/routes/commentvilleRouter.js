@@ -72,4 +72,37 @@ commentvilleRouter.delete('/commentsville/:id', async (req, res) => {
     }
     });
 
-    export { commentvilleRouter }
+commentvilleRouter.get("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const image = await getImage(id);
+        res.writeHead(200, {'Content-Type': 'image/png'});
+        res.end(image, 'binary');
+    } catch (error) {
+        res.status(404).send("Image not found");
+    }
+});
+
+commentvilleRouter.delete("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+commentvilleRouter.put("/commentImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const { image } = req.body;
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
+    }
+});
+
+
+export { commentvilleRouter }

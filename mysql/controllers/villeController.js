@@ -1,58 +1,75 @@
-import { pool } from "../databases.js"
+import { pool } from "../databases.js";
 
-export async function getVilles(){
-    const [row]=await pool.query("SELECT * FROM ville")
-    return row
+// Get all villes
+export async function getVilles() {
+    const [rows] = await pool.query("SELECT * FROM ville");
+    return rows;
 }
 
-const ville=await getVilles()
-//console.log(ville)
-
-export async function getVille(id){
-    const [row]=await pool.query(`
-    SELECT * 
-    FROM ville 
-    WHERE id_ville = ?
-    `,[id])
-    return row[0]
+// Get a single ville by ID
+export async function getVille(id) {
+    const [rows] = await pool.query(`
+        SELECT * 
+        FROM ville 
+        WHERE id_ville = ?
+    `, [id]);
+    return rows[0];
 }
 
-const villepremiere=await getVille(1)
-//console.log(villepremiere)
-
-// we could have written ${id} but its an untrusted statement its called tampled statement and what is written above is called prepared statement
-
-
-export async function createVille(Nom,Description,Quartiers,image){
-    const [result]= await pool.query(`
-            INSERT INTO ville(Nom,Description,Quartiers,image)
-            VALUES(?,?,?,?)
-    `,[Nom,Description,Quartiers,image])
-    return result.insertId
+// Create a new ville
+export async function createVille(Nom, Description, Quartiers, image) {
+    const [result] = await pool.query(`
+            INSERT INTO ville(Nom, Description, Quartiers, image)
+            VALUES(?, ?, ?, ?)
+    `, [Nom, Description, Quartiers, image]);
+    return result.insertId;
 }
 
-export async function updateVille(id_ville,Nom,Description,Quartiers,image){
-    const [result]= await pool.query(`
+// Update an existing ville
+export async function updateVille(id_ville, Nom, Description, Quartiers, image) {
+    const [result] = await pool.query(`
         UPDATE ville
-        SET Nom=? ,Description=? ,Quartiers=?, image=?
+        SET Nom = ?, Description = ?, Quartiers = ?, image = ?
         WHERE id_ville = ?
-    `,[id_ville,Nom,Description,Quartiers,image])
-    return result.insertId
+    `, [Nom, Description, Quartiers, image, id_ville]);
+    return result.affectedRows;
 }
 
-export async function deleteVille(id_ville){
-    const [result]= await pool.query(`
-        DELETE ville
+// Delete a ville
+export async function deleteVille(id_ville) {
+    const [result] = await pool.query(`
+        DELETE FROM ville
         WHERE id_ville = ?
-    `,[id_ville])
-    return result.insertId
+    `, [id_ville]);
+    return result.affectedRows;
 }
 
+// Get the image of a ville by ID
 export async function getImage(id) {
-    const [row] = await pool.query("SELECT image FROM ville WHERE id_ville = ?", [id]);
-    if (row.length > 0) {
-        return row[0].image; // Assume que image est le nom de la colonne LONGBLOB
+    const [rows] = await pool.query("SELECT image FROM ville WHERE id_ville = ?", [id]);
+    if (rows.length > 0) {
+        return rows[0].image; // Assuming 'image' is the name of the column LONGBLOB
     } else {
         throw new Error("Image not found");
     }
+}
+
+// Function to update an image
+export async function updateImage(id, image) {
+    const [result] = await pool.query(`
+        UPDATE ville
+        SET image=?
+        WHERE id_ville=?
+    `, [image, id]);
+    return result.affectedRows;
+}
+
+// Function to delete an image
+export async function deleteImage(id) {
+    const [result] = await pool.query(`
+        UPDATE ville
+        SET image=NULL
+        WHERE id_ville=?
+    `, [id]);
+    return result.affectedRows;
 }

@@ -1,32 +1,33 @@
-import express from 'express'
+import express from 'express';
 
-import { getTouristes,getTouriste,createTouriste,updateTouriste,deleteTouriste,getImage } from '../controllers/touristeController.js'
+import {
+    getTouristes, getTouriste, createTouriste, updateTouriste, deleteTouriste,
+    getImage, updateImage, deleteImage
+} from '../controllers/touristeController.js';
 
-const touristeRouter=express.Router()
+const touristeRouter = express.Router();
 
+touristeRouter.get("/Touristes", async (_req, res) => {
+    const touristes = await getTouristes();
+    res.send(touristes);
+});
 
-touristeRouter.get("/touristes",async (_req,res)=>{
-    const touristes=await getTouristes()
-    res.send(touristes)
-})
-
-touristeRouter.get("/touriste/:id",async (req,res)=>{
-    const id= req.params.id
-    const touriste=await getTouriste(id)
-    res.send(touriste)
-})
-
-
-touristeRouter.post("/touriste:",async (req,res)=>{
-    const {Nom,Prenom,adresse,telephone,localisation,villeVisite,image} =req.body
-    const touriste=await createTouriste(Nom,Prenom,adresse,telephone,localisation,villeVisite,image)
-    res.status(201).send(touriste)
-})
-
-touristeRouter.put("/touriste/:id", async (req, res) => {
+touristeRouter.get("/Touriste/:id", async (req, res) => {
     const id = req.params.id;
-    const { Nom,Prenom,adresse,telephone,localisation,villeVisite,image} = req.body;
-    const updated = await updateTouriste(id, Nom,Prenom,adresse,telephone,localisation,villeVisite,image);
+    const touriste = await getTouriste(id);
+    res.send(touriste);
+});
+
+touristeRouter.post("/Touriste", async (req, res) => {
+    const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image } = req.body;
+    const touriste = await createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image);
+    res.status(201).send(touriste);
+});
+
+touristeRouter.put("/Touriste/:id", async (req, res) => {
+    const id = req.params.id;
+    const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image } = req.body;
+    const updated = await updateTouriste(id, Nom, Prenom, adresse, telephone, localisation, villeVisite, image);
     if (updated) {
         res.send('Updated successfully');
     } else {
@@ -34,9 +35,7 @@ touristeRouter.put("/touriste/:id", async (req, res) => {
     }
 });
 
-
-
-touristeRouter.delete("/touriste/:id", async (req, res) => {
+touristeRouter.delete("/Touriste/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTouriste(id);
     if (deleted) {
@@ -46,16 +45,38 @@ touristeRouter.delete("/touriste/:id", async (req, res) => {
     }
 });
 
-
-touristeRouter.get("/touristeImage/:id", async (req, res) => {
+touristeRouter.get("/TouristeImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const image = await getImage(id);
-        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.writeHead(200, { 'Content-Type': 'image/png' });
         res.end(image, 'binary');
     } catch (error) {
         res.status(404).send("Image not found");
     }
 });
 
-export {touristeRouter}
+// Route to update an image
+touristeRouter.put("/updateImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const { image } = req.body;
+    const updated = await updateImage(id, image);
+    if (updated) {
+        res.send('Image updated successfully');
+    } else {
+        res.send('Unsuccessful image update');
+    }
+});
+
+// Route to delete an image
+touristeRouter.delete("/deleteImage/:id", async (req, res) => {
+    const id = req.params.id;
+    const deleted = await deleteImage(id);
+    if (deleted) {
+        res.send('Image deleted successfully');
+    } else {
+        res.send('Unsuccessful image delete');
+    }
+});
+
+export { touristeRouter };

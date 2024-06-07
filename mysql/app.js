@@ -18,7 +18,7 @@ import { etablissementRouter } from './routes/etablissementRouter.js'
 import { utilisateurRouter} from './routes/userRouter.js'
 import {commentsanteRouter} from './routes/commentsanteRouter.js'
 import { commentetablissementRouter } from './routes/commentetablissementRouter.js'
-import {authRouter} from './routes/authRouter.js'
+import authRouter from './routes/authRouter.js'
 const app=express()
 
 app.use(express.json())

@@ -17,7 +17,7 @@ export async function getCommentPublication(id) {
 export async function createCommentPublication(id_touriste,Texte , Date, image, id_publication) {
     const [result] = await pool.query(`
         INSERT INTO commentpublication(id_touriste,Texte , Date, image, id_publication)
-        VALUES(?, ?, ?, ?, ?,?)
+        VALUES(?, ?, ?, ?, ?)
     `, [id_touriste,Texte , Date, image, id_publication]);
     return result.insertId;
 }

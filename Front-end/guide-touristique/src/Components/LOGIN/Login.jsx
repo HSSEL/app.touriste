@@ -34,6 +34,10 @@ const Login0 = () => {
         setPassword(e.target.value);
     };
 
+    const handleClicklog = () => {
+        navigate('/new')
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Implement your login logic here
@@ -79,7 +83,7 @@ const Login0 = () => {
                 <button type="submit">Se connecter</button>
                 <div className='register-prompt'>
                     <h4>Vous n'avez pas un compte?</h4>
-                    <h4 className='register-link'>Créer un!</h4>
+                    <h4 onClick={handleClicklog} className='register-link'>Créer un!</h4>
                 </div>
             </form>
         </div>

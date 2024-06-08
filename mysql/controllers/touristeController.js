@@ -13,12 +13,19 @@ export async function getTouriste(id) {
     `, [id]);
     return row[0];
 }
-
+/* 
 export async function createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image) {
     const [result] = await pool.query(`
         INSERT INTO touriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image)
         VALUES(?,?,?,?,?,?,?)
     `, [Nom, Prenom, adresse, telephone, localisation, villeVisite, image]);
+    return result.insertId;
+} */
+export async function createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email) {
+    const [result] = await pool.query(`
+        INSERT INTO touriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email)
+        VALUES(?,?,?,?,?,?,?, ?, ?)
+    `, [Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email]);
     return result.insertId;
 }
 

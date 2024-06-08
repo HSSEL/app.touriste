@@ -19,8 +19,8 @@ touristeRouter.get("/Touriste/:id", async (req, res) => {
 });
 
 touristeRouter.post("/Touriste", async (req, res) => {
-    const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image } = req.body;
-    const touriste = await createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image);
+    const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email } = req.body;
+    const touriste = await createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email);
     res.status(201).send(touriste);
 });
 

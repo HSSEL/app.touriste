@@ -10,6 +10,7 @@ import Ville from './Pages/Ville';
 import Reetab from './Pages/Reetab';
 import Reserver from './Pages/Reserver';
 import Logout from './Pages/Logout';
+import New from './Pages/New';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/reetab" element={<Reetab/>} />
             <Route path="/reserver" element={<Reserver/>} />
             <Route path="/logout" element={<Logout/>} />
+            <Route path="/new" element={<New/>} />
             </Routes> 
             </BrowserRouter>
         </div>

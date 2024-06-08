@@ -219,7 +219,7 @@ const Container7 = () => {
 
               <div className='etabprof004'>
                   {etabData.map((data, index) => {
-                    if (data.type === "restaurant" || data.type === "hotel") {
+                    if (data.type === "hotel") {
                       return (
                         <div key={index}>
                           <button onClick={ () => handlereserver(data)}>Reserver</button>

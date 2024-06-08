@@ -1,0 +1,61 @@
+/* Style for the main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+/* Style for the input fields */
+.container input {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for the buttons */
+.container button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+/* Style for the list of establishments */
+.container .establishments {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for each establishment item */
+.container .establishment {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Style for the edit and delete buttons in each establishment item */
+.container .establishment-buttons button {
+    margin-left: 5px;
+}
+
+/* Style for the h2 headings */
+.container h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}

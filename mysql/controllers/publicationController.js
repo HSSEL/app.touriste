@@ -82,7 +82,7 @@ export async function deleteImage(id) {
     `, [id]);
     return result.affectedRows;
 }
-
+/* 
 export async function updateCoeur(id_publication ,coeur){
     const [result]= await pool.query(`
         UPDATE publication
@@ -91,4 +91,14 @@ export async function updateCoeur(id_publication ,coeur){
     `,[id_publication ,coeur])
     return result.insertId
 
-}
+} */
+    export async function updateCoeur(id_publication, coeur) {
+        const [result] = await pool.query(`
+            UPDATE publication
+            SET coeur = ?
+            WHERE id_publication = ?
+        `, [coeur, id_publication]);
+    
+        return result.affectedRows; // Number of affected rows
+    }
+    

@@ -53,7 +53,7 @@ publicationRouter.get("/PublicationImage/:id", async (req, res) => {
     }
 });
 
-
+/* 
 publicationRouter.put('/publication/:id/coeur', async (req, res) => {
     const { id } = req.params;
     const { coeur } = req.body;
@@ -64,6 +64,19 @@ publicationRouter.put('/publication/:id/coeur', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
+}); */
+
+publicationRouter.put('/publication/:id/coeur', async (req, res) => {
+    const { id } = req.params;
+    const { coeur } = req.body;
+
+    try {
+        const result = await updateCoeur(id, coeur);
+        res.status(200).json({ message: 'Number of hearts updated successfully', updatedId: id });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
+
 
 export { publicationRouter };

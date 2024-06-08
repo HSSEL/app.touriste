@@ -37,17 +37,13 @@ const Container11 = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const reservationData = {/* 
-            id_reservation: 1, */
+        const reservationData = {
             id_touriste: 1,        
             etablissement_id: etablissement_id,
             dateReservation: new Date().toISOString().split('T')[0],
             debut_temp: dateDebut,
             fin_temp: dateFin,
-            nombrePersonne: nombrePersonne,
-            status: 'pending',     // Replace with the actual status
-            creee_le: new Date().toISOString(),
-            modifie_le: new Date().toISOString()
+            nombrePersonne: nombrePersonne
         };
 
         try {
@@ -55,7 +51,6 @@ const Container11 = () => {
 
             if (response.status === 201) {
                 console.log('Reservation created successfully:', response.data);
-                // Optionally, you can reset the form or display a success message
             } else {
                 console.error('Failed to create reservation');
             }

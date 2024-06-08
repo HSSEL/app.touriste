@@ -115,6 +115,10 @@
     position: fixed;
     top: 110px;
     right: 20px;
+    height: 590px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
  } 
 
  .testingthis {

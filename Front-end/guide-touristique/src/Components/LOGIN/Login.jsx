@@ -45,7 +45,7 @@ const Login0 = () => {
 
         if (user) {
             console.log('Login successful:', user);
-            alert('Login successful!');
+            //alert('Login successful!');
             navigate('/home', {state: {id: user.id_touriste}})
 
         } else {

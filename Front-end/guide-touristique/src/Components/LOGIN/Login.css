@@ -53,11 +53,11 @@
     font-size: 15px;
 }
 
-.thislogin{
+.register-link{
     color: rgb(160, 209, 255, 1);
 }
 
-.LOGIN001{
+.register-prompt{
     display: flex;
     gap: 5px;
     justify-content: center;

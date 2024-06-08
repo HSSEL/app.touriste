@@ -17,7 +17,7 @@ const Mycomment = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const id_touriste = 1;
+            const id_touriste = 20;
             const Texte = comment;
             const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' '); 
             const image = '';

@@ -1,16 +1,13 @@
-
-import Container12 from "../Components/Containers/container12/container12.jsx";
-import NavAdmin from "../Components/NavBar/NavAdmin";
+import BG from "../Components/BG/BG";
+import Utilisateurs from "../Components/Admin/Utilisateurs/utilisateurs";
 
 
 const Admin = () => {
 
     return (
         <div>
-            
-            <NavAdmin/>
-            <Container12/>
-            
+            <BG/>
+            <Utilisateurs/>
         </div>
     );
 };

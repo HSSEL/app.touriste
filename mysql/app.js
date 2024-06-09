@@ -19,11 +19,24 @@ import { utilisateurRouter} from './routes/userRouter.js'
 import {commentSanteRouter} from './routes/commentsanteRouter.js'
 import  {commentEtablissementRouter} from './routes/commentetablissementRouter.js'
 
-const app=express()
+const app=express()// ici on initialise une instance Express 
+//ce qui est equivalent a la creation d'un serveur web pour notre plateforme
 
-app.use(express.json())
-app.use(cors());
 
+/*
+Configuration de lapplication Express: on definit des middlewares
+qui sont des fonctions qui ont accès à l'objet request (requête)
+ et response (réponse) d'une requête HTTP.
+*/
+
+app.use(express.json())//permet a mon application de comprendre des requetes json
+app.use(cors());//permettre au code du frontend d'utiliser du code backend
+
+
+/*si dessous on associe des URL ou endpoint 
+comme '/vi' a des fonctions de gestionnaire (handler functions) comme villerouter
+qui sont exécutées lorsque l'endpoint est atteint
+*/
 app.use('/vi',villeRouter)
 app.use('/tro',tranportRouter)
 app.use('/tou',touristeRouter)
@@ -44,7 +57,9 @@ app.use('/compa',commentPaysageRouter)
 app.use('/compu',commentPublicationRouter)
 
 
-
+/* Ci dessous on definit des middleware de gestion des erreurs  
+pour gérer les erreurs qui se produisent pendant le traitement des requêtes
+*/
 app.use((err, req, res, next) => {
     console.error(err.stack)
     res.status(500).send('Something broke!')
@@ -52,4 +67,5 @@ app.use((err, req, res, next) => {
 
 app.listen(8080,()=>{
     console.log("Server is running on port 8080")
+    //on demarre le serveur avec le port 8080
 })

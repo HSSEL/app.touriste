@@ -16,10 +16,10 @@ utilisateurRouter.post('/auth', async (req, res) => {
         const utilisateur = await getLogin(email, password)
 
         if (utilisateur) {
-            if (utilisateur.type === 'touriste') {
-                res.sendFile(path.join(__dirname, '../chemin/vers/Home.jsx'));
-            } else if (utilisateur.type === 'etablissement') {
-                res.sendFile(path.join(__dirname, '../chemin/vers/interface_etablissement.html'));
+            if (utilisateur.isEstablishment === true) {
+                res.sendFile(path.join(__dirname, '../Front-end\guide-touristique/src/Pages/Home.jsx'));
+            } else if (utilisateur.isEstablishment === false) {
+                res.sendFile(path.join(__dirname, '../Front-end\guide-touristique/src/Pages/Home.jsx'));
             }
         } else {
             res.send('Incorrect Email and/or Password!')

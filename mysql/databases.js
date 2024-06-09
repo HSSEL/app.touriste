@@ -18,14 +18,7 @@ const pool=mysql.createPool({
     database: process.env.MYSQL_DATABASE
 }).promise()
 
-//const result=await pool.query("SELECT * FROM ville")
-//const rows=result[0];
-
-
-//console.log(rows)
-// ils se stockent en tant qu'une liste la premire contient les valeurs et la seconde contient les attributs de la table
-// on peut ecrire pour afficher que les valeurs(premier element de la liste )la ligne qui precede
-//ou bien : const [result]=await pool.query("SELECT * FROM ville")
-
-
+//on cree un fichier env dont on a va stocker les informations de la base de donnes car on risque de divulguer 
+//notre mot de passe si on le partage dans github par exemple
+//donc env est mis en place cote securite
 export  {pool}

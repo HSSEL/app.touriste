@@ -1,26 +1,26 @@
 import express from 'express';
 
 import {
-    getTranports, getTranport, getTranportVille, createTransport, updateTransport, deleteTransport,
+    getTransports, getTransport, getTransportVille, createTransport, updateTransport, deleteTransport,
     getImage, updateImage, deleteImage
 } from '../controllers/transportController.js';
 
 const tranportRouter = express.Router();
 
 tranportRouter.get("/Tranports", async (_req, res) => {
-    const tranports = await getTranports();
+    const tranports = await getTransports();
     res.send(tranports);
 });
 
 tranportRouter.get("/Tranport/:id", async (req, res) => {
     const id = req.params.id;
-    const tranport = await getTranport(id);
+    const tranport = await getTransport(id);
     res.send(tranport);
 });
 
 tranportRouter.get("/TranportVille/:id", async (req, res) => {
     const id = req.params.id;
-    const tranportVille = await getTranportVille(id);
+    const tranportVille = await getTransportVille(id);
     res.send(tranportVille);
 });
 

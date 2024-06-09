@@ -24,9 +24,14 @@
 }
 
 .postdes{
-    width: 500PX;
+    width: 550PX;
     color: #FFFFFF;
     text-align: justify;
+    font-size: 20px;
+}
+
+.postdes h5{
+    font-weight: 500;
 }
 
 .postdes a {

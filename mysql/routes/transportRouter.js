@@ -1,7 +1,7 @@
 import express from 'express';
 
 import {
-    getTranports, getTranport, getTranportVille, createTranport, updateTransport, deleteTransport,
+    getTranports, getTranport, getTranportVille, createTransport, updateTransport, deleteTransport,
     getImage, updateImage, deleteImage
 } from '../controllers/transportController.js';
 
@@ -26,7 +26,7 @@ tranportRouter.get("/TranportVille/:id", async (req, res) => {
 
 tranportRouter.post("/Tranport", async (req, res) => {
     const { ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif } = req.body;
-    const tranport = await createTranport(ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
+    const tranport = await createTransport(ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
     res.status(201).send(tranport);
 });
 

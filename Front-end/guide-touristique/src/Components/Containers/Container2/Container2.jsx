@@ -1,5 +1,3 @@
-// HADA DYAL PUBLICATIONS
-
 import './Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';
@@ -9,16 +7,15 @@ import comment from '../../../assets/Options/comment.svg';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-
 const Container2 = ({ filterEtab }) => {
   const navigate = useNavigate();
 
   const handleCommentClick = (publication) => {
-    navigate('/comment', { state: { id_publication: publication.id_publication} });
+    navigate('/comment', { state: { id_publication: publication.id_publication } });
   };
-  
+
   const handleetabClick = (publication) => {
-    navigate('/etab', { state: { etablissement_id: publication.etablissement_id} });
+    navigate('/etab', { state: { etablissement_id: publication.etablissement_id } });
   };
 
   const [postData, setPostData] = useState(staticPostData);
@@ -26,8 +23,8 @@ const Container2 = ({ filterEtab }) => {
 
   useEffect(() => {
     const getPostData = async () => {
-      const postData = await fetchPostData(); 
-      console.log('Fetched post data:', postData); 
+      const postData = await fetchPostData();
+      console.log('Fetched post data:', postData);
       if (postData.length > 0) {
         setPostData(postData);
       }
@@ -35,11 +32,11 @@ const Container2 = ({ filterEtab }) => {
 
     getPostData();
   }, []);
-  
+
   useEffect(() => {
     const getEtabData = async () => {
-      const etabData = await fetchetabData(); 
-      console.log('Fetched etab data:', etabData); 
+      const etabData = await fetchetabData();
+      console.log('Fetched etab data:', etabData);
       if (etabData.length > 0) {
         setEtabData(etabData);
       }
@@ -53,27 +50,28 @@ const Container2 = ({ filterEtab }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  
-    const handleLikeClick = async (publication) => {
-      try {
-          const response = await fetch(`/pub/publication/${publication.id_publication}/coeur`, {
-              method: 'PUT',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ coeur: !publication.coeur })
-          });
-          if (response.ok) {
-              setPostData(postData.map(post => post.id_publication === publication.id_publication ? { ...post, coeur: !post.coeur } : post));
-              setLikeImage(!publication.coeur ? like : like1); 
-          } else {
-              console.error('Failed to update like status');
-          }
-      } catch (error) {
-          console.error('Failed to update like status:', error);
+  const handleLikeClick = async (publication) => {
+    try {
+      const response = await fetch(`http://localhost:8080/pub/publication/${publication.id_publication}/coeur`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ coeur: !publication.coeur })
+      });
+      if (response.ok) {
+        setPostData(prevPostData => 
+          prevPostData.map(post =>
+            post.id_publication === publication.id_publication ? { ...post, coeur: !post.coeur } : post
+          )
+        );
+      } else {
+        console.error('Failed to update like status');
       }
-  }; 
-
+    } catch (error) {
+      console.error('Failed to update like status:', error);
+    }
+  };
 
   return (
     <div>
@@ -105,11 +103,16 @@ const Container2 = ({ filterEtab }) => {
                       </div>
                       <div className='LCM'>
                         <div className='LC'>
-                          <img src={like} alt='Like icon' onClick={() => handleLikeClick(data)} style={{ cursor: 'pointer' }} />  
+                          <img
+                            src={data.coeur ? like1 : like}
+                            alt='Like icon'
+                            onClick={() => handleLikeClick(data)}
+                            style={{ cursor: 'pointer' }}
+                          />
                           <img src={comment} alt='Comment icon' onClick={() => handleCommentClick(data)} />
                         </div>
                         <div className='moreinfo'>
-                          <h5 onClick={() => handleetabClick(data)} >More info</h5>
+                          <h5 onClick={() => handleetabClick(data)}>More info</h5>
                         </div>
                       </div>
                     </>

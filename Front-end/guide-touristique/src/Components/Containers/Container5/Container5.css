@@ -95,3 +95,7 @@ input:focus {
     border-radius: 25px;
     padding: 10px 20px;
 }
+
+.form01{
+    display: flex;
+}

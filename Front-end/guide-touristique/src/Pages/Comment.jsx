@@ -5,7 +5,8 @@ import Container1 from "../Components/Containers/Container1/Container1";
 import Container4 from "../Components/Containers/Container4/Container4";
 import Container5 from "../Components/Containers/Container5/Container5";
 
-const Home = () => {
+
+const Comment = () => {
 
   return (
     <div>
@@ -19,4 +20,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Comment;

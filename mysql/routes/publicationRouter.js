@@ -1,9 +1,6 @@
 import express from 'express';
 
-import {
-    getPublications, getPublication, createPublication, updatePublication, deletePublication,
-    getImage, updateImage, deleteImage
-} from '../controllers/publicationController.js';
+import { getPublications, getPublication, createPublication, updatePublication, deletePublication,getImage,updateCoeur} from '../controllers/publicationController.js'
 
 const publicationRouter = express.Router();
 
@@ -56,27 +53,30 @@ publicationRouter.get("/PublicationImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
-publicationRouter.put("/updateImage/:id", async (req, res) => {
-    const id = req.params.id;
-    const { image } = req.body;
-    const updated = await updateImage(id, image);
-    if (updated) {
-        res.send('Image updated successfully');
-    } else {
-        res.send('Unsuccessful image update');
+/* 
+publicationRouter.put('/publication/:id/coeur', async (req, res) => {
+    const { id } = req.params;
+    const { coeur } = req.body;
+
+    try {
+        const result = await updateCoeur(id, coeur);
+        res.status(200).json({ message: 'Number of hearts updated successfully', updatedId: result });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}); */
+
+publicationRouter.put('/publication/:id/coeur', async (req, res) => {
+    const { id } = req.params;
+    const { coeur } = req.body;
+
+    try {
+        const result = await updateCoeur(id, coeur);
+        res.status(200).json({ message: 'Number of hearts updated successfully', updatedId: id });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 
-// Route to delete an image
-publicationRouter.delete("/deleteImage/:id", async (req, res) => {
-    const id = req.params.id;
-    const deleted = await deleteImage(id);
-    if (deleted) {
-        res.send('Image deleted successfully');
-    } else {
-        res.send('Unsuccessful image delete');
-    }
-});
 
 export { publicationRouter };

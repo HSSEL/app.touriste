@@ -18,7 +18,7 @@ import { etablissementRouter } from './routes/etablissementRouter.js'
 import { utilisateurRouter} from './routes/userRouter.js'
 import {commentSanteRouter} from './routes/commentsanteRouter.js'
 import  {commentEtablissementRouter} from './routes/commentetablissementRouter.js'
-import {authRouter} from './routes/authRouter.js'
+
 const app=express()
 
 app.use(express.json())
@@ -42,10 +42,6 @@ app.use('/comvi',commentvilleRouter)
 app.use('/comtr',commenttransportRouter)
 app.use('/compa',commentPaysageRouter)
 app.use('/compu',commentPublicationRouter)
-
-app.use('/auth',authRouter)
-
-
 
 
 

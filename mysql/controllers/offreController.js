@@ -1,15 +1,17 @@
-import { pool } from "../databases.js"
+import { pool } from "../databases.js";
 
-export async function getOffres(){
-    const [row]=await pool.query("SELECT * FROM offre")
-    return row
+// Récupérer toutes les offres
+export async function getOffres() {
+    const [row] = await pool.query("SELECT * FROM offre");
+    return row; // Retourne toutes les lignes récupérées de la table 'offre'
 }
 
-export async function getOffre(id){
-    const [row]=await pool.query(`
-    SELECT * 
-    FROM offre 
-    WHERE Id_offre = ?
-    `,[id])
-    return row[0]
+// Récupérer une offre spécifique par ID
+export async function getOffre(id) {
+    const [row] = await pool.query(`
+        SELECT * 
+        FROM offre 
+        WHERE Id_offre = ?
+    `, [id]);
+    return row[0]; // Retourne la première ligne correspondant à cet ID d'offre
 }

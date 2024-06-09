@@ -1,55 +1,61 @@
-import { pool } from "../databases.js"
+import { pool } from "../databases.js";
 
-export async function getUtilisateurs(){
-    const [row]=await pool.query("SELECT * FROM user")
-    return row
+// Fonction pour récupérer tous les utilisateurs
+export async function getUtilisateurs() {
+    const [row] = await pool.query("SELECT * FROM users");
+    return row;
 }
 
-
-export async function getLogin(email,password){
-    const [row]=await pool.query(`
-    SELECT * 
-    FROM users 
-    WHERE email = ? AND password-?
-    `,[email,password])
-    return row[0]
-}
-export async function getUtilisateurEmail(id){
-    const [row]=await pool.query(`
-    SELECT email 
-    FROM users 
-    WHERE id = ? 
-    `,[id])
-    return row[0]
+// Fonction pour vérifier les informations de connexion et récupérer l'utilisateur correspondant
+export async function getLogin(email, password) {
+    const [row] = await pool.query(`
+        SELECT * 
+        FROM users 
+        WHERE email = ? AND password = ?
+    `, [email, password]);
+    return row[0];
 }
 
-export async function getUtilisateurMdp(id){
-    const [row]=await pool.query(`
-    SELECT password
-    FROM users 
-    WHERE id = ?
-    `,[id])
-    return row[0]
+// Fonction pour récupérer l'email de l'utilisateur par son ID
+export async function getUtilisateurEmail(id) {
+    const [row] = await pool.query(`
+        SELECT email 
+        FROM users 
+        WHERE id = ? 
+    `, [id]);
+    return row[0];
 }
 
-
-export async function createUtilisateur(email,password,isEstablishment ){
-    const [result]= await pool.query(`
-            INSERT INTO users(email,password,isEstablishment )
-            VALUES(?,?,?)
-    `,[email,password,isEstablishment ])
-    return result.insertId
-}
-
-export async function updateUtilisateur(id,email,password,isEstablishment){
-    const [result]= await pool.query(`
-        UPDATE users
-        SET email=? AND password=? AND isEstablishment=?
+// Fonction pour récupérer le mot de passe de l'utilisateur par son ID
+export async function getUtilisateurMdp(id) {
+    const [row] = await pool.query(`
+        SELECT password
+        FROM users 
         WHERE id = ?
-    `,[id,email,password,isEstablishment])
-    return result.insertId
+    `, [id]);
+    return row[0];
 }
 
+// Fonction pour créer un nouvel utilisateur
+export async function createUtilisateur(email, password, isEstablishment) {
+    const [result] = await pool.query(`
+        INSERT INTO users(email, password, isEstablishment)
+        VALUES(?,?,?)
+    `, [email, password, isEstablishment]);
+    return result.insertId;
+}
+
+// Fonction pour mettre à jour les informations de l'utilisateur
+export async function updateUtilisateur(id, email, password, isEstablishment) {
+    const [result] = await pool.query(`
+        UPDATE users
+        SET email=?, password=?, isEstablishment=?
+        WHERE id = ?
+    `, [email, password, isEstablishment, id]);
+    return result.insertId;
+}
+
+// Fonction de routage pour l'inscription d'un nouvel utilisateur
 export async function register(req, res) {
     const { name, surname, email, phone, password, isEstablishment } = req.body;
 
@@ -75,6 +81,7 @@ export async function register(req, res) {
     }
 }
 
+// Fonction de routage pour la connexion d'un utilisateur
 export async function login(req, res) {
     const { email, password } = req.body;
 
@@ -93,9 +100,3 @@ export async function login(req, res) {
         res.status(500).json({ error: error.message });
     }
 }
-
-
-
-
-
-

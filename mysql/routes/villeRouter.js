@@ -1,3 +1,9 @@
+/**
+ * Au niveau des fichiers du dossier routes nous definissant des routes pour gerer des operations 
+ * mentionnees au niveau des controllers
+ * cela permet de diviser notre application en modules logiques et de mieux organiser notre code
+*/
+
 import express from 'express';
 
 import {
@@ -8,6 +14,7 @@ import {
 const villeRouter = express.Router();
 
 villeRouter.get("/villes", async (_req, res) => {
+    //async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
     const villes = await getVilles();
     res.send(villes);
 });

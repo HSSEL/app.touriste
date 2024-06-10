@@ -26,6 +26,7 @@ import {
 
 const monumentRouter = express.Router();
 
+//afficher tous les monuments
 monumentRouter.get("/Monuments", async (_req, res) => {
     /*async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
         req et res :gérer les informations de la requête entrante et envoyer des réponses au client
@@ -38,18 +39,21 @@ monumentRouter.get("/Monuments", async (_req, res) => {
     res.send(monuments);
 });
 
+//afficher un seul monument
 monumentRouter.get("/Monument/:id", async (req, res) => {
     const id = req.params.id;
     const monument = await getMonument(id);
     res.send(monument);
 });
 
+//aafficher un monument selon sa ville
 monumentRouter.get("/monumentVille/:id", async (req, res) => {
     const id = req.params.id;
     const monumentVille = await getMonumentVille(id);
     res.send(monumentVille);
 });
 
+//modifier un monument
 monumentRouter.post("/Monument", async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
@@ -59,6 +63,7 @@ monumentRouter.post("/Monument", async (req, res) => {
     res.status(201).send(monument);
 });
 
+//modifier un monument selon son id
 monumentRouter.put("/Monument/:id", async (req, res) => {
     const id = req.params.id;
     const { id_ville, Nom, description, date_construction, style, hauteur, commanditaire, etat_conservation, fonction_actuelle, horaires_ouverture, frais_entree, accessibilite, evenements_speciaux, site_web, Localisation, image } = req.body;
@@ -70,6 +75,7 @@ monumentRouter.put("/Monument/:id", async (req, res) => {
     }
 });
 
+//supprimer un monument
 monumentRouter.delete("/Monument/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteMonument(id);
@@ -80,6 +86,7 @@ monumentRouter.delete("/Monument/:id", async (req, res) => {
     }
 });
 
+//aaffciher limage dun monument
 monumentRouter.get("/monumentImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -91,7 +98,7 @@ monumentRouter.get("/monumentImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
+// modifier limage dun monument
 monumentRouter.put("/updateImage/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
@@ -103,7 +110,7 @@ monumentRouter.put("/updateImage/:id", async (req, res) => {
     }
 });
 
-// Route to delete an image
+// supprimer limage dun monument
 monumentRouter.delete("/deleteImage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage(id);

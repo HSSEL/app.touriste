@@ -28,6 +28,7 @@ import {
 
 const etablissementRouter = express.Router();
 
+//afficher tous les etablissements
 etablissementRouter.get("/Etablissements", async (_req, res) => {
     /*async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
         req et res :gérer les informations de la requête entrante et envoyer des réponses au client
@@ -40,24 +41,28 @@ etablissementRouter.get("/Etablissements", async (_req, res) => {
     res.send(etablissements);
 });
 
+
+//afficher un seul etablissement
 etablissementRouter.get("/Etablissement/:id", async (req, res) => {
     const id = req.params.id;
     const etablissement = await getEtablissement(id);
     res.send(etablissement);
 });
 
+//afficher un etablissement selon sa ville
 etablissementRouter.get("/etablissementVille/:id", async (req, res) => {
     const id = req.params.id;
     const etablissementville = await getEtablissementVille(id);
     res.send(etablissementville);
 });
-
+//afficher etablissement selon son type
 etablissementRouter.get("/etablissement/:type", async (req, res) => {
     const type = req.params.type;
     const etablissementtype = await getEtablissementType(type);
     res.send(etablissementtype);
 });
 
+//ajout dun etablissement
 etablissementRouter.post("/Etablissement", async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
@@ -67,6 +72,7 @@ etablissementRouter.post("/Etablissement", async (req, res) => {
     res.status(201).send(etablissement);
 });
 
+//modifier un etablissement
 etablissementRouter.put("/Etablissement/:id", async (req, res) => {
     const id = req.params.id;
     const { id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating } = req.body;
@@ -78,6 +84,7 @@ etablissementRouter.put("/Etablissement/:id", async (req, res) => {
     }
 });
 
+//supprimer un etablissement
 etablissementRouter.delete("/Etablissement/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteEtablissement(id);
@@ -88,6 +95,7 @@ etablissementRouter.delete("/Etablissement/:id", async (req, res) => {
     }
 });
 
+//aafficher image 1
 etablissementRouter.get("/etablissementImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -99,6 +107,7 @@ etablissementRouter.get("/etablissementImage/:id", async (req, res) => {
     }
 });
 
+//afficher image2
 etablissementRouter.get("/etablissementImage2/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -110,6 +119,7 @@ etablissementRouter.get("/etablissementImage2/:id", async (req, res) => {
     }
 });
 
+//afficher image3
 etablissementRouter.get("/etablissementImage3/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -121,7 +131,7 @@ etablissementRouter.get("/etablissementImage3/:id", async (req, res) => {
     }
 });
 
-// Routes to update images
+// Routes pour modifier une  image
 etablissementRouter.put("/updateImage1/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
@@ -133,6 +143,7 @@ etablissementRouter.put("/updateImage1/:id", async (req, res) => {
     }
 });
 
+//modifier image2
 etablissementRouter.put("/updateImage2/:id", async (req, res) => {
     const id = req.params.id;
     const { image2 } = req.body;
@@ -144,6 +155,7 @@ etablissementRouter.put("/updateImage2/:id", async (req, res) => {
     }
 });
 
+//modifier image3
 etablissementRouter.put("/updateImage3/:id", async (req, res) => {
     const id = req.params.id;
     const { image3 } = req.body;
@@ -155,7 +167,7 @@ etablissementRouter.put("/updateImage3/:id", async (req, res) => {
     }
 });
 
-// Routes to delete images
+// Routes pour supprimer image
 etablissementRouter.delete("/deleteImage1/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage1(id);
@@ -166,6 +178,7 @@ etablissementRouter.delete("/deleteImage1/:id", async (req, res) => {
     }
 });
 
+//supprimer image2
 etablissementRouter.delete("/deleteImage2/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage2(id);
@@ -176,6 +189,7 @@ etablissementRouter.delete("/deleteImage2/:id", async (req, res) => {
     }
 });
 
+//supprimer image3
 etablissementRouter.delete("/deleteImage3/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage3(id);

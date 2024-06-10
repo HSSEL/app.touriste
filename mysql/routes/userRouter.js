@@ -55,9 +55,9 @@ utilisateurRouter.post('/auth', async (req, res) => {
         const utilisateur = await getLogin(email, password);
 
         if (utilisateur) {
-            if (utilisateur.isEstablishment === true) {
+            if (utilisateur.isEstablishment === 1) {
                 res.sendFile(path.join(__dirname, '../Front-end/guide-touristique/src/Pages/Home.jsx'));
-            } else if (utilisateur.isEstablishment === false) {
+            } else {
                 res.sendFile(path.join(__dirname, '../Front-end/guide-touristique/src/Pages/Home.jsx'));
             }
         } else {
@@ -98,7 +98,7 @@ utilisateurRouter.get('/Email/:id', async (req, res) => {
         }
     } catch(error) {
         console.error('Error retrieving email:', error);
-        res.status(500).send('Internal server error');
+        res.status(500).send('Internal server error');//500 pour erreur
     }
 });
 

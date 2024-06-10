@@ -19,6 +19,10 @@ const NavAdmin = () => {
         navigate('/etablissements')
     }
     
+    const handleville = () => {
+        navigate('/villesadm')
+    }
+
     return (
         <div className='NAV'>
             <div className='nav'>
@@ -28,7 +32,7 @@ const NavAdmin = () => {
                         <li onClick={handleetabs} className='etablissement'>Établissements</li>
                         <li className='user'>Publications</li>
                         <li className='user'>Offres</li>
-                        <li className='user'>Villes</li> 
+                        <li onClick={handleville} className='user'>Villes</li> 
                         <li onClick={handleAdm} className='Admin'>Admin</li>
                         <li className='Admin'>Se déconnecter</li>
                 </ul>

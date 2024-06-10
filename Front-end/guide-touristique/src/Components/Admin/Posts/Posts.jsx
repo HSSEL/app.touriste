@@ -6,6 +6,12 @@ import './Posts.css'
 
 const Posts = () => {
 
+    const navigate = useNavigate();
+
+    const handleville = () => {
+        navigate('/villesadm')
+    }
+
     const [ posts, setposts ] = useState([]);
     const [ etab, setetab ] = useState([]);
 
@@ -70,7 +76,7 @@ const Posts = () => {
                 </div>
                 <div className='pst07'>
                     <h2>Tous les villes de SARINI</h2>
-                    <button>Voir tous</button>
+                    <button onClick={handleville}>Voir tous</button>
                 </div>
             </div>
         </div>

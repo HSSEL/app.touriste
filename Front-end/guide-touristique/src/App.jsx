@@ -14,6 +14,7 @@ import New from './Pages/New';
 import TouristesPage from './Pages/Admin/Touristes'
 import Admin from './Pages/Admin/Admin';
 import EtabPage from './Pages/Admin/Etablissement';
+import Villesadmin from './Pages/Admin/Villesadm';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -74,6 +75,7 @@ const App = () => {
             <Route path="/touristes" element={<TouristesPage/>} />
             <Route path="/admin" element={<Admin/>} />
             <Route path="/etablissements" element={<EtabPage/>} />
+            <Route path="/villesadm" element={<Villesadmin/>} />
             
             </Routes> 
             </BrowserRouter>

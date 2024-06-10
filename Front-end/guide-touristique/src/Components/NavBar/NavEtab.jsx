@@ -17,8 +17,8 @@ const NavBarEtab = () => {
     }, [state]);
 
   
-  const handleClick1 = () => {
-    navigate('/home', {state}); 
+  const handleAPUB = () => {
+    navigate('/ajouterpub', {state}); 
   };
 
   const handleClick2 = () => {
@@ -39,7 +39,7 @@ const NavBarEtab = () => {
       <div className='nav'>
         <div className="nav-logo">SARINI</div>
         <ul className='nav-menu'>
-          <li onClick={handleClick1} className='home'>Ajouter une publication</li>
+          <li onClick={handleAPUB} className='home'>Ajouter une publication</li>
           <li onClick={handleClick2} className='services'>Publier un offre</li>
           <li onClick={handleClick3} className='aboutus'>Modifier mes infos</li>
           <li onClick={handlelogout} className='Admin'>Se déconnecter</li>

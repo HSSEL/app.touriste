@@ -1,20 +1,32 @@
 import './NavBar.css';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const NavBar = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const { state } =location;
+
+    useEffect(() => {
+      if (state) {
+          console.log('Received state from nav bar:', state);
+      }
+    }, [state]);
+
   
   const handleClick1 = () => {
-    navigate('/home'); 
+    navigate('/home', {state}); 
   };
 
   const handleClick2 = () => {
-    navigate('/services'); 
+    navigate('/services', {state}); 
   };
   
   const handleClick3 = () => {
-    navigate('/map'); 
+    navigate('/map', {state}); 
   };
 
   return (

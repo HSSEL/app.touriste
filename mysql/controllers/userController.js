@@ -16,6 +16,24 @@ export async function getLogin(email, password) {
     return row[0];
 }
 
+
+export async function getUserDetails(id, isEstablishment) {
+    if (isEstablishment === 1) {
+        const [row] = await pool.query(`
+            SELECT * 
+            FROM etablissement 
+            WHERE etablissement_id = ?
+        `, [id]);
+        return row[0];
+    } else {
+        const [row] = await pool.query(`
+            SELECT * 
+            FROM touriste 
+            WHERE id_touriste = ?
+        `, [id]);
+        return row[0];
+    }
+}
 // Fonction pour récupérer l'email de l'utilisateur par son ID
 export async function getUtilisateurEmail(id) {
     const [row] = await pool.query(`

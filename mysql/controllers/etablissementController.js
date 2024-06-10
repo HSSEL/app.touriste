@@ -1,4 +1,6 @@
-import { pool } from "../databases.js";
+import { pool } from "../databases.js";//Cette ligne importe l'objet pool depuis le fichier databases.js. 
+// L'objet pool est une instance de connexion à une base de données MySQL, 
+// qui est configurée pour exécuter des requêtes SQL.
 
 // Récupérer tous les établissements
 export async function getEtablissements() {

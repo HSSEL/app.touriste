@@ -73,7 +73,7 @@ commentPublicationRouter.delete("/comment/:id", async (req, res) => {
         res.send('Unsuccessful delete');
     }
 });
-//affciher image
+//afficher image
 commentPublicationRouter.get("/commentImage/:id", async (req, res) => {
     const id = req.params.id;
     try {

@@ -16,7 +16,6 @@ const Container2 = ({ filterEtab }) => {
   useEffect(() => {
     const getPostData = async () => {
       const postData = await fetchPostData(); 
-      console.log('Fetched post data:', postData); 
       if (postData.length > 0) {
         setPostData(postData);
       }

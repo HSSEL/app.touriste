@@ -1,22 +1,27 @@
 import './All.css'
 import React, { useEffect, useState } from 'react';
 import { fetchetabData } from '../../data/EtabData';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const All = () => {
   const [etabData, setEtabData] = useState([]);
-
+  const location = useLocation();
+  const { state } = location;
+  useEffect(() => {
+    if (state) {
+        console.log('Received state from aaaalllll:', state);
+    }
+  }, [state]);
   const navigate = useNavigate();
   
   const handleetabClick = (publication) => {
-    navigate('/etab', { state: { etablissement_id: publication.etablissement_id} });
+    navigate('/etab', { state: { ...location.state, etablissement_id: publication.etablissement_id} });
   };
 
   useEffect(() => {
     const getEtabData = async () => {
       try {
         const data = await fetchetabData();
-        console.log('Fetched etab data:', data);
         if (Array.isArray(data) && data.length > 0) {
           setEtabData(data);
         }

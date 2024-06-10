@@ -1,18 +1,21 @@
 // hada fih les services
 
 import './Container6.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Container6 = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const { state } = location;
+
 
     const handleClick = () => {
-        navigate('/villes');
+        navigate('/villes',  {state : {...location.state}});
     };
     
     const handleClick2 = () => {
-        navigate('/reetab');
+        navigate('/reetab', {state : {...location.state}});
     };
   
   

@@ -10,10 +10,18 @@ import MapComponent from '../../../Map/Map.jsx';
 
 const Container9 = () => {
     const location = useLocation();
+    const { state } = location;
     const { ville_id } = location.state;
 
     const [villeData, setVilleData] = useState(null);
     const [etab, setEtabData] = useState([]);
+
+    // hadi 5edama mzyan t2ekkedt mnha
+    useEffect(() => {
+        if (state) {
+            console.log('Received villee aaaaaaaaaaaaaaa:', state);
+        }
+    }, [state]);
 
     useEffect(() => {
         const getVilleData = async () => {
@@ -46,7 +54,7 @@ const Container9 = () => {
 
     const navigate = useNavigate();
     const handleclick01 = (data) => {
-        navigate('/etab', { state: { etablissement_id: data.etablissement_id } });
+        navigate('/etab', { state: { ...location.state, etablissement_id: data.etablissement_id } });
     };
 
     return (

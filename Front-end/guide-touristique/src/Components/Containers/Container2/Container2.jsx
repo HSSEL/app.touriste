@@ -5,17 +5,28 @@ import like from '../../../assets/Options/like.svg';
 import like1 from '../../../assets/Options/like1.svg';
 import comment from '../../../assets/Options/comment.svg';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Container2 = ({ filterEtab }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { state } = location;
+  useEffect(() => {
+    if (state) {
+        console.log('Received state in container2:', state);
+    }
+}, [state]);
 
   const handleCommentClick = (publication) => {
-    navigate('/comment', { state: { id_publication: publication.id_publication } });
+    navigate('/comment', { state: {
+                                ...location.state,
+                                id_publication: publication.id_publication } });
   };
 
   const handleetabClick = (publication) => {
-    navigate('/etab', { state: { etablissement_id: publication.etablissement_id } });
+    navigate('/etab', { state: {
+                          ...location.state,
+                          etablissement_id: publication.etablissement_id } });
   };
 
   const [postData, setPostData] = useState(staticPostData);
@@ -24,7 +35,6 @@ const Container2 = ({ filterEtab }) => {
   useEffect(() => {
     const getPostData = async () => {
       const postData = await fetchPostData();
-      console.log('Fetched post data:', postData);
       if (postData.length > 0) {
         setPostData(postData);
       }
@@ -36,7 +46,6 @@ const Container2 = ({ filterEtab }) => {
   useEffect(() => {
     const getEtabData = async () => {
       const etabData = await fetchetabData();
-      console.log('Fetched etab data:', etabData);
       if (etabData.length > 0) {
         setEtabData(etabData);
       }

@@ -89,7 +89,9 @@ commentEtablissementRouter.get("/commentImage/:id", async (req, res) => {
     try {
         const image = await getImage(id);
         res.writeHead(200, {'Content-Type': 'image/png'}); 
-        res.end(image, 'binary');
+        res.end(image, 'binary'); //res.end(image, 'binary');
+                                //image est le contenu binaire de l'image récupérée de la base de données
+       
     } catch (error) {
         res.status(404).send("Image not found");
     }

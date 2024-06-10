@@ -4,11 +4,20 @@ import React, { useState, useEffect } from 'react';
 import './Container10.css';
 import { fetchetabData } from '../../../data/EtabData';
 import searchIcon from '../../../assets/search.svg';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation} from 'react-router-dom';
 
 const Container10 = () => {
     const [etab, setEtab] = useState([]);
     const [search, setSearch] = useState(''); 
+    const location = useLocation();
+    const { state } = location;
+
+    useEffect(() => {
+        if (state) {
+            console.log('Received hna hnaa spaaaaaaaaaaaaaaaaaaaaaaaamSS:', state);
+        }
+    }, [state]);
+
 
     useEffect(() => {
         const getEtabData = async () => {
@@ -30,7 +39,7 @@ const Container10 = () => {
 
     const navigate = useNavigate();
     const handleClickEtab = (etab) => {
-        navigate('/etab', { state: { etablissement_id: etab.etablissement_id } });
+        navigate('/etab', { state: { ...location.state, etablissement_id: etab.etablissement_id } });
     }
 
     return (

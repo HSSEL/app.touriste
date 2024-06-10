@@ -1,5 +1,4 @@
 import { pool } from "../databases.js";
-import { createTouriste } from "./touristeController.js";
 
 // Fonction pour récupérer tous les utilisateurs
 export async function getUtilisateurs() {

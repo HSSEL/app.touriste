@@ -5,9 +5,17 @@ import axios from 'axios';
 
 const Mycomment = () => {
     const location = useLocation();
-    const navigate = useNavigate(); 
-    const { id_publication } = location.state;
-    const {state} = location
+    const navigate = useNavigate();
+  
+    const { state } = location;
+    const id = state ? state.userId : null;
+    const id_publication = state ? state.id_publication : null;
+   
+    useEffect(() => {
+      if (state) {
+          console.log('Received state in container my comments:', state);
+      }
+  }, [state]);
 
     useEffect(() => {
         if (state) {
@@ -24,7 +32,7 @@ const Mycomment = () => {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
-            const id_touriste = 20;
+            const id_touriste = id;
             const Texte = comment;
             const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' '); 
             const image = '';
@@ -40,7 +48,7 @@ const Mycomment = () => {
             if (response.status === 201) {
                 alert('Comment added successfully');
                 setComment('');
-                navigate('/comment', { state: { id_publication: id_publication } });
+                navigate('/comment', { state: { ...location.state, id_publication: id_publication, userId: id } });
             }
         } catch (error) {
             console.error('Error adding comment:', error);

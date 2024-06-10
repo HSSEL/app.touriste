@@ -26,6 +26,8 @@ import {
 
 const paysageRouter = express.Router();
 
+
+//afficher tous les paysages
 paysageRouter.get("/Paysages", async (_req, res) => {
     /*async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
         req et res :gérer les informations de la requête entrante et envoyer des réponses au client
@@ -38,18 +40,23 @@ paysageRouter.get("/Paysages", async (_req, res) => {
     res.send(paysages);
 });
 
+
+//afficher un paysage selon son id
 paysageRouter.get("/Paysage/:id", async (req, res) => {
     const id = req.params.id;
     const paysage = await getPaysage(id);
     res.send(paysage);
 });
 
+
+//afficher un paysage selon une ville
 paysageRouter.get("/PaysageVille/:id", async (req, res) => {
     const id = req.params.id;
     const paysageVille = await getPaysageVille(id);
     res.send(paysageVille);
 });
 
+//ajouter un paysage
 paysageRouter.post("/Paysage", async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
@@ -59,6 +66,7 @@ paysageRouter.post("/Paysage", async (req, res) => {
     res.status(201).send(paysage);
 });
 
+//modifer un paysage
 paysageRouter.put("/Paysage/:id", async (req, res) => {
     const id = req.params.id;
     const { ville_id, nom, description, localisation, horarire_ouverture, image } = req.body;
@@ -70,6 +78,7 @@ paysageRouter.put("/Paysage/:id", async (req, res) => {
     }
 });
 
+//supprimer un paysage
 paysageRouter.delete("/Paysage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deletePaysage(id);
@@ -80,6 +89,7 @@ paysageRouter.delete("/Paysage/:id", async (req, res) => {
     }
 });
 
+//afficher un paysage par son id
 paysageRouter.get("/PaysageImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -91,7 +101,7 @@ paysageRouter.get("/PaysageImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
+// Route pour modifier une image
 paysageRouter.put("/updateImage/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
@@ -103,7 +113,7 @@ paysageRouter.put("/updateImage/:id", async (req, res) => {
     }
 });
 
-// Route to delete an image
+// Route pour supprimer une image
 paysageRouter.delete("/deleteImage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage(id);

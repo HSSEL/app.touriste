@@ -23,6 +23,8 @@ import { getPublications, getPublication, createPublication, updatePublication, 
 
 const publicationRouter = express.Router();
 
+
+//route pour afficher tous les publications
 publicationRouter.get("/Publications", async (_req, res) => {
     /*async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
         req et res :gérer les informations de la requête entrante et envoyer des réponses au client
@@ -35,12 +37,14 @@ publicationRouter.get("/Publications", async (_req, res) => {
     res.send(publications);
 });
 
+//router pour afficher une seule publication
 publicationRouter.get("/Publication/:id", async (req, res) => {
     const id = req.params.id;
     const publication = await getPublication(id);
     res.send(publication);
 });
 
+//router pour ajouter une publication
 publicationRouter.post("/Publication", async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
@@ -50,6 +54,8 @@ publicationRouter.post("/Publication", async (req, res) => {
     res.status(201).send(publication);
 });
 
+
+//router pour modifier une publication
 publicationRouter.put("/Publication/:id", async (req, res) => {
     const id = req.params.id;
     const { objet, text, image, type, date, etablissement_id } = req.body;
@@ -61,6 +67,8 @@ publicationRouter.put("/Publication/:id", async (req, res) => {
     }
 });
 
+
+//router pour supprimer une publication
 publicationRouter.delete("/Publication/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deletePublication(id);
@@ -71,6 +79,7 @@ publicationRouter.delete("/Publication/:id", async (req, res) => {
     }
 });
 
+//router pour afficher limage dune publication
 publicationRouter.get("/PublicationImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -95,6 +104,7 @@ publicationRouter.put('/publication/:id/coeur', async (req, res) => {
     }
 }); */
 
+//router pour modifier la valeur de coeur dans la bdd qui est boolean
 publicationRouter.put('/publication/:id/coeur', async (req, res) => {
     const { id } = req.params;
     const { coeur } = req.body;

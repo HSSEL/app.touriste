@@ -28,7 +28,9 @@ const NavBar = () => {
   const handleClick3 = () => {
     navigate('/map', {state}); 
   };
-
+  const handleClick4 = () => {
+    navigate('/ContactForm', {state}); 
+  };
   return (
     <div className='NAV'>
       <div className='nav'>
@@ -37,7 +39,7 @@ const NavBar = () => {
           <li onClick={handleClick1} className='home'>HOME</li>
           <li onClick={handleClick2} className='services'>SERVICES</li>
           <li onClick={handleClick3} className='aboutus'>À PROPOS DE NOUS</li>
-          <li className='nav-contact'>CONTACT</li>
+          <li onClick={handleClick4} className='contact'>CONTACT</li>
         </ul>
       </div>
     </div>

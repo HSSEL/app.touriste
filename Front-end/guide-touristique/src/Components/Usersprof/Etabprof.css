@@ -1,0 +1,99 @@
+.Etabprof03{
+    width: 250px;
+    height: 250px;
+    border: 1px solid white;
+    border-radius: 125px;
+}
+
+.Etabprof02 h2 {
+    color: rgb(160, 209, 255, 1); 
+    margin: 0;
+    font-size: 30px;
+}
+
+.Etabprof02 h3 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.Etabprof04 {
+    background-color:  rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Etabprof05 {
+    display: flex;
+    flex-direction: column;
+}
+
+.Etabprof02 {
+    display: flex;
+    gap: 15px;
+    position: fixed;
+    left: 80px;
+    top: 100px;
+}
+
+.Etabprof07 img {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    border: 1px solid white;
+}
+.Etabprof07 h4 {
+    color: rgb(160, 209, 255, 1); 
+    margin: 0;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Etabprof07 h5 {
+    margin: 0;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.Etabprof08 {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    width: 700px;
+
+}
+
+.Etabprof06{
+    padding: 20px;
+    position: fixed;
+    left: 80px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    border: 1px solid white;
+
+}
+
+.Etabprof06 h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: rgb(160, 209, 255, 1);
+}
+
+.MAPETAB {
+    position: fixed;
+    right: 80px;
+    top: 100px;
+    width: 560px;
+    height: calc(100vh - 140px);
+    overflow: auto;
+    border-radius: 15px;
+    border: 1px solid white;
+}

@@ -17,6 +17,7 @@ import EtabPage from './Pages/Admin/Etablissement';
 import Villesadmin from './Pages/Admin/Villesadm';
 import PubAdmin from './Pages/Admin/PubAdmin';
 import UserTouriste from './Pages/Users/UserTouriste';
+import UserEtab from './Pages/Users/UserEtab';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -80,6 +81,7 @@ const App = () => {
             <Route path="/villesadm" element={<Villesadmin/>} />
             <Route path="/pubadmin" element={<PubAdmin/>} />
             <Route path="/usertouriste" element={<UserTouriste/>} />
+            <Route path="/useretab" element={<UserEtab/>} />
             
             </Routes> 
             </BrowserRouter>

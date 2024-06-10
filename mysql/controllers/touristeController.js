@@ -19,13 +19,14 @@ export async function getTouriste(id) {
 }
 
 // Créer une nouvelle entrée dans la table 'touriste'
-export async function createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email) {
+export async function createTouriste(Nom , Prenom, adresse, telephone, localisation, villeVisite , image) {
     const [result] = await pool.query(`
-        INSERT INTO touriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email)
-        VALUES(?,?,?,?,?,?,?,?,?)
-    `, [Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email]);
-    return result.insertId; // Retourne l'ID de la nouvelle entrée insérée
-}
+      INSERT INTO touriste (Nom , Prenom, adresse, telephone, localisation, villeVisite , image)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [Nom , Prenom, adresse, telephone, localisation, villeVisite , image]);
+    return result.insertId;
+  }
+  
 
 // Mettre à jour une entrée existante dans la table 'touriste'
 export async function updateTouriste(id_touriste, Nom, Prenom, adresse, telephone, localisation, villeVisite, image) {

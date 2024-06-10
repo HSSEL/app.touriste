@@ -16,7 +16,11 @@ import Admin from './Pages/Admin/Admin';
 import EtabPage from './Pages/Admin/Etablissement';
 import Villesadmin from './Pages/Admin/Villesadm';
 import PubAdmin from './Pages/Admin/PubAdmin';
+<<<<<<< HEAD
 import ContactForm from './Pages/ContactForm'
+=======
+import UserTouriste from './Pages/Users/UserTouriste';
+>>>>>>> 324d6cf4a472c9211710d20304f0912b47e679c1
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -79,7 +83,11 @@ const App = () => {
             <Route path="/etablissements" element={<EtabPage/>} />
             <Route path="/villesadm" element={<Villesadmin/>} />
             <Route path="/pubadmin" element={<PubAdmin/>} />
+<<<<<<< HEAD
             <Route path="/ContactForm" element={<ContactForm />} />
+=======
+            <Route path="/usertouriste" element={<UserTouriste/>} />
+>>>>>>> 324d6cf4a472c9211710d20304f0912b47e679c1
             
             </Routes> 
             </BrowserRouter>

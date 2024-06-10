@@ -24,9 +24,10 @@ import {
     updateUtilisateur, 
     getUtilisateurMdp, 
     getUtilisateurEmail, 
-    register, getUserDetails,
+    getUserDetails,registerUtilisateurEtTouriste,
     login 
 } from '../controllers/userController.js';
+
 
 const utilisateurRouter = express.Router();
 
@@ -56,6 +57,9 @@ utilisateurRouter.post('/auth', async (req, res) => {
 
             if (utilisateur.isEstablishment === 1) {
                 res.json({ user: utilisateur, details: details, redirectTo: '/home' });
+            } else if (utilisateur.isAdmin === 1) {
+                // Ajoutez la redirection ou la logique spécifique pour les administrateurs ici
+                res.json({ user: utilisateur, details: details, redirectTo: '/Admin' });
             } else {
                 res.json({ user: utilisateur, details: details, redirectTo: '/home' });
             }
@@ -66,6 +70,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
         res.status(400).json({ message: 'Please enter Email and Password!' });
     }
 });
+
 
 // Route pour récupérer le mot de passe d'un utilisateur par son ID
 utilisateurRouter.get('/Password/:id', async (req, res) => {
@@ -126,7 +131,25 @@ utilisateurRouter.put("/Password/:id", async (req, res) => {
 });
 
 // Routes pour l'inscription et la connexion
-utilisateurRouter.post('/register', register);
+utilisateurRouter.post('/register', async (req, res) => {
+    try {
+      const { email, password, Nom, Prenom, adresse, telephone, localisation, villeVisite } = req.body;
+      const image = req.files.image;
+  
+      // Convertir l'image en base64
+      const imageData = image.data.toString('base64');
+  
+      const userData = { email, password };
+      const touristeData = { Nom, Prenom, adresse, telephone, localisation, villeVisite, image: imageData };
+  
+      const utilisateurId = await registerUtilisateurEtTouriste(userData, touristeData);
+  
+      res.status(201).json({ utilisateurId });
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ message: 'Erreur lors de la création du compte' });
+    }
+  });
 utilisateurRouter.post('/login', login);
 
 export { utilisateurRouter };

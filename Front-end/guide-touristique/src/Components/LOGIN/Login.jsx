@@ -119,8 +119,15 @@ const Login0 = () => {
             const { user, details } = await login(email, password);
     
             console.log('Login successful:', user, details);
-            
-            navigate('/home', { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
+
+            let redirectTo = '/home'; // Redirection par défaut pour les utilisateurs normaux
+            if (user.isAdmin === 1) {
+                redirectTo = '/Admin'; // Redirection pour les administrateurs
+            } else if (user.isEstablishment === 1) {
+                redirectTo = '/establishment-home'; // Redirection pour les établissements
+            }
+
+            navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
         } catch (error) {
             console.error('Login failed:', error);
             alert('Invalid email or password');

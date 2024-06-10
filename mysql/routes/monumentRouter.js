@@ -86,7 +86,7 @@ monumentRouter.delete("/Monument/:id", async (req, res) => {
     }
 });
 
-//aaffciher limage dun monument
+//afficher limage dun monument
 monumentRouter.get("/monumentImage/:id", async (req, res) => {
     const id = req.params.id;
     try {

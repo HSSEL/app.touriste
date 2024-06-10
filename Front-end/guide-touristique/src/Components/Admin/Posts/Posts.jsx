@@ -12,6 +12,11 @@ const Posts = () => {
         navigate('/villesadm')
     }
 
+    
+    const handlepub = () => {
+        navigate('/pubadmin')
+    }
+
     const [ posts, setposts ] = useState([]);
     const [ etab, setetab ] = useState([]);
 
@@ -56,7 +61,7 @@ const Posts = () => {
             <div className='pst02'>
                 <div className='pst03'>
                     <h2>Tous les publications</h2>
-                    <button>Voir tous</button>
+                    <button onClick={handlepub}>Voir tous</button>
                 </div>
                 <div className='pst04'>
                     {posts.map(( data, index) => (

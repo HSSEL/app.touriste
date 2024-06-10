@@ -36,7 +36,7 @@ const Villesadm = () => {
                 <input 
                     onChange={handleSearchChange}
                     type="text" 
-                    placeholder="Chercher un etablissement"
+                    placeholder="Chercher une ville"
                 />
             </div>
             <div className='cities'>

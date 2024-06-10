@@ -10,10 +10,18 @@ import MapComponent from '../../../Map/Map.jsx';
 
 const Container9 = () => {
     const location = useLocation();
+    const { state } = location;
     const { ville_id } = location.state;
 
     const [villeData, setVilleData] = useState(null);
     const [etab, setEtabData] = useState([]);
+
+    // hadi 5edama mzyan t2ekkedt mnha
+    useEffect(() => {
+        if (state) {
+            console.log('Received villee aaaaaaaaaaaaaaa:', state);
+        }
+    }, [state]);
 
     useEffect(() => {
         const getVilleData = async () => {

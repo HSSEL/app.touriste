@@ -6,6 +6,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const All = () => {
   const [etabData, setEtabData] = useState([]);
   const location = useLocation();
+  const { state } = location;
+  useEffect(() => {
+    if (state) {
+        console.log('Received state from aaaalllll:', state);
+    }
+  }, [state]);
   const navigate = useNavigate();
   
   const handleetabClick = (publication) => {

@@ -16,6 +16,7 @@ import Admin from './Pages/Admin/Admin';
 import EtabPage from './Pages/Admin/Etablissement';
 import Villesadmin from './Pages/Admin/Villesadm';
 import PubAdmin from './Pages/Admin/PubAdmin';
+import ContactForm from './Pages/ContactForm'
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -78,6 +79,7 @@ const App = () => {
             <Route path="/etablissements" element={<EtabPage/>} />
             <Route path="/villesadm" element={<Villesadmin/>} />
             <Route path="/pubadmin" element={<PubAdmin/>} />
+            <Route path="/ContactForm" element={<ContactForm />} />
             
             </Routes> 
             </BrowserRouter>

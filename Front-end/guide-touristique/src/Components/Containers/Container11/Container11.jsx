@@ -9,15 +9,15 @@ import axios from 'axios';
 const Container11 = () => {
     const location = useLocation();
     const { etablissement_id } = location.state;
-    const { userId } = location.state;
+    const { userId } = location.state;// Récupération de l'identifiant de l'utilisateur depuis l'état de la localisation
     const [etab, setEtab] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);// État pour indiquer si les données sont en cours de chargement
     const [error, setError] = useState(null);
 
-    const [nombrePersonne, setNombrePersonne] = useState('');
-    const [dateDebut, setDateDebut] = useState('');
-    const [dateFin, setDateFin] = useState('');
-
+    const [nombrePersonne, setNombrePersonne] = useState('');// État pour le nombre de personnes dans la réservation
+    const [dateDebut, setDateDebut] = useState('');// État pour la date de début de la réservation
+    const [dateFin, setDateFin] = useState('');// État pour la date de fin de la réservation
+ // Effet pour récupérer les données de l'établissement
     useEffect(() => {
         const getEtabData = async () => {
             try {
@@ -37,7 +37,7 @@ const Container11 = () => {
         };
         getEtabData();
     }, [etablissement_id]);
-
+ // Fonction pour gérer la soumission du formulaire de réservation
     const handleSubmit = async (event) => {
         event.preventDefault();
         const reservationData = {
@@ -78,7 +78,7 @@ const Container11 = () => {
             {etab && (
                 <div className='con11all'>
                     <div className='con11_01'>
-                        <h1>{etab.nom}</h1>
+                        <h1>{etab.nom}</h1>{/* Affichage du nom de l'établissement */}
                         <img className='con11_1' src={`http://localhost:8080/eta/etablissementImage/${etab.etablissement_id}`} alt='' />
                         <p>{etab.description}</p>
                         <img className='con11_2' src={`http://localhost:8080/eta/etablissementImage2/${etab.etablissement_id}`} alt='' />
@@ -87,14 +87,14 @@ const Container11 = () => {
 
                     <div className='c11form'>
                         <form className="login1" onSubmit={handleSubmit}>
-                            <h1>Reserver</h1>
+                            <h1>Reserver</h1>{/* Titre du formulaire de réservation */}
                             <h5>Nombre de personnes</h5>
                             <input
                                 type="number"
                                 name="nombrePersonne"
                                 placeholder="Entrer le nombre de personnes"
                                 value={nombrePersonne}
-                                onChange={(e) => setNombrePersonne(e.target.value)}
+                                onChange={(e) => setNombrePersonne(e.target.value)} // Mise à jour de l'état lors de la modification du champ
                                 required
                             />
                             <h5>Date début</h5>
@@ -116,7 +116,7 @@ const Container11 = () => {
                                 required
                             />
                             <div className='button_low'>
-                                <button type="submit">Reserver</button>
+                                <button type="submit">Reserver</button>{/* Bouton de soumission du formulaire */}
                             </div>
                         </form>
                     </div>

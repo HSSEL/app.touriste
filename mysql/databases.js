@@ -1,6 +1,6 @@
 import mysql from 'mysql2'
 
-import dotenv from 'dotenv'
+import dotenv from 'dotenv'//la bibliotheque qui permet de charger des fichiers .env
 
 dotenv.config()
 /*

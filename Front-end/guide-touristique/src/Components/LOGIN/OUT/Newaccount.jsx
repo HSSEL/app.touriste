@@ -70,7 +70,7 @@ const Newaccount = () => {
     return (
         <div className='new'>
         <div className="touriste-form">
-            <h2>Créer un compte</h2>
+            <h2>Je suis un touriste</h2>
             <form classname='form01' onSubmit={handleSubmit}>
                     <input
                         type="text"

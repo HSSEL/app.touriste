@@ -16,6 +16,10 @@ import Admin from './Pages/Admin/Admin';
 import EtabPage from './Pages/Admin/Etablissement';
 import Villesadmin from './Pages/Admin/Villesadm';
 import PubAdmin from './Pages/Admin/PubAdmin';
+import UserTouriste from './Pages/Users/UserTouriste';
+import UserEtab from './Pages/Users/UserEtab';
+import ContactForm from './Pages/ContactForm';
+import Ajouterpub from './Pages/Users/Ajouterpub';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -78,7 +82,11 @@ const App = () => {
             <Route path="/etablissements" element={<EtabPage/>} />
             <Route path="/villesadm" element={<Villesadmin/>} />
             <Route path="/pubadmin" element={<PubAdmin/>} />
-            
+            <Route path="/usertouriste" element={<UserTouriste/>} />
+            <Route path="/useretab" element={<UserEtab/>} />
+            <Route path="/ContactForm" element={<ContactForm />} />
+            <Route path="/ajouterpub" element={<Ajouterpub />} />
+     
             </Routes> 
             </BrowserRouter>
         </div>

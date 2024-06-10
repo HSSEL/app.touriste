@@ -122,9 +122,9 @@ const Login0 = () => {
 
             let redirectTo = '/home'; // Redirection par défaut pour les utilisateurs normaux
             if (user.isAdmin === 1) {
-                redirectTo = '/Admin'; // Redirection pour les administrateurs
+                redirectTo = '/admin'; // Redirection pour les administrateurs
             } else if (user.isEstablishment === 1) {
-                redirectTo = '/establishment-home'; // Redirection pour les établissements
+                redirectTo = '/useretab'; // Redirection pour les établissements
             }
 
             navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur

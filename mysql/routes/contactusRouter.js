@@ -23,7 +23,7 @@ import { getContactusAll, getContactus, createContact } from '../controllers/con
 const contactusRouter = express.Router();
 
 // Route pour obtenir tous les messages de contact
-contactusRouter.get('/contactus', async (req, res) => {
+contactusRouter.get('/', async (req, res) => {
     /*async gere les operations asynchrones cad celle qui appelle une bdd et envoit une promesse
         req et res :gérer les informations de la requête entrante et envoyer des réponses au client
         get:gérer les requêtes HTTP GET.
@@ -40,7 +40,7 @@ contactusRouter.get('/contactus', async (req, res) => {
 });
 
 // Route pour obtenir un message de contact par ID
-contactusRouter.get('/contactus/:id', async (req, res) => {
+contactusRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const contact = await getContactus(id);
@@ -55,13 +55,13 @@ contactusRouter.get('/contactus/:id', async (req, res) => {
 });
 
 // Route pour créer un nouveau message de contact
-contactusRouter.post('/contactus', async (req, res) => {
+contactusRouter.post('/', async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
     // et renvoie l'ID de la nouvelle ressource créée.
-    const { nom, email, message } = req.body;
+    const { name, email, message } = req.body;
     try {
-        const insertId = await createContact(nom, email, message);
+        const insertId = await createContact(name, email, message);
         res.status(201).json({ id: insertId });
     } catch (error) {
         res.status(500).json({ error: error.message });

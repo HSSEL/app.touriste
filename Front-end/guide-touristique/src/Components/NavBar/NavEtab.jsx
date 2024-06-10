@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const NavBar = () => {
+const NavBarEtab = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -17,8 +17,8 @@ const NavBar = () => {
     }, [state]);
 
   
-  const handleClick1 = () => {
-    navigate('/home', {state}); 
+  const handleAPUB = () => {
+    navigate('/ajouterpub', {state}); 
   };
 
   const handleClick2 = () => {
@@ -28,22 +28,25 @@ const NavBar = () => {
   const handleClick3 = () => {
     navigate('/map', {state}); 
   };
-  const handleClick4 = () => {
-    navigate('/ContactForm', {state}); 
-  };
+
+  
+  const handlelogout = () => {
+    navigate('/logout')
+}
+
   return (
     <div className='NAV'>
       <div className='nav'>
         <div className="nav-logo">SARINI</div>
         <ul className='nav-menu'>
-          <li onClick={handleClick1} className='home'>HOME</li>
-          <li onClick={handleClick2} className='services'>SERVICES</li>
-          <li onClick={handleClick3} className='aboutus'>À PROPOS DE NOUS</li>
-          <li onClick={handleClick4} className='contact'>CONTACT</li>
+          <li onClick={handleAPUB} className='home'>Ajouter une publication</li>
+          <li onClick={handleClick2} className='services'>Publier un offre</li>
+          <li onClick={handleClick3} className='aboutus'>Modifier mes infos</li>
+          <li onClick={handlelogout} className='Admin'>Se déconnecter</li>
         </ul>
       </div>
     </div>
   );
 };
 
-export default NavBar;
+export default NavBarEtab;

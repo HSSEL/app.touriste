@@ -7,50 +7,57 @@ import './utilisateurs.css'
 
 const Utilisateurs = () => {
 
-    const [ users, setusers ] = useState([]);
-    const [ etab, setetab ] = useState([]);
+    const navigate = useNavigate();
+
+    const [ users, setUsers ] = useState([]);
+    const [ etab, setEtab ] = useState([]);
+
+    const handletou = () =>{
+        navigate('/touristes')
+    }
 
     
     useEffect(() => {
-        const getusers = async () => {
+        const getUsers = async () => {
         try {
             const data = await fetchtouristebData();
             console.log('Fetched touriste data:', data);
             if (Array.isArray(data) && data.length > 0) {
-            setusers(data);
+            setUsers(data);
             }
         } catch (error) {
             console.error('Error fetching etab data:', error);
         }
         };
 
-        getusers();
+        getUsers();
     }, []);
 
     
     useEffect(() => {
-        const getetab = async () => {
+        const getEtab = async () => {
         try {
             const data = await fetchetabData();
             console.log('Fetched etab data:', data);
             if (Array.isArray(data) && data.length > 0) {
-            setetab(data);
+            setEtab(data);
             }
         } catch (error) {
             console.error('Error fetching etab data:', error);
         }
         };
 
-        getetab();
+        getEtab();
     }, []);
 
 
     return (
         <div className='users01'>
+            {/* hada kay5erej ga3 les touristes */}
             <div className='users04'>
                 <div className='user04'>
                     <h2>Tous les utilisateurs</h2>
-                    <button>Voir tous</button>
+                    <button onClick={handletou}>Voir tous</button>
                 </div>
                 <div className='users02'>
                     {users.map(( data, index) => (
@@ -62,6 +69,7 @@ const Utilisateurs = () => {
                 </div>
             </div>
             <div className='users05'>
+                {/* hada kay5erej ga3 les etablissements */}
                 <div className='user04'>
                     <h2>Tous les etablissement</h2>
                     <button>Voir tous</button>

@@ -4,6 +4,10 @@ import Newaccount from "../Components/LOGIN/OUT/Newaccount"; // Importation du c
 
 const New = () => { // Déclaration du composant New en tant que fonction fléchée.
 
+
+
+
+   
     return ( // Rendu du composant.
         <div style={{ display: "flex", justifyContent: "space-around" }}> {/* Début de la division principale avec une disposition flex et un espacement autour des éléments. */}
             <BG/> {/* Rendu du composant BG pour afficher l'arrière-plan */}
@@ -14,6 +18,7 @@ const New = () => { // Déclaration du composant New en tant que fonction fléch
                 <Newaccount/> {/* Rendu du composant Newaccount pour créer un nouveau compte */}
             </div> {/* Fin de la division pour Newaccount */}
         </div> /* Fin de la division principale */
+
     );
 };
 

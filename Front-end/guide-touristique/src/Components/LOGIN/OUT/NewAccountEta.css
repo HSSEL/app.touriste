@@ -1,7 +1,7 @@
 /* Ajoutez cette règle CSS pour le curseur de type pointeur (main) sur les liens */
 body {
     /* Empêcher l'affichage de la barre de défilement */
-    Cursor: pointer
+    Cursor: pointer;
     
 }
 

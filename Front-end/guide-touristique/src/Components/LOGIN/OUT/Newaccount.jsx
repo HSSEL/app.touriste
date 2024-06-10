@@ -142,6 +142,7 @@ const Newaccount = () => {
     );
 };
 
+
 export default Newaccount;
 
 /*
@@ -296,3 +297,4 @@ const NewAccountEta = () => {
 
 export default NewAccountEta;
 */
+

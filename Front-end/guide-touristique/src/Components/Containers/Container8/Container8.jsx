@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react';
 import './Container8.css';
 import { fetchVilleData } from '../../../data/VilleData';
 import searchIcon from '../../../assets/search.svg';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Container8 = () => {
     const [ville, setVille] = useState([]);
+    const location = useLocation();
     const [search, setSearch] = useState(''); 
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Container8 = () => {
 
     const navigate = useNavigate();
     const handleClickville = (ville) => {
-        navigate('/ville', { state: { ville_id: ville.id_ville } });
+        navigate('/ville', { state: { ...location.state, ville_id: ville.id_ville } });
     }
 
     return (

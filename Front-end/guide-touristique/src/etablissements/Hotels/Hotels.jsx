@@ -4,16 +4,23 @@ import Star1 from '../../assets/etab/Star1.png';
 import Star2 from '../../assets/etab/Star2.png';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Hotels = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { nom } = location.state; 
     const lowerCaseNom = nom.toLowerCase();
+    const { state } = location;
+    useEffect(() => {
+        if (state) {
+            console.log('Received state after seleting type:', state);
+        }
+    }, [state]);
     
 
     const handleIconClick = ( hotel ) => {
-        navigate('/etab', { state: { etablissement_id: hotel.etablissement_id} });
+        navigate('/etab', { state: { ...location.state, etablissement_id: hotel.etablissement_id} });
     };
 
     const { data: hotelData, error } = useFetchDataByType(lowerCaseNom);

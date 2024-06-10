@@ -20,6 +20,12 @@ const Container7 = () => {
   const location = useLocation();
   const { etablissement_id } = location.state;
   const navigate = useNavigate();
+  const { state } = location;
+  useEffect(() => {
+    if (state) {
+        console.log('Received state view more etab:', state);
+    }
+}, [state]);
 
   const [ville, setVille] = useState('');
   const [etabData, setEtabData] = useState([]);
@@ -33,13 +39,12 @@ const Container7 = () => {
   };
 
   const handlereserver = (etab) => {
-    navigate('/reserver', { state: { etablissement_id: etab.etablissement_id } });
+    navigate('/reserver', { state: { ...location.state, etablissement_id: etab.etablissement_id } });
   };
 
   useEffect(() => {
     const getTouristeData = async () => {
       const data = await fetchtouristebData();
-      console.log('Fetched tourist data:', data);
 
       if (data.length > 0) {
         setTouristeData(data);
@@ -53,7 +58,6 @@ const Container7 = () => {
     const getEtabData = async () => {
       try {
         const data = await fetchetabData();
-        console.log('Fetched etab data:', data);
         const filteredData = data.filter(etab => etab.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
           setEtabData(filteredData);
@@ -70,7 +74,6 @@ const Container7 = () => {
     const getCommentEtab = async () => {
       try {
         const data = await fetchcometabData();
-        console.log('Fetched comment data:', data);
         const filteredData = data.filter(comment => comment.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
           setcommentetab(filteredData);
@@ -87,7 +90,6 @@ const Container7 = () => {
     const getPostData = async () => {
       try {
         const data = await fetchPostData();
-        console.log('Fetched post data:', data);
         const filteredData = data.filter(post => post.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
           setPostData(filteredData);
@@ -104,7 +106,6 @@ const Container7 = () => {
       try {
         if (etabData.length > 0) {
           const data = await fetchVilleData();
-          console.log('Fetched ville data:', data);
           const filteredData = data.filter(ville => ville.id_ville === etabData[0].id_ville);
           if (filteredData.length > 0) {
             setVille(filteredData[0]);

@@ -4,14 +4,15 @@ import './Container1.css';
 import types_etab_data from '../../../data/types_etab_data.js';
 import search from '../../../assets/search.svg';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Container1 = () => {
     const [Search, setSearch] = useState(''); 
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleetab = (etab) => {
-        navigate('/etabs', { state: { nom: etab.nom } });
+        navigate('/etabs', { state: {...location.state , nom: etab.nom } });
     };
 
     return (

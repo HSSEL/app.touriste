@@ -46,7 +46,7 @@ const Container9 = () => {
 
     const navigate = useNavigate();
     const handleclick01 = (data) => {
-        navigate('/etab', { state: { etablissement_id: data.etablissement_id } });
+        navigate('/etab', { state: { ...location.state, etablissement_id: data.etablissement_id } });
     };
 
     return (

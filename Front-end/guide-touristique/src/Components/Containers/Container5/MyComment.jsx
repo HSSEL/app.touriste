@@ -48,7 +48,7 @@ const Mycomment = () => {
             if (response.status === 201) {
                 alert('Comment added successfully');
                 setComment('');
-                navigate('/comment', { state: { id_publication: id_publication, userId: id } });
+                navigate('/comment', { state: { ...location.state, id_publication: id_publication, userId: id } });
             }
         } catch (error) {
             console.error('Error adding comment:', error);

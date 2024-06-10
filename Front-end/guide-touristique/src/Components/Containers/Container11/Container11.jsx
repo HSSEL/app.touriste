@@ -1,3 +1,5 @@
+/* hada dyal reserver */
+
 import './Container11.css';
 import React, { useState, useEffect } from 'react';
 import { fetchetabData } from '../../../data/EtabData';
@@ -7,6 +9,7 @@ import axios from 'axios';
 const Container11 = () => {
     const location = useLocation();
     const { etablissement_id } = location.state;
+    const { userId } = location.state;
     const [etab, setEtab] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -38,7 +41,7 @@ const Container11 = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const reservationData = {
-            id_touriste: 1,  
+            id_touriste: userId,  
             etablissement_id: etablissement_id,
             dateReservation: new Date().toISOString().split('T')[0],
             debut_temp: `${dateDebut} 00:00:00`, 

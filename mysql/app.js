@@ -57,7 +57,7 @@ app.use('/compa',commentPaysageRouter)
 app.use('/compu',commentPublicationRouter)
 
 
-/* Ci dessous on definit des middleware de gestion des erreurs  
+/* Ci dessous on definit des middlewares de gestion des erreurs  
 pour gérer les erreurs qui se produisent pendant le traitement des requêtes
 */
 app.use((err, req, res, next) => {

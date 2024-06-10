@@ -5,32 +5,37 @@ import {
     getImage, updateImage, deleteImage
 } from '../controllers/transportController.js';
 
-const tranportRouter = express.Router();
+const transportRouter = express.Router();
 
-tranportRouter.get("/Tranports", async (_req, res) => {
-    const tranports = await getTransports();
-    res.send(tranports);
+// Route pour récupérer tous les transports
+transportRouter.get("/Transports", async (_req, res) => {
+    const transports = await getTransports();
+    res.send(transports);
 });
 
-tranportRouter.get("/Tranport/:id", async (req, res) => {
+// Route pour récupérer un transport par ID
+transportRouter.get("/Transport/:id", async (req, res) => {
     const id = req.params.id;
-    const tranport = await getTransport(id);
-    res.send(tranport);
+    const transport = await getTransport(id);
+    res.send(transport);
 });
 
-tranportRouter.get("/TranportVille/:id", async (req, res) => {
+// Route pour récupérer les transports par ID de ville
+transportRouter.get("/TransportVille/:id", async (req, res) => {
     const id = req.params.id;
-    const tranportVille = await getTransportVille(id);
-    res.send(tranportVille);
+    const transportVille = await getTransportVille(id);
+    res.send(transportVille);
 });
 
-tranportRouter.post("/Tranport", async (req, res) => {
+// Route pour créer un nouveau transport
+transportRouter.post("/Transport", async (req, res) => {
     const { ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif } = req.body;
-    const tranport = await createTransport(ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
-    res.status(201).send(tranport);
+    const transport = await createTransport(ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
+    res.status(201).send(transport);
 });
 
-tranportRouter.put("/Tranport/:id", async (req, res) => {
+// Route pour mettre à jour un transport par ID
+transportRouter.put("/Transport/:id", async (req, res) => {
     const id = req.params.id;
     const { ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif } = req.body;
     const updated = await updateTransport(id, ID_Ville, Type, Nom, Description, zoneCouverte, Horaires, Tarif);
@@ -41,7 +46,8 @@ tranportRouter.put("/Tranport/:id", async (req, res) => {
     }
 });
 
-tranportRouter.delete("/Tranport/:id", async (req, res) => {
+// Route pour supprimer un transport par ID
+transportRouter.delete("/Transport/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTransport(id);
     if (deleted) {
@@ -51,7 +57,8 @@ tranportRouter.delete("/Tranport/:id", async (req, res) => {
     }
 });
 
-tranportRouter.get("/TranportImage/:id", async (req, res) => {
+// Route pour récupérer l'image d'un transport par ID
+transportRouter.get("/TransportImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const image = await getImage(id);
@@ -62,8 +69,8 @@ tranportRouter.get("/TranportImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
-tranportRouter.put("/updateImage/:id", async (req, res) => {
+// Route pour mettre à jour une image de transport par ID
+transportRouter.put("/updateImage/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
     const updated = await updateImage(id, image);
@@ -74,8 +81,8 @@ tranportRouter.put("/updateImage/:id", async (req, res) => {
     }
 });
 
-// Route to delete an image
-tranportRouter.delete("/deleteImage/:id", async (req, res) => {
+// Route pour supprimer une image de transport par ID
+transportRouter.delete("/deleteImage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage(id);
     if (deleted) {
@@ -85,4 +92,4 @@ tranportRouter.delete("/deleteImage/:id", async (req, res) => {
     }
 });
 
-export { tranportRouter };
+export { transportRouter };

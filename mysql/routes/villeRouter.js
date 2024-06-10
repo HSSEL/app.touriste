@@ -1,5 +1,5 @@
 /**
- * Au niveau des fichiers du dossier routes nous definissant des routes pour gerer des operations 
+ * Au niveau des fichiers du dossier routes nous definissons des routes pour gerer des operations 
  * mentionnees au niveau des controllers
  * cela permet de diviser notre application en modules logiques et de mieux organiser notre code
 */

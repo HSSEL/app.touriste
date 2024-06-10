@@ -24,7 +24,7 @@ import {
     updateUtilisateur, 
     getUtilisateurMdp, 
     getUtilisateurEmail, 
-    register, 
+    register, getUserDetails,
     login 
 } from '../controllers/userController.js';
 
@@ -45,9 +45,6 @@ utilisateurRouter.get("/Utilisateurs", async (_req, res) => {
 
 // Route pour l'authentification des utilisateurs
 utilisateurRouter.post('/auth', async (req, res) => {
-    //méthode post pour gérer les requêtes HTTP POST
-    //post: Reçoit des données du client, les insère dans la base de données,
-    // et renvoie l'ID de la nouvelle ressource créée.
     let email = req.body.email;
     let password = req.body.password;
 
@@ -55,16 +52,18 @@ utilisateurRouter.post('/auth', async (req, res) => {
         const utilisateur = await getLogin(email, password);
 
         if (utilisateur) {
+            const details = await getUserDetails(utilisateur.touriste_id, utilisateur.etablissement_id);
+
             if (utilisateur.isEstablishment === 1) {
-                res.sendFile(path.join(__dirname, '../Front-end/guide-touristique/src/Pages/Home.jsx'));
+                res.json({ user: utilisateur, details: details, redirectTo: '/home' });
             } else {
-                res.sendFile(path.join(__dirname, '../Front-end/guide-touristique/src/Pages/Home.jsx'));
+                res.json({ user: utilisateur, details: details, redirectTo: '/home' });
             }
         } else {
-            res.send('Incorrect Email and/or Password!');
+            res.status(401).json({ message: 'Incorrect Email and/or Password!' });
         }
     } else {
-        res.send('Please enter Email and Password!');
+        res.status(400).json({ message: 'Please enter Email and Password!' });
     }
 });
 

@@ -1,4 +1,5 @@
 import { pool } from "../databases.js";
+import { createTouriste } from "./touristeController.js";
 
 // Fonction pour récupérer tous les utilisateurs
 export async function getUtilisateurs() {
@@ -55,13 +56,50 @@ export async function getUtilisateurMdp(id) {
 }
 
 // Fonction pour créer un nouvel utilisateur
-export async function createUtilisateur(email, password, isEstablishment) {
+export async function createUtilisateur(email, password, touriste_id) {
     const [result] = await pool.query(`
-        INSERT INTO users(email, password, isEstablishment)
-        VALUES(?,?,?)
-    `, [email, password, isEstablishment]);
+      INSERT INTO users (email, password, touriste_id)
+      VALUES (?, ?, ?)
+    `, [email, password, touriste_id]);
     return result.insertId;
+  }
+
+
+// Fonction pour créer un utilisateur et un touriste
+export async function registerUtilisateurEtTouriste(userData, touristeData) {
+    const connection = await pool.getConnection();
+    try {
+      await connection.beginTransaction();
+  
+      // Créer le touriste
+      const touristeId = await createTouriste(
+        touristeData.Nom,
+        touristeData.Prenom,
+        touristeData.adresse,
+        touristeData.telephone,
+        touristeData.localisation,
+        touristeData.villeVisite,
+        touristeData.image
+      );
+  
+      // Créer l'utilisateur avec l'id du touriste créé
+      const utilisateurId = await createUtilisateur(
+        userData.email,
+        userData.password,
+        
+        touristeId
+      );
+  
+      await connection.commit();
+      return utilisateurId;
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
+    }
 }
+
 
 // Fonction pour mettre à jour les informations de l'utilisateur
 export async function updateUtilisateur(id, email, password, isEstablishment) {

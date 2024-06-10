@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import fileUpload from 'express-fileupload'
 import { villeRouter } from './routes/villeRouter.js'
 import { transportRouter } from './routes/transportRouter.js'
 import { touristeRouter } from './routes/touristeRouter.js'
@@ -30,7 +31,14 @@ qui sont des fonctions qui ont accès à l'objet request (requête)
 */
 
 app.use(express.json())//permet a mon application de comprendre des requetes json
+
+
+// Utiliser express-fileupload pour gérer les fichiers
+app.use(fileUpload());
+
+
 app.use(cors());//permettre au code du frontend d'utiliser du code backend
+
 
 
 /*si dessous on associe des URL ou endpoint 

@@ -119,6 +119,7 @@ const Login0 = () => {
             const { user, details } = await login(email, password);
     
             console.log('Login successful:', user, details);
+            
             navigate('/home', { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
         } catch (error) {
             console.error('Login failed:', error);

@@ -1,5 +1,5 @@
 import './Container5.css';
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 
@@ -7,6 +7,13 @@ const Mycomment = () => {
     const location = useLocation();
     const navigate = useNavigate(); 
     const { id_publication } = location.state;
+    const {state} = location
+
+    useEffect(() => {
+        if (state) {
+            console.log('Received state:', state);
+        }
+    }, [state]);
 
     const [comment, setComment] = useState('');
 

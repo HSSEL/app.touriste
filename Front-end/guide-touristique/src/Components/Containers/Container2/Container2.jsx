@@ -1,3 +1,4 @@
+// hada fih ga3 les publication
 import './Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';
 import { fetchetabData } from '../../../data/EtabData';
@@ -17,6 +18,8 @@ const Container2 = ({ filterEtab }) => {
     }
 }, [state]);
 
+
+  // kandefiniw les fonctions li an3eytu 3lihum fchi action b7al cliquer sur un boutton..
   const handleCommentClick = (publication) => {
     navigate('/comment', { state: {
                                 ...location.state,
@@ -29,9 +32,11 @@ const Container2 = ({ filterEtab }) => {
                           etablissement_id: publication.etablissement_id } });
   };
 
+  // kaninitialisiw data
   const [postData, setPostData] = useState(staticPostData);
   const [etabData, setEtabData] = useState([]);
 
+  // kana5du data li kayna flfiles dyal data
   useEffect(() => {
     const getPostData = async () => {
       const postData = await fetchPostData();
@@ -54,10 +59,13 @@ const Container2 = ({ filterEtab }) => {
     getEtabData();
   }, []);
 
+  // hadi bach kan9adu lformat dyal Date
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  //hadi dyal like bach fach yclicki 3liha lutilisateur ychuf wach = 1 wla 0 w si kanet 1 ghadi y7eyed like sinon ghadi yzid like
 
   const handleLikeClick = async (publication) => {
     try {
@@ -86,6 +94,7 @@ const Container2 = ({ filterEtab }) => {
     <div>
       <div className="container" id="container2">
         <div className='posts'>
+          {/* hadi katafficher ga3 les posts */}
           {postData
             .filter(data => {
               const etab = etabData.find(etab => etab.etablissement_id === data.etablissement_id);

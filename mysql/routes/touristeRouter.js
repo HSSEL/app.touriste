@@ -7,23 +7,27 @@ import {
 
 const touristeRouter = express.Router();
 
+// Route pour récupérer tous les touristes
 touristeRouter.get("/Touristes", async (_req, res) => {
     const touristes = await getTouristes();
     res.send(touristes);
 });
 
+// Route pour récupérer un touriste par ID
 touristeRouter.get("/Touriste/:id", async (req, res) => {
     const id = req.params.id;
     const touriste = await getTouriste(id);
     res.send(touriste);
 });
 
+// Route pour créer un nouveau touriste
 touristeRouter.post("/Touriste", async (req, res) => {
     const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email } = req.body;
     const touriste = await createTouriste(Nom, Prenom, adresse, telephone, localisation, villeVisite, image, password, email);
     res.status(201).send(touriste);
 });
 
+// Route pour mettre à jour un touriste par ID
 touristeRouter.put("/Touriste/:id", async (req, res) => {
     const id = req.params.id;
     const { Nom, Prenom, adresse, telephone, localisation, villeVisite, image } = req.body;
@@ -35,6 +39,7 @@ touristeRouter.put("/Touriste/:id", async (req, res) => {
     }
 });
 
+// Route pour supprimer un touriste par ID
 touristeRouter.delete("/Touriste/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteTouriste(id);
@@ -45,6 +50,7 @@ touristeRouter.delete("/Touriste/:id", async (req, res) => {
     }
 });
 
+// Route pour récupérer l'image d'un touriste par ID
 touristeRouter.get("/TouristeImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -56,7 +62,7 @@ touristeRouter.get("/TouristeImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
+// Route pour mettre à jour l'image d'un touriste par ID
 touristeRouter.put("/updateImage/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
@@ -68,7 +74,7 @@ touristeRouter.put("/updateImage/:id", async (req, res) => {
     }
 });
 
-// Route to delete an image
+// Route pour supprimer l'image d'un touriste par ID
 touristeRouter.delete("/deleteImage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage(id);

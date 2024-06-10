@@ -3,6 +3,7 @@ import { getReservations, getReservation, makeReservation, updateReservation, de
 
 const reservationRouter = express.Router();
 
+// Route pour récupérer toutes les réservations
 reservationRouter.get("/Reservations", async (_req, res) => {
     try {
         const reservations = await getReservations();
@@ -12,6 +13,7 @@ reservationRouter.get("/Reservations", async (_req, res) => {
     }
 });
 
+// Route pour récupérer une réservation par ID
 reservationRouter.get("/Reservation/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -26,6 +28,7 @@ reservationRouter.get("/Reservation/:id", async (req, res) => {
     }
 });
 
+// Route pour créer une nouvelle réservation
 reservationRouter.post("/Reservation", async (req, res) => {
     try {
         const { id_touriste, etablissement_id, dateReservation, debut_temp, fin_temp, nombrePersonne } = req.body;
@@ -36,6 +39,7 @@ reservationRouter.post("/Reservation", async (req, res) => {
     }
 });
 
+// Route pour mettre à jour une réservation par ID
 reservationRouter.put("/Reservation/:id", async (req, res) => {
     const id_reservation = req.params.id;
     try {
@@ -51,17 +55,19 @@ reservationRouter.put("/Reservation/:id", async (req, res) => {
     }
 });
 
+// Route pour récupérer l'image d'une réservation par ID
 reservationRouter.get("/reservationImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
         const image = await getImage(id);
-        res.writeHead(200, {'Content-Type': 'image/png'}); 
+        res.writeHead(200, {'Content-Type': 'image/png'});
         res.end(image, 'binary');
     } catch (error) {
         res.status(404).send("Image not found");
     }
 });
 
+// Route pour supprimer une réservation par ID
 reservationRouter.delete("/Reservation/:id", async (req, res) => {
     const id_reservation = req.params.id;
     try {

@@ -7,29 +7,34 @@ import {
 
 const santeRouter = express.Router();
 
+// Route pour récupérer toutes les entités de santé
 santeRouter.get("/Santes", async (_req, res) => {
     const santes = await getSantes();
     res.send(santes);
 });
 
+// Route pour récupérer une entité de santé par ID
 santeRouter.get("/Sante/:id", async (req, res) => {
     const id = req.params.id;
     const sante = await getSante(id);
     res.send(sante);
 });
 
+// Route pour récupérer les entités de santé d'une ville par ID de ville
 santeRouter.get("/SanteVille/:id", async (req, res) => {
     const id = req.params.id;
     const santeVille = await getSanteVille(id);
     res.send(santeVille);
 });
 
+// Route pour créer une nouvelle entité de santé
 santeRouter.post("/Sante", async (req, res) => {
     const { id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, site_Web, Email } = req.body;
     const sante = await createSante(id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, site_Web, Email);
     res.status(201).send(sante);
 });
 
+// Route pour mettre à jour une entité de santé par ID
 santeRouter.put("/Sante/:id", async (req, res) => {
     const id = req.params.id;
     const { id_ville, Type, Nom, Adresse, Téléphone, Horaires_ouverture, Activites, site_Web, Email } = req.body;
@@ -41,6 +46,7 @@ santeRouter.put("/Sante/:id", async (req, res) => {
     }
 });
 
+// Route pour supprimer une entité de santé par ID
 santeRouter.delete("/Sante/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteSante(id);
@@ -51,6 +57,7 @@ santeRouter.delete("/Sante/:id", async (req, res) => {
     }
 });
 
+// Route pour récupérer l'image d'une entité de santé par ID
 santeRouter.get("/SanteImage/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -62,7 +69,7 @@ santeRouter.get("/SanteImage/:id", async (req, res) => {
     }
 });
 
-// Route to update an image
+// Route pour mettre à jour l'image d'une entité de santé par ID
 santeRouter.put("/updateImage/:id", async (req, res) => {
     const id = req.params.id;
     const { image } = req.body;
@@ -74,7 +81,7 @@ santeRouter.put("/updateImage/:id", async (req, res) => {
     }
 });
 
-// Route to delete an image
+// Route pour supprimer l'image d'une entité de santé par ID
 santeRouter.delete("/deleteImage/:id", async (req, res) => {
     const id = req.params.id;
     const deleted = await deleteImage(id);

@@ -1,24 +1,21 @@
-/* Newaccount.css */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
+/* Ajoutez cette règle CSS pour le curseur de type pointeur (main) sur les liens */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.new {
-    display: flex;
-    justify-content: flex-start; /* Aligne le formulaire à gauche */
-    align-items: flex-start; /* Aligne le formulaire en haut */
-    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
-    padding: 135px;
+    /* Empêcher l'affichage de la barre de défilement */
+    Cursor: pointer
     
 }
 
+
+/* Centering the parent container */
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f0f0; /* Optional: background color for the parent */
+}
+
+/* Styling the form */
 .touriste-form {
     padding: 20px 30px;
     background-color: rgba(0, 0, 0, 0.3);
@@ -33,36 +30,72 @@ body {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
-.touriste-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-.touriste-form form {
-    padding: 20px 30px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
+.touriste-form input {
+    padding: 10px 20px;
+    border-radius: 10px;
     border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 400px; /* Adjust width as needed */
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
-}
-
-.touriste-form form select,
-.touriste-form form input,
-.touriste-form form button {
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0;
     margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    width: 300px;
+    color: white; /* Make input text white */
+    justify-content: center;
 }
 
+.touriste-form button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 200px;
+    text-align: center;
+    padding: 10px 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    color: white; /* Make button text white */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.touriste-form h1 {
+    font-size: 30px;
+    text-align: center;
+    color: white; /* Make header text white */
+    margin-bottom: 20px; /* Add some space below the heading */
+}
+
+.touriste-form h3 {
+    margin: 0;
+    margin-bottom: 5px;
+    color: white; /* Make subheader text white */
+}
+
+/* Add some basic styling for labels if needed */
+.touriste-form label {
+    color: white; /* Make label text white */
+    margin-bottom: 5px;
+    align-self: flex-start; /* Align labels to the start */
+}
+
+.touriste-form .register-link {
+    color: rgb(160, 209, 255, 1);
+    text-decoration: none; /* Remove underline */
+}
+
+.touriste-form .register-prompt {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 10px; /* Add some top margin */
+    color: white; /* Make prompt text white */
+}
+
+.new {
+    position: fixed;
+    top: 40px;
+    left: 500px;
+}
+
+/* Styling for select dropdown */
 .touriste-form select {
     padding: 10px 20px;
     border-radius: 10px;
@@ -81,6 +114,19 @@ body {
     background-size: 10px;
 }
 
+/* Styling for file input */
+.touriste-form input[type="file"] {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 0;
+    margin-bottom: 10px;
+    width: 300px;
+    color: white; /* Make file input text white */
+}
+
+/* Custom styling for the file input button */
 .touriste-form input[type="file"]::-webkit-file-upload-button {
     padding: 10px 20px;
     border-radius: 10px;
@@ -90,7 +136,7 @@ body {
     cursor: pointer; /* Change cursor to pointer */
 }
 
-.touriste-form input{
+.touriste-form input[type="file"]::file-selector-button {
     padding: 10px 20px;
     border-radius: 10px;
     border: 1px solid white;
@@ -98,33 +144,3 @@ body {
     color: white; /* Make button text white */
     cursor: pointer; /* Change cursor to pointer */
 }
-
-
-
-.touriste-form button {
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid white;
-    border-radius: 20px;
-    width: 200px;
-    text-align: center;
-    padding: 10px 30px;
-    margin-top: 20px;
-    margin-bottom: 0px;
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
-}
-.touriste-form form button:hover {
-    background-color: #0056b3;
-}
-
-.touriste-form h4 {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.touriste-form h4 a {
-    color: #007bff;
-    text-decoration: none;
-    cursor: pointer;
-}
-

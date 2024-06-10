@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Newaccount.css'; 
+import './NewAccountEta.css'; 
 import { useNavigate } from 'react-router-dom';
 
 const NewAccountEta = () => {
@@ -118,7 +118,7 @@ const NewAccountEta = () => {
     return (
         <div className='new'>
         <div className="touriste-form">
-            <h2>Créer un compte</h2>
+            <h2>Je suis un etablissement</h2>
             <form classname='form01' onSubmit={handleSubmit}>
                     <select
                         name="ville"

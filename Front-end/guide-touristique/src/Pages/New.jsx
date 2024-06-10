@@ -6,10 +6,14 @@ import Newaccount from "../Components/LOGIN/OUT/Newaccount";
 const New = () => {
 
     return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
             <BG/>
-            
-            <NewAccountEta/>
+            <div style={{ flex: 1 }}>
+                <NewAccountEta/>
+            </div>
+            <div style={{ flex: 1 }}>
+                <Newaccount/>
+            </div>
         </div>
     );
 };

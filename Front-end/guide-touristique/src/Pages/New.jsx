@@ -5,7 +5,7 @@ import Newaccount from "../Components/LOGIN/OUT/Newaccount"; // Importation du c
 const New = () => { // Déclaration du composant New en tant que fonction fléchée.
 
 
-const New = () => {
+
 
    
     return ( // Rendu du composant.
@@ -21,5 +21,5 @@ const New = () => {
 
     );
 };
-};
+
 export default New; // Exportation du composant New pour être utilisé dans d'autres parties de l'application.

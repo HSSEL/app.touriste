@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { villeRouter } from './routes/villeRouter.js'
-import { tranportRouter } from './routes/transportRouter.js'
+import { transportRouter } from './routes/transportRouter.js'
 import { touristeRouter } from './routes/touristeRouter.js'
 import { santeRouter } from './routes/santeRouter.js'
 import {reservationRouter} from './routes/reservationRouter.js'
@@ -38,7 +38,7 @@ comme '/vi' a des fonctions de gestionnaire (handler functions) comme villeroute
 qui sont exécutées lorsque l'endpoint est atteint
 */
 app.use('/vi',villeRouter)
-app.use('/tro',tranportRouter)
+app.use('/tro',transportRouter)
 app.use('/tou',touristeRouter)
 app.use('/san',santeRouter)
 app.use('/pub',publicationRouter)

@@ -57,6 +57,9 @@ utilisateurRouter.post('/auth', async (req, res) => {
 
             if (utilisateur.isEstablishment === 1) {
                 res.json({ user: utilisateur, details: details, redirectTo: '/home' });
+            } else if (utilisateur.isAdmin === 1) {
+                // Ajoutez la redirection ou la logique spécifique pour les administrateurs ici
+                res.json({ user: utilisateur, details: details, redirectTo: '/Admin' });
             } else {
                 res.json({ user: utilisateur, details: details, redirectTo: '/home' });
             }
@@ -67,6 +70,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
         res.status(400).json({ message: 'Please enter Email and Password!' });
     }
 });
+
 
 // Route pour récupérer le mot de passe d'un utilisateur par son ID
 utilisateurRouter.get('/Password/:id', async (req, res) => {

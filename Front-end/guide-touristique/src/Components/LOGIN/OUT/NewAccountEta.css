@@ -13,6 +13,7 @@ body {
     align-items: center;
     height: 100vh; /* Full viewport height */
     background-color: #f0f0f0; /* Optional: background color for the parent */
+    padding:20px;
 }
 
 /* Styling the form */

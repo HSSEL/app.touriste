@@ -1,4 +1,5 @@
 // PUB 1 COMMENT
+// hada kayafficher pub we7ta li clickina 3la comments dyalha
 
 import '../Container2/Container2.css';
 import { staticPostData, fetchPostData } from '../../../data/postData';

@@ -114,3 +114,10 @@ villeRouter.delete("/deleteImage/:id", async (req, res) => {
 });
 
 export { villeRouter };
+
+
+
+
+//est un outil de développement qui surveille les modifications dans les fichiers de notre application Node.js
+// et redémarre automatiquement le serveur lorsque des changements sont détectés
+//start egalement pour redemarrer le serveur de developpement

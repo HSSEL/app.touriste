@@ -1,4 +1,4 @@
-// HADA DYA TYPE ETAB
+// HADA DYAL TYPE ETAB
 
 import './Container1.css';
 import types_etab_data from '../../../data/types_etab_data.js';
@@ -7,10 +7,11 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const Container1 = () => {
-    const [Search, setSearch] = useState(''); 
-    const navigate = useNavigate();
-    const location = useLocation();
+    const [Search, setSearch] = useState(''); // initialisina search
+    const navigate = useNavigate();  // hadi hya li kat5elina nmchiw mn page l page u5ra
+    const location = useLocation();  // hadi hya li kat5ellina nduwzu chi valeur mn page l page
 
+    // definition dyal l'action fach ghadi nclickiw 3lih
     const handleetab = (etab) => {
         navigate('/etabs', { state: {...location.state , nom: etab.nom } });
     };
@@ -27,6 +28,8 @@ const Container1 = () => {
                     />
                 </div>
                 <div className='etabs'>
+                    {/* hada kay5rejlina ga3 les types de data li 3endna fdata file 
+                    filter 3la wed ila ktebna chi 7aja fsearch kayfiltri lina dik data sinon ila maktebna walu kaytele3 lina kulchy*/}
                     {types_etab_data.filter((data) => {
                         return Search === '' ? data : data.nom.toLowerCase().includes(Search);
                     }).map((data, index) => (

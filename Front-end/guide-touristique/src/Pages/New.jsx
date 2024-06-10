@@ -1,13 +1,19 @@
 import BG from "../Components/BG/BG";
-import { useLocation } from "react-router-dom";
+import NewAccountEta from "../Components/LOGIN/OUT/NewAccountEta";
+
 import Newaccount from "../Components/LOGIN/OUT/Newaccount";
 
 const New = () => {
 
     return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
             <BG/>
-            <Newaccount/>
+            <div style={{ flex: 1 }}>
+                <NewAccountEta/>
+            </div>
+            <div style={{ flex: 1 }}>
+                <Newaccount/>
+            </div>
         </div>
     );
 };

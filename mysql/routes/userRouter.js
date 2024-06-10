@@ -24,7 +24,7 @@ import {
     updateUtilisateur, 
     getUtilisateurMdp, 
     getUtilisateurEmail, 
-    getUserDetails,registerUtilisateurEtTouriste,
+    getUserDetails,registerUtilisateurEtTouriste,registerUtilisateurEtEtablissement,
     login 
 } from '../controllers/userController.js';
 
@@ -130,7 +130,7 @@ utilisateurRouter.put("/Password/:id", async (req, res) => {
     }
 });
 
-// Routes pour l'inscription et la connexion
+// Routes pour l'inscription et la connexion pour touriste
 utilisateurRouter.post('/register', async (req, res) => {
     try {
       const { email, password, Nom, Prenom, adresse, telephone, localisation, villeVisite } = req.body;
@@ -150,6 +150,32 @@ utilisateurRouter.post('/register', async (req, res) => {
       res.status(500).json({ message: 'Erreur lors de la création du compte' });
     }
   });
+
+
+// Routes pour l'inscription et la connexion pour etablissement
+utilisateurRouter.post('/registerEtablissement', async (req, res) => {
+    try {
+      const { email, password,id_ville, type, nom, description, adresse, telephone, horaires_ouverture, site_web, services_offerts, reseau_sociaux } = req.body;
+      const image = req.files.image;
+      const image2 = req.files.image2;
+      const image3 = req.files.image3;
+  
+      // Convertir l'image en base64
+      const imageData1 = image.data.toString('base64');
+      const imageData2 = image2.data.toString('base64');
+      const imageData3 = image3.data.toString('base64');
+  
+      const userData = { email, password };
+      const touristeData = { id_ville, type, nom, description, adresse, telephone, horaires_ouverture, site_web, services_offerts, reseau_sociaux,image: imageData1,image2:imageData2,image3:imageData3 };
+  
+      const utilisateurId = await registerUtilisateurEtEtablissement(userData, touristeData);
+  
+      res.status(201).json({ utilisateurId });
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).json({ message: 'Erreur lors de la création du compte' });
+    }
+});
 utilisateurRouter.post('/login', login);
 
 export { utilisateurRouter };

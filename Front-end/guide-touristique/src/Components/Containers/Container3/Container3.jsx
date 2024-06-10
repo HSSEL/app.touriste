@@ -13,6 +13,7 @@ const Container3 = () => {
                 <div className="hot-deals">
                     <h2>HOT DEALS!</h2>
                 </div>
+                {/* hadi katafficher ga3 les offres li kaynin f dealsData */}
                 <div className="scrolling-images">
                     {dealsData.map((data, index) => (
                         <div key={index} className="image-container">

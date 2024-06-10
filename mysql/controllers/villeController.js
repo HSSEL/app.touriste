@@ -18,6 +18,12 @@ export async function getVille(id) {
     return rows[0];
 }
 
+export async function getidVille(nomVille) {
+    const [rows] = await pool.query("SELECT id_ville FROM ville WHERE Nom=?", [nomVille]);
+    return rows[0].id_ville;
+}
+
+
 // Fonction pour créer une nouvelle ville
 export async function createVille(Nom, Description, Quartiers, image) {
     const [result] = await pool.query(`

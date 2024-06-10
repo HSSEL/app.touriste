@@ -39,13 +39,24 @@ export async function getEtablissementType(type) {
 }
 
 // Créer un nouvel établissement
-export async function createEtablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating) {
+export async function createEtablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux,image, latitude, longitude, image2,image3,rating) {
     const [result] = await pool.query(`
-        INSERT INTO etablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating)
-        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `, [id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating]);
+        INSERT INTO etablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,latitude, longitude, ,image2,image3,rating)
+        VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?, ?, ?,?,?)
+    `, [id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,latitude, longitude,image2,image3, rating]);
     return result.insertId; // Retourner l'ID du nouvel établissement inséré
 }
+
+// Créer un nouvel établissement
+export async function createCompteEtablissement( type, nom, description, adresse, telephone,  horaires_ouverture, site_web, services_offerts, reseau_sociaux,image,image2,image3) {
+    const [result] = await pool.query(`
+        INSERT INTO etablissement( type, nom, description, adresse, telephone,  horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,image2,image3)
+        VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?, ?)
+    `, [ type, nom, description, adresse, telephone,  horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,image2,image3]);
+    return result.insertId; // Retourner l'ID du nouvel établissement inséré
+}
+
+
 
 // Mettre à jour un établissement existant
 export async function updateEtablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating) {

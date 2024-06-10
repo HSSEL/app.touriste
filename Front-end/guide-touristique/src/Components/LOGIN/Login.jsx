@@ -119,6 +119,7 @@ const Login0 = () => {
             const { user, details } = await login(email, password);
     
             console.log('Login successful:', user, details);
+            
             navigate('/home', { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
         } catch (error) {
             console.error('Login failed:', error);
@@ -156,7 +157,7 @@ const Login0 = () => {
                 <button type="submit">Se connecter</button>
                 <div className='register-prompt'>
                     <h4>Vous n'avez pas un compte?</h4>
-                    <h4 onClick={handleClicklog} className='register-link'>Créer un!</h4>
+                    <h4 onClick={handleClicklog} className='register-link' style={{ cursor: 'pointer' }}>Créer un!</h4>
                 </div>
             </form>
         </div>

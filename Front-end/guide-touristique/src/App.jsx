@@ -11,6 +11,8 @@ import Reetab from './Pages/Reetab';
 import Reserver from './Pages/Reserver';
 import Logout from './Pages/Logout';
 import New from './Pages/New';
+import TouristesPage from './Pages/Admin/Touristes'
+import Admin from './Pages/Admin/Admin';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -68,6 +70,9 @@ const App = () => {
             <Route path="/reserver" element={<Reserver/>} />
             <Route path="/logout" element={<Logout/>} />
             <Route path="/new" element={<New/>} />
+            <Route path="/touristes" element={<TouristesPage/>} />
+            <Route path="/admin" element={<Admin/>} />
+            
             </Routes> 
             </BrowserRouter>
         </div>

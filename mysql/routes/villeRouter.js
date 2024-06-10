@@ -8,7 +8,8 @@ import express from 'express';
 
 import {
     getVilles, getVille, createVille, updateVille, deleteVille,
-    getImage, updateImage, deleteImage
+    getImage, updateImage, deleteImage,
+    getidVille
 } from '../controllers/villeController.js';
 
 const villeRouter = express.Router();//villeRouter:instance d'un routeur Express
@@ -23,6 +24,17 @@ villeRouter.get("/villes", async (_req, res) => {
     */
     const villes = await getVilles();
     res.send(villes);
+});
+
+villeRouter.get("/idville/:nomVille", async (req, res) => {
+    const nomVille = req.params.nomVille; // Récupérer le nom de la ville depuis les paramètres de l'URL
+    try {
+        const idVille = await getidVille(nomVille);
+        res.status(200).json({ idVille });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: 'Erreur lors de la récupération de l\'ID de la ville' });
+    }
 });
 
 villeRouter.get("/ville/:id", async (req, res) => {

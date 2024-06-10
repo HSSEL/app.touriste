@@ -23,7 +23,7 @@ import {
     getEtablissements, getEtablissementVille, getEtablissement, getEtablissementType,
     createEtablissement, updateEtablissement, deleteEtablissement,
     getImage1, getImage2, getImage3, updateImage1, updateImage2, updateImage3,
-    deleteImage1, deleteImage2, deleteImage3
+    deleteImage1, deleteImage2, deleteImage3,createCompteEtablissement
 } from '../controllers/etablissementController.js';
 
 const etablissementRouter = express.Router();
@@ -67,8 +67,18 @@ etablissementRouter.post("/Etablissement", async (req, res) => {
     //méthode post pour gérer les requêtes HTTP POST
     //post: Reçoit des données du client, les insère dans la base de données,
     // et renvoie l'ID de la nouvelle ressource créée.
-    const { id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating } = req.body;
-    const etablissement = await createEtablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, latitude, longitude, rating);
+    const { id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux,image, latitude, longitude,image2,image3, rating } = req.body;
+    const etablissement = await createCompteEtablissement(id_ville, type, nom, description, adresse, telephone, Email, horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,latitude, longitude,image2,image3, rating);
+    res.status(201).send(etablissement);
+});
+
+//ajout dun etablissement selon le formulaire de creation de compte
+etablissementRouter.post("/CompteEtablissement", async (req, res) => {
+    //méthode post pour gérer les requêtes HTTP POST
+    //post: Reçoit des données du client, les insère dans la base de données,
+    // et renvoie l'ID de la nouvelle ressource créée.
+    const {  type, nom, description, adresse, telephone,  horaires_ouverture, site_web, services_offerts, reseau_sociaux,image,image2,image3 } = req.body;
+    const etablissement = await createCompteEtablissement(type, nom, description, adresse, telephone,  horaires_ouverture, site_web, services_offerts, reseau_sociaux, image,image2,image3 );
     res.status(201).send(etablissement);
 });
 

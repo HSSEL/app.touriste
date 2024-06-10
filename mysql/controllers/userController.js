@@ -3,6 +3,8 @@ import { pool } from "../databases.js";
 // L'objet pool est une instance de connexion à une base de données MySQL, 
 // qui est configurée pour exécuter des requêtes SQL.
 import { createTouriste } from "./touristeController.js";
+import { createCompteEtablissement } from "./etablissementController.js";
+
 
 // Fonction pour récupérer tous les utilisateurs
 export async function getUtilisateurs() {
@@ -67,8 +69,61 @@ export async function createUtilisateur(email, password, touriste_id) {
     return result.insertId;
   }
 
+  // Fonction pour créer un nouvel etablissement
+export async function createEtablissement(email, password, etablissement_id) {
+    const [result] = await pool.query(`
+      INSERT INTO users (email, password, etablissement_id)
+      VALUES (?, ?, ?)
+    `, [email, password, etablissement_id]);
+    return result.insertId;
+  }
+
+
+
 
 // Fonction pour créer un utilisateur et un touriste
+export async function registerUtilisateurEtEtablissement(userData, etablissementData) {
+    const connection = await pool.getConnection();
+    try {
+      await connection.beginTransaction();
+      
+      // Créer le touriste
+      const etablissementId = await createCompteEtablissement(
+        etablissementData.id_ville,
+        etablissementData.type ,
+        etablissementData.nom,
+        etablissementData.description ,
+        etablissementData.adresse ,
+        etablissementData.telephone,
+        etablissementData.horaires_ouverture ,
+        etablissementData.site_web ,
+        etablissementData.services_offerts ,
+        etablissementData.reseau_sociaux ,
+        etablissementData.image,
+        etablissementData.image2,
+        etablissementData.image3
+
+
+      );
+  
+      // Créer l'utilisateur avec l'id du touriste créé
+      const utilisateurId = await createEtablissement(
+        userData.email,
+        userData.password,
+        
+        etablissementId
+      );
+  
+      await connection.commit();
+      return utilisateurId;
+    } catch (error) {
+      await connection.rollback();
+      throw error;
+    } finally {
+      connection.release();
+    }
+}
+
 export async function registerUtilisateurEtTouriste(userData, touristeData) {
     const connection = await pool.getConnection();
     try {

@@ -1,5 +1,6 @@
 import BG from "../Components/BG/BG";
-import { useLocation } from "react-router-dom";
+import NewAccountEta from "../Components/LOGIN/OUT/NewAccountEta";
+
 import Newaccount from "../Components/LOGIN/OUT/Newaccount";
 
 const New = () => {
@@ -7,7 +8,8 @@ const New = () => {
     return (
         <div>
             <BG/>
-            <Newaccount/>
+            
+            <NewAccountEta/>
         </div>
     );
 };

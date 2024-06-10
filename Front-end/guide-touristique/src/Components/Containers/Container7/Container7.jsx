@@ -181,8 +181,8 @@ const Container7 = () => {
                 <h2>Pas de publications</h2>
                 </div>) : (
               
-              postData.map((post, index) => (
-                      <div className="etabprof021" key={index}>
+              postData.map((post, index1) => (
+                      <div className="etabprof021" key={index1}>
                           <h2>{post.objet}</h2>
                           <h3>{post.text}</h3>
                           <img src={`http://localhost:8080/pub/publicationImage/${post.id_publication}`} alt='' />
@@ -199,10 +199,10 @@ const Container7 = () => {
                 ) : (
                   commentetab
                     .filter(comment => touristeData.some(tourist => tourist.id_touriste === comment.id_touriste))
-                    .map((comment, index) => {
+                    .map((comment, index2) => {
                       const tourist = touristeData.find(tourist => tourist.id_touriste === comment.id_touriste);
                       return (
-                        <div key={index} className='comment'>
+                        <div key={index2} className='comment'>
                           <div className='commentowner'>
                             <img src={`http://localhost:8080/tou/touristeImage/${tourist.id_touriste}`} alt="" />
                             <div className='commentowner0'>

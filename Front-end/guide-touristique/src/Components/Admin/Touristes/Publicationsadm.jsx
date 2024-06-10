@@ -2,26 +2,26 @@
 
 import React, { useState, useEffect } from 'react';
 import './Touristes.css';
-import { fetchtouristebData } from '../../../data/TouristeData';
+import { fetchPostData } from '../../../data/postData';
 import searchIcon from '../../../assets/search.svg';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-const Touristes = () => {
-    const [tou, settou] = useState([]);
+const Publicationadmin = () => {
+    const [post, setPost] = useState([]);
     const [search, setSearch] = useState(''); 
 
     useEffect(() => {
-        const gettou = async () => {
+        const getPost = async () => {
             try {
-                const data = await fetchtouristebData();
+                const data = await fetchPostData();
                 if (Array.isArray(data) && data.length > 0) {
-                    settou(data);
+                    setPost(data);
                 }
             } catch (error) {
                 console.error('Error fetching ville data:', error);
             }
         };
-        gettou();
+        getPost();
     }, []);
 
     const handleSearchChange = (e) => {
@@ -36,20 +36,20 @@ const Touristes = () => {
                 <input 
                     onChange={handleSearchChange}
                     type="text" 
-                    placeholder="Chercher un touriste par son nom"
+                    placeholder="Chercher une publication par objet"
                 />
             </div>
             <div className='cities'>
-                {tou
+                {post
                 .filter((data) => {
-                    return search === '' ? data : data.Nom.toLowerCase().startsWith(search);
+                    return search === '' ? data : data.objet.toLowerCase().startsWith(search);
                 })
                 .map((data, index) => (
                     <div key={index} className='onecity'>
-                        <h2>{data.Nom}</h2>
+                        <h2>{data.objet}</h2>
                         <img 
-                            src={`http://localhost:8080/tou/touristeImage/${data.id_touriste}`}
-                            alt={data.Nom}
+                            src={`http://localhost:8080/pub/publicationImage/${data.id_publication}`}
+                            alt={data.objet}
                         />
                         <button>Voir</button>
                     </div>
@@ -59,4 +59,4 @@ const Touristes = () => {
     );
 };
 
-export default Touristes;
+export default Publicationadmin;

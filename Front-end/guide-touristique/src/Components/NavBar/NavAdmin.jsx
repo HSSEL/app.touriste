@@ -23,6 +23,15 @@ const NavAdmin = () => {
         navigate('/villesadm')
     }
 
+    const handlelogout = () => {
+        navigate('/logout')
+    }
+
+    
+    const handlepub = () => {
+        navigate('/pubadmin')
+    }
+
     return (
         <div className='NAV'>
             <div className='nav'>
@@ -30,11 +39,11 @@ const NavAdmin = () => {
                     <ul className='nav-menu'>
                         <li onClick={handleTou} className='home'>Touristes</li>
                         <li onClick={handleetabs} className='etablissement'>Établissements</li>
-                        <li className='user'>Publications</li>
+                        <li onClick={handlepub} className='user'>Publications</li>
                         <li className='user'>Offres</li>
                         <li onClick={handleville} className='user'>Villes</li> 
                         <li onClick={handleAdm} className='Admin'>Admin</li>
-                        <li className='Admin'>Se déconnecter</li>
+                        <li onClick={handlelogout} className='Admin'>Se déconnecter</li>
                 </ul>
             </div>
         </div>

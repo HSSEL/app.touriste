@@ -38,11 +38,11 @@ const Container11 = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const reservationData = {
-            id_touriste: 1,        
+            id_touriste: 1,  
             etablissement_id: etablissement_id,
             dateReservation: new Date().toISOString().split('T')[0],
-            debut_temp: dateDebut,
-            fin_temp: dateFin,
+            debut_temp: `${dateDebut} 00:00:00`, 
+            fin_temp: `${dateFin} 00:00:00`,     
             nombrePersonne: nombrePersonne
         };
 
@@ -51,6 +51,9 @@ const Container11 = () => {
 
             if (response.status === 201) {
                 console.log('Reservation created successfully:', response.data);
+                setNombrePersonne('');
+                setDateDebut('');
+                setDateFin('');
             } else {
                 console.error('Failed to create reservation');
             }
@@ -73,11 +76,10 @@ const Container11 = () => {
                 <div className='con11all'>
                     <div className='con11_01'>
                         <h1>{etab.nom}</h1>
-                        <img className='con11_1' src={`http://localhost:8080/eta/EtablissementImage/${etab.etablissement_id}`} alt=''/>
+                        <img className='con11_1' src={`http://localhost:8080/eta/etablissementImage/${etab.etablissement_id}`} alt='' />
                         <p>{etab.description}</p>
-
-                        <img className='con11_2' src={`http://localhost:8080/eta/EtablissementImage2/${etab.etablissement_id}`} alt=''/>
-                        <img className='con11_3' src={`http://localhost:8080/eta/EtablissementImage3/${etab.etablissement_id}`} alt=''/>
+                        <img className='con11_2' src={`http://localhost:8080/eta/etablissementImage2/${etab.etablissement_id}`} alt='' />
+                        <img className='con11_3' src={`http://localhost:8080/eta/etablissementImage3/${etab.etablissement_id}`} alt='' />
                     </div>
 
                     <div className='c11form'>
@@ -87,7 +89,7 @@ const Container11 = () => {
                             <input
                                 type="number"
                                 name="nombrePersonne"
-                                placeholder="entrer le nombre de personnes"
+                                placeholder="Entrer le nombre de personnes"
                                 value={nombrePersonne}
                                 onChange={(e) => setNombrePersonne(e.target.value)}
                                 required
@@ -96,7 +98,7 @@ const Container11 = () => {
                             <input
                                 type="date"
                                 name="datedebut"
-                                placeholder="entrer la date de debut"
+                                placeholder="Entrer la date de debut"
                                 value={dateDebut}
                                 onChange={(e) => setDateDebut(e.target.value)}
                                 required
@@ -105,7 +107,7 @@ const Container11 = () => {
                             <input
                                 type="date"
                                 name="datefin"
-                                placeholder="entrer la date de fin"
+                                placeholder="Entrer la date de fin"
                                 value={dateFin}
                                 onChange={(e) => setDateFin(e.target.value)}
                                 required

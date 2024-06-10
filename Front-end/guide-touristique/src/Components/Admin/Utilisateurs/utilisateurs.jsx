@@ -15,6 +15,10 @@ const Utilisateurs = () => {
     const handletou = () =>{
         navigate('/touristes')
     }
+    
+    const handleetab = () =>{
+        navigate('/etablissements')
+    }
 
     
     useEffect(() => {
@@ -72,7 +76,7 @@ const Utilisateurs = () => {
                 {/* hada kay5erej ga3 les etablissements */}
                 <div className='user04'>
                     <h2>Tous les etablissement</h2>
-                    <button>Voir tous</button>
+                    <button onClick={handleetab}>Voir tous</button>
                 </div>
                 <div className='users06'>
                     {etab.map(( data, index) => (

@@ -13,6 +13,7 @@ import Logout from './Pages/Logout';
 import New from './Pages/New';
 import TouristesPage from './Pages/Admin/Touristes'
 import Admin from './Pages/Admin/Admin';
+import EtabPage from './Pages/Admin/Etablissement';
 
 const App = () => {
     const [publications, setPublications] = useState([]);
@@ -72,6 +73,7 @@ const App = () => {
             <Route path="/new" element={<New/>} />
             <Route path="/touristes" element={<TouristesPage/>} />
             <Route path="/admin" element={<Admin/>} />
+            <Route path="/etablissements" element={<EtabPage/>} />
             
             </Routes> 
             </BrowserRouter>

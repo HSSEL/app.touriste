@@ -4,35 +4,37 @@ import { useNavigate } from 'react-router-dom';
 
 
 const NavAdmin = () => {
+
+    const navigate = useNavigate();
+
+    const handleTou = () => {
+        navigate('/touristes')
+    }
     
-  /*   const handleClick1 = () => {
-      navigate('/home'); 
-    };
-  
-    const handleClick2 = () => {
-      navigate('/etablissement'); 
-    };
+    const handleAdm = () => {
+        navigate('/admin')
+    }
     
-    const handleClick3 = () => {
-      navigate('/user'); 
-    };
-   */
+    const handleetabs = () => {
+        navigate('/etablissements')
+    }
+    
     return (
-      <div className='NAV'>
-        <div className='nav'>
-          <div className="nav-logo">SARINI</div>
-          <ul className='nav-menu'>
-            <li className='home'>Touristes</li>
-            <li className='etablissement'>Établissements</li>
-            <li className='user'>Publications</li>
-            <li className='user'>Offres</li>
-            <li className='user'>Villes</li>
-            <li className='Admin'>Admin</li>
-            <li className='Admin'>Se déconnecter</li>
-          </ul>
+        <div className='NAV'>
+            <div className='nav'>
+                <div className="nav-logo">SARINI</div>
+                    <ul className='nav-menu'>
+                        <li onClick={handleTou} className='home'>Touristes</li>
+                        <li onClick={handleetabs} className='etablissement'>Établissements</li>
+                        <li className='user'>Publications</li>
+                        <li className='user'>Offres</li>
+                        <li className='user'>Villes</li> 
+                        <li onClick={handleAdm} className='Admin'>Admin</li>
+                        <li className='Admin'>Se déconnecter</li>
+                </ul>
+            </div>
         </div>
-      </div>
     );
-  };
+    };
   
-  export default NavAdmin;
+    export default NavAdmin;

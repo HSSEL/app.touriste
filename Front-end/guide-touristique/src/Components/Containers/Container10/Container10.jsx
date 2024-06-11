@@ -18,7 +18,7 @@ const Container10 = () => {
         }
     }, [state]);
 
-
+// Effet pour récupérer les données des établissements
     useEffect(() => {
         const getEtabData = async () => {
             try {
@@ -32,12 +32,13 @@ const Container10 = () => {
         };
         getEtabData();
     }, []);
-
+ // Fonction pour gérer le changement de recherche
     const handleSearchChange = (e) => {
-        setSearch(e.target.value.toLowerCase());
+        setSearch(e.target.value.toLowerCase());// Mise à jour de l'état de recherche
     };
 
     const navigate = useNavigate();
+     // Fonction pour gérer le clic sur un établissement
     const handleClickEtab = (etab) => {
         navigate('/etab', { state: { ...location.state, etablissement_id: etab.etablissement_id } });
     }
@@ -45,18 +46,19 @@ const Container10 = () => {
     return (
         <div className='container8'>
             <div className='search0'>
-                <img src={searchIcon} alt='Search Icon' />
+                <img src={searchIcon} alt='Search Icon' />{/* Affichage de l'icône de recherche */}
                 <input 
                     onChange={handleSearchChange}
                     type="text" 
-                    placeholder="Chercher un etablissement"
+                    placeholder="Chercher un etablissement"// Champ de saisie pour la recherche d'un établissement
                 />
             </div>
             
             <div className='cities'>
+                {/* Filtrage et affichage des établissements */}
                 {etab
                 .filter((data) => {
-                    return search === '' ? data : data.nom.toLowerCase().startsWith(search);
+                    return search === '' ? data : data.nom.toLowerCase().startsWith(search);// Filtrage des établissements selon la recherche
                 })
                 .map((data, index) => (
                     <div key={index} className='onecity'>
@@ -66,7 +68,7 @@ const Container10 = () => {
                             alt={data.nom} 
                             onError={(e) => { e.target.src = '/path/to/placeholder_image.png'; }}
                         />
-                        <button onClick={() => handleClickEtab(data)}>Visiter</button>
+                        <button onClick={() => handleClickEtab(data)}>Visiter</button>{/* Bouton pour visiter l'établissement */}
                     </div>
                 ))}
             </div>

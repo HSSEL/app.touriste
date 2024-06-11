@@ -1,13 +1,13 @@
 .alls{
     display: flex;
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: row;/* Alignement horizontal des éléments */
+    gap: 20px;/* Espacement entre les éléments */
     position: fixed;
     bottom: 30px;
     left: 150px;
 }
 
-
+/* Style pour chaque service individuel */
 .oneservice {
     border: 1px solid white;
     border-radius: 50px;
@@ -20,14 +20,14 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+/* Style pour le titre de chaque service */
 .oneservice h3 {
     max-width: 200px;
     padding: 20px;
     padding-bottom: 0;
     text-align: center;
 }
-
+/* Style pour le bouton de chaque service */
 .oneservice button {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.3);

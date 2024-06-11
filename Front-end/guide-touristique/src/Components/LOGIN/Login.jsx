@@ -29,14 +29,14 @@ const Login0 = () => {
             console.log('Login successful:', user, details);
 
             let redirectTo ;
-            if (user.isAdmin === 1) {
-                redirectTo = '/admin'; // Redirection pour les administrateurs
-            } else if (user.isEstablishment === 1) {
+            if (user.isEstablishment === 0) {
+                redirectTo = '/home'; // Redirection pour les administrateurs
+            } else{ if (user.isAdmin === 1) {
                 redirectTo = '/useretab'; // Redirection pour les établissements
-            }else{
+            }else if(user.isEstablishment === 0 && user.isAdmin ===0){
                 redirectTo= '/home'; 
             }
-
+            }
             navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
         } catch (error) {
             console.error('Login failed:', error);

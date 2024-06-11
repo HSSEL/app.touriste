@@ -32,7 +32,7 @@ const Login0 = () => {
             if (user.isAdmin === 1) {
                 redirectTo = '/admin'; // Redirection pour les administrateurs
             } else if (user.isEstablishment === 1) {
-                redirectTo = '/useretab'; // Redirection pour les établissements
+                redirectTo = '/UserEtab'; // Redirection pour les établissements
             }
 
             navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur

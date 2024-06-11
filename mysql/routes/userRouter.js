@@ -61,7 +61,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
                 // Ajoutez la redirection ou la logique spécifique pour les administrateurs ici
                 res.json({ user: utilisateur, details: details, redirectTo: '/Admin' });
             } else {
-                res.json({ user: utilisateur, details: details, redirectTo: '/home' });
+                res.json({ user: utilisateur, details: details, redirectTo: '/UserEtab' });
             }
         } else {
             res.status(401).json({ message: 'Incorrect Email and/or Password!' });

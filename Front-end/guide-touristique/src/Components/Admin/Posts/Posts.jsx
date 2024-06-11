@@ -1,6 +1,8 @@
 // Importation des bibliothèques et modules nécessaires
+
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from 'axios'; //une bibliothèque JavaScript utilisée pour faire des requêtes HTTP depuis le navigateur ou un environnement Node.js.
+//Elle facilite les opérations asynchrones comme obtenir des données d'une API.
 import { useNavigate } from 'react-router-dom';
 import { fetchPostData } from '../../../data/postData';
 import './Posts.css'

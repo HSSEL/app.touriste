@@ -1,7 +1,7 @@
 /* Newaccount.css */
-*,
-*::before,
-*::after {
+
+/* Apply box-sizing: border-box to specific elements */
+body, .new, .touriste-form, .touriste-form * {
     box-sizing: border-box;
 }
 
@@ -16,7 +16,6 @@ body {
     align-items: flex-start; /* Aligne le formulaire en haut */
     height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
     padding: 135px;
-    
 }
 
 .touriste-form {
@@ -28,11 +27,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px; /* Adjust width as needed */
+    width: 400px; /* Ajuster la largeur selon les besoins */
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
 }
+
 .touriste-form h2 {
     margin-bottom: 20px;
     text-align: center;
@@ -47,7 +47,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px; /* Adjust width as needed */
+    width: 400px; /* Ajuster la largeur selon les besoins */
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
@@ -71,11 +71,11 @@ body {
     margin: 0;
     margin-bottom: 10px;
     width: 300px;
-    color: white; /* Make select text white */
-    appearance: none; /* Remove default dropdown arrow */
-    -webkit-appearance: none; /* Remove default dropdown arrow in Safari */
-    -moz-appearance: none; /* Remove default dropdown arrow in Firefox */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 4 5"%3E%3Cpath fill%3D"%23FFF" d%3D"M2 0L0 2h4z" /%3E%3C/svg%3E'); /* Custom arrow */
+    color: white; /* Rendre le texte de la sélection blanc */
+    appearance: none; /* Supprimer la flèche par défaut du dropdown */
+    -webkit-appearance: none; /* Supprimer la flèche par défaut dans Safari */
+    -moz-appearance: none; /* Supprimer la flèche par défaut dans Firefox */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 4 5"%3E%3Cpath fill%3D"%23FFF" d%3D"M2 0L0 2h4z" /%3E%3C/svg%3E'); /* Flèche personnalisée */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 10px;
@@ -86,20 +86,18 @@ body {
     border-radius: 10px;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white; /* Rendre le texte du bouton blanc */
+    cursor: pointer; /* Changer le curseur en pointeur */
 }
 
-.touriste-form input{
+.touriste-form input {
     padding: 10px 20px;
     border-radius: 10px;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white; /* Rendre le texte du bouton blanc */
+    cursor: pointer; /* Changer le curseur en pointeur */
 }
-
-
 
 .touriste-form button {
     background-color: rgba(0, 0, 0, 0.3);
@@ -110,9 +108,10 @@ body {
     padding: 10px 30px;
     margin-top: 20px;
     margin-bottom: 0px;
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white; /* Rendre le texte du bouton blanc */
+    cursor: pointer; /* Changer le curseur en pointeur */
 }
+
 .touriste-form form button:hover {
     background-color: #0056b3;
 }
@@ -127,4 +126,3 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-

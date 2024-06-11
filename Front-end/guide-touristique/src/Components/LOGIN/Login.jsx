@@ -120,12 +120,15 @@ const Login0 = () => {
     
             console.log('Login successful:', user, details);
 
-            let redirectTo = '/home'; // Redirection par défaut pour les utilisateurs normaux
-            if (user.isAdmin === 1) {
-                redirectTo = '/admin'; // Redirection pour les administrateurs
-            } else if (user.isEstablishment === 1) {
-                redirectTo = '/useretab'; // Redirection pour les établissements
+            let redirectTo; // Redirection par défaut pour les utilisateurs normaux
+            if (user.isEstablishment === 0 && user.isAdmin === 0) {
+                redirectTo = '/home'; // Redirection pour les administrateurs
+            } else {if (user.isAdmin === 1) {
+                redirectTo = '/admin'; // Redirection pour les établissements
             }
+            else if ( user.isAdmin === 0) {
+                redirectTo = '/useretab'
+            }}
 
             navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur
         } catch (error) {

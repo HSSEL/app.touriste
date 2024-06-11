@@ -1,21 +1,16 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 .new {
     display: flex;
-    justify-content: flex-start; /* Aligne le formulaire à gauche */
-    align-items: flex-start; /* Aligne le formulaire en haut */
-    height: 100vh; /* Assure que le conteneur prend toute la hauteur de la fenêtre */
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
     padding: 100px;
-    
+    box-sizing: border-box;
 }
 
 .touriste-form {
@@ -27,15 +22,18 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px; /* Adjust width as needed */
+    width: 400px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    box-sizing: border-box;
 }
+
 .touriste-form h2 {
     margin-bottom: 20px;
     text-align: center;
-    color:#ccc;
+    color: #ccc;
+    box-sizing: border-box;
 }
 
 .touriste-form form {
@@ -47,10 +45,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 400px; /* Adjust width as needed */
+    width: 400px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    box-sizing: border-box;
 }
 
 .touriste-form form select,
@@ -61,6 +60,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 .touriste-form select {
@@ -71,14 +71,15 @@ body {
     margin: 0;
     margin-bottom: 10px;
     width: 300px;
-    color: white; /* Make select text white */
-    appearance: none; /* Remove default dropdown arrow */
-    -webkit-appearance: none; /* Remove default dropdown arrow in Safari */
-    -moz-appearance: none; /* Remove default dropdown arrow in Firefox */
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 4 5"%3E%3Cpath fill%3D"%23FFF" d%3D"M2 0L0 2h4z" /%3E%3C/svg%3E'); /* Custom arrow */
+    color: white;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns%3D"http%3A//www.w3.org/2000/svg" viewBox%3D"0 0 4 5"%3E%3Cpath fill%3D"%23FFF" d%3D"M2 0L0 2h4z" /%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 10px;
+    box-sizing: border-box;
 }
 
 .touriste-form input[type="file"]::-webkit-file-upload-button {
@@ -86,20 +87,20 @@ body {
     border-radius: 10px;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
-.touriste-form input{
+.touriste-form input {
     padding: 10px 20px;
     border-radius: 10px;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
 }
-
-
 
 .touriste-form button {
     background-color: rgba(0, 0, 0, 0.3);
@@ -110,20 +111,25 @@ body {
     padding: 10px 30px;
     margin-top: 20px;
     margin-bottom: 0px;
-    color: white; /* Make button text white */
-    cursor: pointer; /* Change cursor to pointer */
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
 }
+
 .touriste-form form button:hover {
     background-color: #0056b3;
+    box-sizing: border-box;
 }
 
 .touriste-form h4 {
     text-align: center;
     margin-top: 20px;
+    box-sizing: border-box;
 }
 
 .touriste-form h4 a {
     color: #007bff;
     text-decoration: none;
     cursor: pointer;
+    box-sizing: border-box;
 }

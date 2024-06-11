@@ -18,7 +18,7 @@ const Container1 = () => {
 
     return (
         <div>
-            <div className="container" id="container1">
+            <div className="container01">
                 <div className='searchbar'>
                     <img src={search} alt='' />
                     <input 
@@ -27,14 +27,14 @@ const Container1 = () => {
                         placeholder="Chercher un etablissement"
                     />
                 </div>
-                <div className='etabs'>
+                <div className='etabscn1'>
                     {/* hada kay5rejlina ga3 les types de data li 3endna fdata file 
                     filter 3la wed ila ktebna chi 7aja fsearch kayfiltri lina dik data sinon ila maktebna walu kaytele3 lina kulchy*/}
                     {types_etab_data.filter((data) => {
                         return Search === '' ? data : data.nom.toLowerCase().includes(Search);
                     }).map((data, index) => (
-                        <div key={index} className='etab'>
-                            <div className='etabimg'>
+                        <div key={index} className='etabcn1'>
+                            <div className='etabimgcn1'>
                                 <img src={data.img} onClick={() => handleetab(data)} alt='' />
                             </div>
                             <h5>{data.nom}</h5>

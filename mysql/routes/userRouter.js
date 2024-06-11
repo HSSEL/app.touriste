@@ -59,7 +59,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
                 res.json({ user: utilisateur, details: details, redirectTo: '/useretab' });
             } else if (utilisateur.isAdmin === 1) {
                 // Ajoutez la redirection ou la logique spécifique pour les administrateurs ici
-                res.json({ user: utilisateur, details: details, redirectTo: '/Admin' });
+                res.json({ user: utilisateur, details: details, redirectTo: '/admin' });
             } else {
                 res.json({ user: utilisateur, details: details, redirectTo: '/home' });
             }

@@ -56,7 +56,7 @@ utilisateurRouter.post('/auth', async (req, res) => {
             const details = await getUserDetails(utilisateur.touriste_id, utilisateur.etablissement_id);
 
             if (utilisateur.isEstablishment === 1) {
-                res.json({ user: utilisateur, details: details, redirectTo: '/UserEtab' });
+                res.json({ user: utilisateur, details: details, redirectTo: '/useretab' });
             } else if (utilisateur.isAdmin === 1) {
                 // Ajoutez la redirection ou la logique spécifique pour les administrateurs ici
                 res.json({ user: utilisateur, details: details, redirectTo: '/Admin' });

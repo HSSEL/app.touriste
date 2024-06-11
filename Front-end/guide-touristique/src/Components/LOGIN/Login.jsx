@@ -28,11 +28,13 @@ const Login0 = () => {
     
             console.log('Login successful:', user, details);
 
-            let redirectTo = '/home'; // Redirection par défaut pour les utilisateurs normaux
+            let redirectTo ;
             if (user.isAdmin === 1) {
                 redirectTo = '/admin'; // Redirection pour les administrateurs
             } else if (user.isEstablishment === 1) {
-                redirectTo = '/UserEtab'; // Redirection pour les établissements
+                redirectTo = '/useretab'; // Redirection pour les établissements
+            }else{
+                redirectTo= '/home'; 
             }
 
             navigate(redirectTo, { state: { userId: user.id } }); // Passer l'ID de l'utilisateur

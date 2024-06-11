@@ -1,4 +1,6 @@
-/* hada dyal view more etab */
+/* Ce composant affiche les détails d'un établissement, 
+y compris ses informations de contact, ses publications, 
+ses commentaires et la possibilité de réserver. */
 
 import './Container7.css';
 import React, { useEffect, useState } from 'react';
@@ -17,50 +19,53 @@ import time from '../../../assets/info/time.svg';
 import MapComponent from '../../../Map/Map.jsx';
 
 const Container7 = () => {
+  // Récupération des données de localisation et de navigation à partir de react-router-dom
   const location = useLocation();
   const { etablissement_id } = location.state;
   const navigate = useNavigate();
   const { state } = location;
+   // Utilisation de useEffect pour afficher les données reçues
   useEffect(() => {
     if (state) {
         console.log('Received state view more etab:', state);
     }
 }, [state]);
+  // Déclaration des états pour stocker les données
 
   const [ville, setVille] = useState('');
   const [etabData, setEtabData] = useState([]);
   const [postData, setPostData] = useState([]);
   const [commentetab, setcommentetab] = useState([]);
   const [touristeData, setTouristeData] = useState([]);
-
+// Fonction pour formater la date au format souhaité
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
-
+ // Fonction pour gérer la réservation d'un établissement
   const handlereserver = (etab) => {
     navigate('/reserver', { state: { ...location.state, etablissement_id: etab.etablissement_id } });
   };
-
+  // Utilisation de useEffect pour récupérer les données des touristes
   useEffect(() => {
     const getTouristeData = async () => {
       const data = await fetchtouristebData();
 
-      if (data.length > 0) {
-        setTouristeData(data);
+      if (data.length > 0) { // Vérification si les données ne sont pas vides
+        setTouristeData(data);// Mise à jour de l'état avec les données des touristes
       }
     };
 
     getTouristeData();
   }, []);
-
+  // Utilisation de useEffect pour récupérer les données de l'établissement
   useEffect(() => {
     const getEtabData = async () => {
       try {
         const data = await fetchetabData();
         const filteredData = data.filter(etab => etab.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
-          setEtabData(filteredData);
+          setEtabData(filteredData);// Mise à jour de l'état avec les données de l'établissement
         }
       } catch (error) {
         console.error('Error fetching etab data:', error);
@@ -69,14 +74,14 @@ const Container7 = () => {
 
     getEtabData();
   }, [etablissement_id]);
-
+// Utilisation de useEffect pour récupérer les commentaires de l'établissement
   useEffect(() => {
     const getCommentEtab = async () => {
       try {
         const data = await fetchcometabData();
         const filteredData = data.filter(comment => comment.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
-          setcommentetab(filteredData);
+          setcommentetab(filteredData);// Mise à jour de l'état avec les commentaires de l'établissement
         }
       } catch (error) {
         console.error('Error fetching COMMENT data:', error);
@@ -85,14 +90,14 @@ const Container7 = () => {
 
     getCommentEtab();
   }, [etablissement_id]);
-
+ // Utilisation de useEffect pour récupérer les publications de l'établissement
   useEffect(() => {
     const getPostData = async () => {
       try {
         const data = await fetchPostData();
         const filteredData = data.filter(post => post.etablissement_id === etablissement_id);
         if (filteredData.length > 0) {
-          setPostData(filteredData);
+          setPostData(filteredData);// Mise à jour de l'état avec les publications de l'établissement
         }
       } catch (error) {
         console.error('Error fetching post data:', error);
@@ -100,6 +105,7 @@ const Container7 = () => {
     };
     getPostData();
   }, [etablissement_id]);
+  
 
   useEffect(() => {
     const getVilleData = async () => {
@@ -108,7 +114,7 @@ const Container7 = () => {
           const data = await fetchVilleData();
           const filteredData = data.filter(ville => ville.id_ville === etabData[0].id_ville);
           if (filteredData.length > 0) {
-            setVille(filteredData[0]);
+            setVille(filteredData[0]);// Utilisation de useEffect pour récupérer les données de la ville associée à l'établissement
           }
         }
       } catch (error) {
@@ -122,6 +128,7 @@ const Container7 = () => {
   return (
     <div className='container7'>
       <div>
+        {/* Affichage des détails de l'établissement */}
         {etabData.map((etab, index) => (
           <div key={index}>
             <div className="etabprof">
@@ -132,7 +139,7 @@ const Container7 = () => {
                 <h4>Ville: {ville.Nom}</h4>
               </div>
             </div>
-
+{/* Affichage des informations de contact de l'établissement */}
             <div className='etabprofinfo'>
               <div className='oneetabinfo'>
                 <img src={adress} alt='' />
@@ -159,7 +166,7 @@ const Container7 = () => {
                 <h5>{etab.horaires_ouverture}</h5>
               </div>
             </div>
-
+ {/* Affichage de la carte de localisation de l'établissement */}
             <div className='maptest'>
               <MapComponent latitude={etab.latitude} longitude={etab.longitude} />
             </div>
@@ -168,6 +175,7 @@ const Container7 = () => {
       </div>
 
       <div className='etabprof02'>
+
         <h1>Nos publications</h1>
         <div className='etabprof022'>
           {postData.length === 0 ? (
